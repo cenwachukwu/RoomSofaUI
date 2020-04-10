@@ -19,7 +19,7 @@ const PillBox = () => {
 
         <div className="extraPill">
           <div>
-            <a href="#">Shop all Room Sofa deals</a>
+            <a href="#">Shop all</a>
           </div>
         </div>
       </div>

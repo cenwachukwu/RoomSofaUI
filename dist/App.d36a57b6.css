@@ -79,6 +79,12 @@ a:hover {
 .navbarUserLinks div a:hover {
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 1024px) {
+  .Navbar {
+    display: none;
+  }
+}
 .dropdown-wrap {
   position: relative;
 }
@@ -225,13 +231,13 @@ a:hover {
   align-items: center;
 }
 .PillBox .extraPill {
-  padding-top: 7rem;
+  padding-top: 8rem;
   width: 95%;
   height: 100%;
   background-color: #a2bbce;
   margin: 0 auto;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .PillBox .extraPill div {
   width: 35%;

@@ -31365,7 +31365,7 @@ var PillBox = function PillBox() {
     className: "extraPill"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
-  }, "Shop all Room Sofa deals")))));
+  }, "Shop all")))));
 };
 
 var _default = PillBox;
