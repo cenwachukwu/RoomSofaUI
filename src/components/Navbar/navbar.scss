@@ -1,0 +1,85 @@
+.Navbar {
+  font-size: 1.8rem;
+  font-weight: 100;
+  padding: 5rem;
+  width: 100%;
+  height: 3.7rem;
+  // position: sticky;
+  top: 0;
+  // z-index: 1;
+  border-bottom: 0.5px solid black;
+  background-color: white;
+}
+.navContainer {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  border: 2px solid black;
+  background-color: black;
+  width: 15%;
+  height: 6.9rem;
+  padding-bottom: 2.1rem;
+  margin-top: -3.3rem;
+  a {
+    font-size: 2.3rem;
+    font-family: 'Permanent Marker', cursive;
+    color: white;
+  }
+}
+
+.navbarCategoryLinks {
+  border-top: 4px solid rgb(185, 144, 83);
+  width: 68%;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0.5rem;
+  }
+
+  a {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(38, 38, 38);
+  }
+}
+
+.navbarUserLinks {
+  margin-top: -3.5rem;
+
+  div {
+    padding: 0.4rem 0;
+    a {
+      text-decoration: none;
+      padding: 1rem 0;
+      i {
+        color: black;
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+        color: black;
+      }
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
