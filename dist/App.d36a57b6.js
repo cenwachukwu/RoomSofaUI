@@ -31211,21 +31211,21 @@ var Footer = function Footer() {
   }, "Home")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fab fa-facebook-f"
+    className: "fab fa-facebook-f"
   })), /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fab fa-instagram"
+    className: "fab fa-instagram"
   })), /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fab fa-youtube"
+    className: "fab fa-youtube"
   }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
   }, "Contact Us"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "FooterCopyRightDiv"
   }, /*#__PURE__*/_react.default.createElement("p", null, "All rights reserved", /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-copyright"
+    className: "fas fa-copyright"
   })), "2020"))));
 };
 
@@ -31266,7 +31266,111 @@ var Carrousel = function Carrousel() {
 
 var _default = Carrousel;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./carrousel.scss":"components/Carrousel/carrousel.scss","../../utils/carrousel.jpg":"utils/carrousel.jpg"}],"components/pages/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./carrousel.scss":"components/Carrousel/carrousel.scss","../../utils/carrousel.jpg":"utils/carrousel.jpg"}],"components/HomePagePills/homePagePills.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Pills/Pills.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Pills/Pills.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Pills.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Pills = function Pills(props) {
+  // console.log(props.props);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Pills"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: props.props
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, props.categoryName)));
+};
+
+var _default = Pills;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Pills.scss":"components/Pills/Pills.scss"}],"utils/homepills/chair.jpg":[function(require,module,exports) {
+module.exports = "/chair.afb95e18.jpg";
+},{}],"utils/homepills/loveseat.jpg":[function(require,module,exports) {
+module.exports = "/loveseat.9b3251e3.jpg";
+},{}],"utils/homepills/recliner.jpg":[function(require,module,exports) {
+module.exports = "/recliner.ff18c3dd.jpg";
+},{}],"utils/homepills/sectional.jpg":[function(require,module,exports) {
+module.exports = "/sectional.41362077.jpg";
+},{}],"utils/homepills/sofa.jpg":[function(require,module,exports) {
+module.exports = "/sofa.1982d464.jpg";
+},{}],"components/HomePagePills/homePagePills.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./homePagePills.scss");
+
+var _Pills = _interopRequireDefault(require("../Pills/Pills"));
+
+var _chair = _interopRequireDefault(require("../../utils/homepills/chair.jpg"));
+
+var _loveseat = _interopRequireDefault(require("../../utils/homepills/loveseat.jpg"));
+
+var _recliner = _interopRequireDefault(require("../../utils/homepills/recliner.jpg"));
+
+var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
+
+var _sofa = _interopRequireDefault(require("../../utils/homepills/sofa.jpg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PillBox = function PillBox() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "PillBox"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "boxPills"
+  }, /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _sofa.default,
+    categoryName: 'Sofa'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _loveseat.default,
+    categoryName: 'Love Seat'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _chair.default,
+    categoryName: 'Chair'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _recliner.default,
+    categoryName: 'Recliners'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _sectional.default,
+    categoryName: 'Sectionals'
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "extraPill"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Shop all Room Sofa deals")))));
+};
+
+var _default = PillBox;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./homePagePills.scss":"components/HomePagePills/homePagePills.scss","../Pills/Pills":"components/Pills/Pills.js","../../utils/homepills/chair.jpg":"utils/homepills/chair.jpg","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","../../utils/homepills/recliner.jpg":"utils/homepills/recliner.jpg","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../../utils/homepills/sofa.jpg":"utils/homepills/sofa.jpg"}],"components/pages/Home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31282,17 +31386,19 @@ var _footer = _interopRequireDefault(require("../Footer/footer"));
 
 var _carrousel = _interopRequireDefault(require("../Carrousel/carrousel"));
 
+var _homePagePills = _interopRequireDefault(require("../HomePagePills/homePagePills"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Home = function Home(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "Home"
-  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_carrousel.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_carrousel.default, null), /*#__PURE__*/_react.default.createElement(_homePagePills.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 };
 
 var _default = Home;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js","../HomePagePills/homePagePills":"components/HomePagePills/homePagePills.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

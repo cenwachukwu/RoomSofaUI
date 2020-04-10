@@ -38,13 +38,13 @@ const Footer = () => {
           </div>
           <div>
             <a href="#">
-              <i class="fab fa-facebook-f"></i>
+              <i className="fab fa-facebook-f"></i>
             </a>
             <a href="#">
-              <i class="fab fa-instagram"></i>
+              <i className="fab fa-instagram"></i>
             </a>
             <a href="#">
-              <i class="fab fa-youtube"></i>
+              <i className="fab fa-youtube"></i>
             </a>
           </div>
           <div>
@@ -55,7 +55,7 @@ const Footer = () => {
           <p>
             All rights reserved
             <span>
-              <i class="fas fa-copyright"></i>
+              <i className="fas fa-copyright"></i>
             </span>
             2020
           </p>

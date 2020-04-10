@@ -1,5 +1,5 @@
 import React from 'react';
-import './Pills.scss';
+import './homePagePills.scss';
 import Pills from '../Pills/Pills';
 import chair from '../../utils/homepills/chair.jpg';
 import loveseat from '../../utils/homepills/loveseat.jpg';

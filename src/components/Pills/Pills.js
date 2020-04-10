@@ -2,7 +2,7 @@ import React from 'react';
 import './Pills.scss';
 
 const Pills = (props) => {
-  console.log(props.props);
+  // console.log(props.props);
   return (
     <div className="Pills">
       <a href="#">

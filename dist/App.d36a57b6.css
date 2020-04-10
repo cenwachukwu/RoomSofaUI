@@ -207,5 +207,58 @@ a:hover {
   width: 100%;
   object-fit: cover;
 }
+.PillBox {
+  margin: 2rem 0;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.PillBox .boxPills {
+  margin: 0 auto;
+  width: 85%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  row-gap: 2rem;
+  justify-items: center;
+  align-items: center;
+}
+.PillBox .extraPill {
+  padding-top: 7rem;
+  width: 95%;
+  height: 100%;
+  background-color: #a2bbce;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.PillBox .extraPill div {
+  width: 35%;
+  margin: 0 auto;
+}
+.PillBox .extraPill div a {
+  text-decoration: none;
+  color: white;
+}
+.Pills {
+  height: 19rem;
+}
+.Pills img {
+  height: 80%;
+  object-fit: cover;
+}
+.Pills div {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+}
+.Pills div a {
+  text-align: left;
+  color: black;
+}
+.Pills div a:hover {
+  color: #b99053;
+}
 
 /*# sourceMappingURL=/App.d36a57b6.css.map */
