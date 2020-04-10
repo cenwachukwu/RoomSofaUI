@@ -2,7 +2,7 @@
   "name": "roomsofaui",
   "version": "1.0.0",
   "description": "user interface for room sofas dmv",
-  "main": "index.js",
+  "main": "src/App.js",
   "scripts": {
     "dev": "parcel src/index.html",
     "start": "parcel src/index.html",
