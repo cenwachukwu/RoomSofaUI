@@ -31231,7 +31231,42 @@ var Footer = function Footer() {
 
 var _default = Footer;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./footer.scss":"components/Footer/footer.scss"}],"components/pages/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./footer.scss":"components/Footer/footer.scss"}],"components/Carrousel/carrousel.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"utils/carrousel.jpg":[function(require,module,exports) {
+module.exports = "/carrousel.1794819c.jpg";
+},{}],"components/Carrousel/carrousel.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./carrousel.scss");
+
+var _carrousel2 = _interopRequireDefault(require("../../utils/carrousel.jpg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Carrousel = function Carrousel() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "tempCarrouselPic"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    title: "tempImg",
+    alt: "Cozi Sofa",
+    src: _carrousel2.default
+  }));
+};
+
+var _default = Carrousel;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./carrousel.scss":"components/Carrousel/carrousel.scss","../../utils/carrousel.jpg":"utils/carrousel.jpg"}],"components/pages/Home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31245,17 +31280,19 @@ var _navbar = _interopRequireDefault(require("../Navbar/navbar"));
 
 var _footer = _interopRequireDefault(require("../Footer/footer"));
 
+var _carrousel = _interopRequireDefault(require("../Carrousel/carrousel"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Home = function Home(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "Home"
-  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_carrousel.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 };
 
 var _default = Home;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

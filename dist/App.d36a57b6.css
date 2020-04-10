@@ -196,5 +196,16 @@ a:hover {
 .FooterCopyRightDiv span {
   padding: 0.5rem;
 }
+.tempCarrouselPic {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 30rem;
+}
+.tempCarrouselPic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 
 /*# sourceMappingURL=/App.d36a57b6.css.map */
