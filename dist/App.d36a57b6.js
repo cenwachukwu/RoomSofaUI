@@ -30937,7 +30937,325 @@ var createRoute = function createRoute(basepath) {
 var shouldNavigate = function shouldNavigate(event) {
   return !event.defaultPrevented && event.button === 0 && !(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }; ////////////////////////////////////////////////////////////////////////
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","invariant":"../node_modules/invariant/browser.js","create-react-context":"../node_modules/create-react-context/lib/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","./lib/utils":"../node_modules/@reach/router/es/lib/utils.js","./lib/history":"../node_modules/@reach/router/es/lib/history.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","invariant":"../node_modules/invariant/browser.js","create-react-context":"../node_modules/create-react-context/lib/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","./lib/utils":"../node_modules/@reach/router/es/lib/utils.js","./lib/history":"../node_modules/@reach/router/es/lib/history.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/Navbar/navbar.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/DropDown/dropdown.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/DropDown/dropdown.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./dropdown.scss");
+
+var _router = require("@reach/router");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var Dropdown = function Dropdown() {
+  var data = ['Sofa', 'Love Seat', 'Chair'];
+  var activatorRef = (0, _react.useRef)(null);
+  var dropdownListRef = (0, _react.useRef)(null);
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isOpen = _useState2[0],
+      setIsOpen = _useState2[1];
+
+  var clickHandler = function clickHandler(e) {
+    setIsOpen(!isOpen);
+  };
+
+  var keyHandler = function keyHandler(e) {
+    console.log(e.code); // Code for esc is 27
+
+    if (e.code === 27 && isOpen) {
+      setIsOpen(false);
+    }
+  }; //   if what the user is clicking isnt in the dropdown, close the dropdown
+
+
+  var clickOutsideHandler = function clickOutsideHandler(e) {
+    //   event.target
+    if (dropdownListRef.current.contains(event.target) || activatorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setIsOpen(false);
+  }; //   we'll use useEffect toggled with isOpen to send focus to the first element in the dropdown
+  //   we'll also use it to be able to close the dropdown by clicking outside of it. we will achieve this using a document.addEventListener
+
+
+  (0, _react.useEffect)(function () {
+    if (isOpen) {
+      dropdownListRef.current.querySelector('a').focus();
+      document.addEventListener('mousedown', clickOutsideHandler);
+    } else {
+      // if it's not open and to prevent a memory leak, we remove eventListener
+      document.removeEventListener('mousedown', clickOutsideHandler);
+    }
+  }, [isOpen]);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "dropdown-wrap",
+    onKeyUp: keyHandler
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    "aria-haspopup": "true",
+    "aria-controls": "dropdown1",
+    onClick: clickHandler,
+    ref: activatorRef,
+    className: "dropdown-activator"
+  }, "Living Room"), /*#__PURE__*/_react.default.createElement("ul", {
+    id: "dropdown1",
+    ref: dropdownListRef // we now say if isOpen is true, we want to add an active class but if its false, dont add a class
+    ,
+    className: "dropdown-itemList ".concat(isOpen ? 'active' : '') // adding role="list" helps us make sure that assistive technology eg screen readers will annouce how many items are in the list
+    ,
+    role: "list"
+  }, data.map(function (item, index) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      key: index
+    }, /*#__PURE__*/_react.default.createElement("a", {
+      href: "#"
+    }, item));
+  })));
+};
+
+var _default = Dropdown;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./dropdown.scss":"components/DropDown/dropdown.scss","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/Navbar/navbar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./navbar.scss");
+
+var _router = require("@reach/router");
+
+var _dropdown = _interopRequireDefault(require("../DropDown/dropdown"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Navbar = function Navbar() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Navbar"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "navContainer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "logo"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Room Sofas")), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "navbarCategoryLinks"
+  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Sectionals"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "navbarUserLinks"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-shopping-cart"
+  }), /*#__PURE__*/_react.default.createElement("p", null, "cart"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "far fa-user"
+  }), /*#__PURE__*/_react.default.createElement("p", null, "account"))))));
+};
+
+var _default = Navbar;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./navbar.scss":"components/Navbar/navbar.scss","@reach/router":"../node_modules/@reach/router/es/index.js","../DropDown/dropdown":"components/DropDown/dropdown.js"}],"components/Footer/footer.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Footer/footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./footer.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Footer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "Footer-div"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterCategoryDiv"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterCategory"
+  }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("p", null, "Quick Links"), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Delivery Policy")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "About Us")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Financing & Leasing")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Privacy Policy")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Contact Us")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Careers")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "My Account"))))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterIconsDiv"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Home")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fab fa-facebook-f"
+  })), /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fab fa-instagram"
+  })), /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fab fa-youtube"
+  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Contact Us"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterCopyRightDiv"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "All rights reserved", /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-copyright"
+  })), "2020"))));
+};
+
+var _default = Footer;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./footer.scss":"components/Footer/footer.scss"}],"components/pages/Home.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _navbar = _interopRequireDefault(require("../Navbar/navbar"));
+
+var _footer = _interopRequireDefault(require("../Footer/footer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Home = function Home(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Home"
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+};
+
+var _default = Home;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30946,16 +31264,18 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _router = require("@reach/router");
 
+var _Home = _interopRequireDefault(require("./components/pages/Home"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "App"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Room Sofa")));
+  return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
+    path: "/"
+  })));
 };
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./components/pages/Home":"components/pages/Home.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

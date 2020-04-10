@@ -1,0 +1,34 @@
+.PillBox {
+  margin: 2rem 0;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  .boxPills {
+    margin: 0 auto;
+    width: 85%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    row-gap: 2rem;
+    justify-items: center;
+    align-items: center;
+  }
+  .extraPill {
+    padding-top: 7rem;
+    width: 95%;
+    height: 100%;
+    background-color: rgb(162, 187, 206);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5rem;
+    div {
+      width: 35%;
+      margin: 0 auto;
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}

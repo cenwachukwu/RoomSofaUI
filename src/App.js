@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from '@reach/router';
+import Home from './components/pages/Home';
 
 const App = () => {
   return (
     <React.StrictMode>
-      <div className="App">
-        <h1>Room Sofa</h1>
-      </div>
+      <Router>
+        <Home path="/" />
+      </Router>
     </React.StrictMode>
   );
 };
