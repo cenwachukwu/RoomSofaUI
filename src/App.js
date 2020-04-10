@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from '@reach/router';
-import Home from './pages/Home';
 
 const App = () => {
   return (
     <React.StrictMode>
       <div className="App">
-        <Router>
-          <Home path="/" />
-        </Router>
+        <h1>Room Sofa</h1>
       </div>
     </React.StrictMode>
   );
