@@ -153,13 +153,13 @@ a:hover {
 
 .FooterCategory {
   padding: 2rem;
+  padding-top: 4rem;
 }
-.FooterCategory ul p {
-  color: #b99053;
-  text-align: left;
-  text-decoration: underline;
-  font-size: 1.1rem;
-  padding-bottom: 0.5rem;
+.FooterCategory ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .FooterCategory ul li {
   text-align: left;
@@ -169,6 +169,7 @@ a:hover {
 .FooterCategory ul li a {
   color: white;
   font-size: 0.9rem;
+  padding: 0.5rem;
 }
 
 .FooterIconsDiv {

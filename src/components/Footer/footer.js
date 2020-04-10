@@ -8,7 +8,6 @@ const Footer = () => {
         <div className="FooterCategoryDiv">
           <div className="FooterCategory">
             <ul>
-              <p>Quick Links</p>
               <li>
                 <a href="#">Delivery Policy</a>
               </li>

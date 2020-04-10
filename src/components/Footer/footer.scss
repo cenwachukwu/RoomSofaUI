@@ -19,17 +19,14 @@
 }
 
 .FooterCategory {
-  //   margin: 2rem;
   padding: 2rem;
-  //   border: 2px solid white;
+  padding-top: 4rem;
+  // border: 2px solid white;
   ul {
-    p {
-      color: rgb(185, 144, 83);
-      text-align: left;
-      text-decoration: underline;
-      font-size: 1.1rem;
-      padding-bottom: 0.5rem;
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     li {
       text-align: left;
       list-style: none;
@@ -37,6 +34,7 @@
       a {
         color: white;
         font-size: 0.9rem;
+        padding: 0.5rem;
       }
     }
   }

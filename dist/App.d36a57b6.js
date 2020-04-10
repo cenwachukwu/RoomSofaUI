@@ -31190,7 +31190,7 @@ var Footer = function Footer() {
     className: "FooterCategoryDiv"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "FooterCategory"
-  }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("p", null, "Quick Links"), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+  }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
   }, "Delivery Policy")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
