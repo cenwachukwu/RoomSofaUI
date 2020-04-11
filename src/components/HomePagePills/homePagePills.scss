@@ -42,3 +42,30 @@
     }
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .PillBox {
+    .boxPills {
+      width: 90%;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 3rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 835px) {
+  .PillBox {
+    .boxPills {
+      width: 50%;
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 3rem;
+    }
+    .extraPill {
+      padding: 6rem;
+      width: 87%;
+      div {
+        width: 100%;
+      }
+    }
+  }
+}

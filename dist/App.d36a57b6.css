@@ -202,6 +202,32 @@ a:hover {
 .FooterCopyRightDiv span {
   padding: 0.5rem;
 }
+
+@media only screen and (max-width: 987px) {
+  .Footer-div {
+    width: 100%;
+  }
+
+  .FooterCategory {
+    padding: 1rem;
+  }
+  .FooterCategory ul li {
+    text-align: center;
+    padding-left: 0.2rem;
+  }
+  .FooterCategory ul li a {
+    padding: 0.4rem;
+  }
+}
+@media only screen and (max-width: 748px) {
+  .FooterCategory ul {
+    flex-direction: column;
+  }
+  .FooterCategory ul li {
+    text-align: center;
+    padding: 0.5rem;
+  }
+}
 .tempCarrouselPic {
   padding: 0;
   margin: 0;
@@ -253,6 +279,27 @@ a:hover {
     width: 75%;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 3rem;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .PillBox .boxPills {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3rem;
+  }
+}
+@media only screen and (max-width: 835px) {
+  .PillBox .boxPills {
+    width: 50%;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 3rem;
+  }
+  .PillBox .extraPill {
+    padding: 6rem;
+    width: 87%;
+  }
+  .PillBox .extraPill div {
+    width: 100%;
   }
 }
 .Pills {

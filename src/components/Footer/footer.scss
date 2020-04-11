@@ -65,3 +65,33 @@
     padding: 0.5rem;
   }
 }
+
+@media only screen and (max-width: 987px) {
+  .Footer-div {
+    width: 100%;
+  }
+  .FooterCategory {
+    padding: 1rem;
+    ul {
+      li {
+        text-align: center;
+        padding-left: 0.2rem;
+        a {
+          padding: 0.4rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 748px) {
+  .FooterCategory {
+    ul {
+      flex-direction: column;
+      li {
+        text-align: center;
+        padding: 0.5rem;
+      }
+    }
+  }
+}
