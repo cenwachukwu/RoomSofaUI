@@ -302,9 +302,16 @@ a:hover {
     width: 100%;
   }
 }
+@media only screen and (max-width: 648px) {
+  .PillBox {
+    margin: 0 auto;
+  }
+  .PillBox .boxPills {
+    width: 75%;
+  }
+}
 .Pills {
   height: 19rem;
-  border: 2px solid black;
 }
 .Pills img {
   height: 80%;

@@ -69,3 +69,12 @@
     }
   }
 }
+
+@media only screen and (max-width: 648px) {
+  .PillBox {
+    margin: 0 auto;
+    .boxPills {
+      width: 75%;
+    }
+  }
+}
