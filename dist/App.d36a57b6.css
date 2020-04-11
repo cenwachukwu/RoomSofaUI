@@ -310,11 +310,26 @@ a:hover {
     width: 75%;
   }
 }
+@media only screen and (max-width: 414px) {
+  .PillBox .extraPill {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .PillBox .boxPills {
+    width: 100%;
+  }
+  .PillBox .extraPill {
+    padding: 6rem;
+    width: 90%;
+  }
+}
 .Pills {
   height: 19rem;
 }
 .Pills img {
   height: 80%;
+  width: 80%;
   object-fit: cover;
 }
 .Pills div {
@@ -324,11 +339,22 @@ a:hover {
   text-align: center;
 }
 .Pills div a {
-  text-align: left;
+  text-align: center;
   color: black;
 }
 .Pills div a:hover {
   color: #b99053;
+}
+
+@media only screen and (max-width: 414px) {
+  .Pills img {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .Pills img {
+    width: 80%;
+  }
 }
 .MobileNav {
   display: none;

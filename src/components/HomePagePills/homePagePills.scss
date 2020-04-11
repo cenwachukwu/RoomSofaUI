@@ -78,3 +78,23 @@
     }
   }
 }
+
+@media only screen and (max-width: 414px) {
+  .PillBox {
+    .extraPill {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .PillBox {
+    .boxPills {
+      width: 100%;
+    }
+    .extraPill {
+      padding: 6rem;
+      width: 90%;
+    }
+  }
+}
