@@ -36,7 +36,7 @@ const Footer = () => {
           <div>
             <a href="#">Home</a>
           </div>
-          <div>
+          <div className="FooterIconsDiv-icons">
             <a href="#">
               <i className="fab fa-facebook-f"></i>
             </a>

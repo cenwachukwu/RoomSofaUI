@@ -228,6 +228,27 @@ a:hover {
     padding: 0.5rem;
   }
 }
+@media only screen and (max-width: 375px) {
+  .FooterIconsDiv {
+    flex-direction: row;
+  }
+  .FooterIconsDiv div {
+    padding: 1rem;
+  }
+  .FooterIconsDiv div a {
+    color: white;
+  }
+  .FooterIconsDiv div i {
+    color: white;
+    padding: 1rem;
+  }
+  .FooterIconsDiv .FooterIconsDiv-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 .tempCarrouselPic {
   padding: 0;
   margin: 0;

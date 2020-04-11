@@ -95,3 +95,26 @@
     }
   }
 }
+
+@media only screen and (max-width: 375px) {
+  .FooterIconsDiv {
+    flex-direction: row;
+    // border: 2px solid white;
+    div {
+      padding: 1rem;
+      a {
+        color: white;
+      }
+      i {
+        color: white;
+        padding: 1rem;
+      }
+    }
+    .FooterIconsDiv-icons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

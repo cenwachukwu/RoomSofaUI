@@ -31208,7 +31208,9 @@ var Footer = function Footer() {
     className: "FooterIconsDiv"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
-  }, "Home")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+  }, "Home")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterIconsDiv-icons"
+  }, /*#__PURE__*/_react.default.createElement("a", {
     href: "#"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fab fa-facebook-f"
