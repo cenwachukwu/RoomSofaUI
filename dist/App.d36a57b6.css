@@ -247,14 +247,24 @@ a:hover {
   text-decoration: none;
   color: white;
 }
+
+@media only screen and (max-width: 1348px) {
+  .PillBox .boxPills {
+    width: 75%;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3rem;
+  }
+}
 .Pills {
   height: 19rem;
+  border: 2px solid black;
 }
 .Pills img {
   height: 80%;
   object-fit: cover;
 }
 .Pills div {
+  padding: 1rem;
   font-size: 1.5rem;
   font-weight: 300;
   text-align: center;

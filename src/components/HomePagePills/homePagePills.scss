@@ -32,3 +32,13 @@
     }
   }
 }
+
+@media only screen and (max-width: 1348px) {
+  .PillBox {
+    .boxPills {
+      width: 75%;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 3rem;
+    }
+  }
+}
