@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="Navbar">
       <div className="navContainer">
         <div className="logo">
-          <a href="#">Room Sofas</a>
+          <Link to="/">Room Sofas</Link>
         </div>
 
         <ul className="navbarCategoryLinks">
@@ -16,25 +16,25 @@ const Navbar = () => {
             <Dropdown />
           </li>
           <li>
-            <a href="#">Recliners</a>
+            <Link to="/">Recliners</Link>
           </li>
           <li>
-            <a href="#">Sectionals</a>
+            <Link to="/">Sectionals</Link>
           </li>
         </ul>
 
         <div className="navbarUserLinks">
           <div>
-            <a href="#">
+            <Link to="/">
               <i className="fas fa-shopping-cart"></i>
               <p>cart</p>
-            </a>
+            </Link>
           </div>
           <div>
-            <a href="#">
+            <Link to="/">
               <i className="far fa-user"></i>
               <p>account</p>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

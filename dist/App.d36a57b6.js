@@ -31139,22 +31139,22 @@ var Navbar = function Navbar() {
     className: "navContainer"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "logo"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
   }, "Room Sofas")), /*#__PURE__*/_react.default.createElement("ul", {
     className: "navbarCategoryLinks"
-  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
   }, "Sectionals"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "navbarUserLinks"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fas fa-shopping-cart"
-  }), /*#__PURE__*/_react.default.createElement("p", null, "cart"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
+  }), /*#__PURE__*/_react.default.createElement("p", null, "cart"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "far fa-user"
   }), /*#__PURE__*/_react.default.createElement("p", null, "account"))))));
@@ -31370,7 +31370,111 @@ var PillBox = function PillBox() {
 
 var _default = PillBox;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./homePagePills.scss":"components/HomePagePills/homePagePills.scss","../Pills/Pills":"components/Pills/Pills.js","../../utils/homepills/chair.jpg":"utils/homepills/chair.jpg","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","../../utils/homepills/recliner.jpg":"utils/homepills/recliner.jpg","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../../utils/homepills/sofa.jpg":"utils/homepills/sofa.jpg"}],"components/pages/Home.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./homePagePills.scss":"components/HomePagePills/homePagePills.scss","../Pills/Pills":"components/Pills/Pills.js","../../utils/homepills/chair.jpg":"utils/homepills/chair.jpg","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","../../utils/homepills/recliner.jpg":"utils/homepills/recliner.jpg","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../../utils/homepills/sofa.jpg":"utils/homepills/sofa.jpg"}],"components/MobileNavbar/MobileNav.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileNavbar/Hamburger.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileNavbar/Hamburger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _router = require("@reach/router");
+
+require("./Hamburger.scss");
+
+var _dropdown = _interopRequireDefault(require("../DropDown/dropdown"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Hamburger = function Hamburger() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "Hamburger__wrapper"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    className: "toggler"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "hamburger"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "hamburger-lines"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "fixednavbar"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "xyz"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-shopping-cart"
+  }))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "far fa-user"
+  })))))))));
+};
+
+var _default = Hamburger;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./Hamburger.scss":"components/MobileNavbar/Hamburger.scss","../DropDown/dropdown":"components/DropDown/dropdown.js"}],"components/MobileNavbar/MobileNav.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./MobileNav.scss");
+
+var _router = require("@reach/router");
+
+var _Hamburger = _interopRequireDefault(require("./Hamburger"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MobileNav = function MobileNav() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav__container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav__logo"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, /*#__PURE__*/_react.default.createElement("h4", {
+    className: "homeLogo"
+  }, "Room Sofas"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Hamburger.default, null)))));
+};
+
+var _default = MobileNav;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./MobileNav.scss":"components/MobileNavbar/MobileNav.scss","@reach/router":"../node_modules/@reach/router/es/index.js","./Hamburger":"components/MobileNavbar/Hamburger.js"}],"components/pages/Home.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31388,17 +31492,19 @@ var _carrousel = _interopRequireDefault(require("../Carrousel/carrousel"));
 
 var _homePagePills = _interopRequireDefault(require("../HomePagePills/homePagePills"));
 
+var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Home = function Home(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "Home"
-  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_carrousel.default, null), /*#__PURE__*/_react.default.createElement(_homePagePills.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), /*#__PURE__*/_react.default.createElement(_carrousel.default, null), /*#__PURE__*/_react.default.createElement(_homePagePills.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 };
 
 var _default = Home;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js","../HomePagePills/homePagePills":"components/HomePagePills/homePagePills.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js","../HomePagePills/homePagePills":"components/HomePagePills/homePagePills.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -31446,7 +31552,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60578" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63007" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
