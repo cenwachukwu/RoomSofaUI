@@ -16,7 +16,7 @@ const Navbar = () => {
             <Dropdown />
           </li>
           <li>
-            <Link to="/">Recliners</Link>
+            <Link to="/categories">Recliners</Link>
           </li>
           <li>
             <Link to="/">Sectionals</Link>

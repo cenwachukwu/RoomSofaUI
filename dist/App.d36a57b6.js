@@ -31144,7 +31144,7 @@ var Navbar = function Navbar() {
   }, "Room Sofas")), /*#__PURE__*/_react.default.createElement("ul", {
     className: "navbarCategoryLinks"
   }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
+    to: "/categories"
   }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/"
   }, "Sectionals"))), /*#__PURE__*/_react.default.createElement("div", {
@@ -31506,7 +31506,98 @@ var Home = function Home(props) {
 
 var _default = Home;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js","../HomePagePills/homePagePills":"components/HomePagePills/homePagePills.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js","../HomePagePills/homePagePills":"components/HomePagePills/homePagePills.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Categories/Categories.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Sidebar/Sidebar.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Sidebar/Sidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Sidebar.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Sidebar = function Sidebar(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Sidebar"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "we are the Sidebar page"));
+};
+
+var _default = Sidebar;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Sidebar.scss":"components/Sidebar/Sidebar.scss"}],"components/ProductsPills/ProductPill.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ProductsPills/ProductPill.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./ProductPill.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductsPils = function ProductsPils(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "ProductsPils"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "productsPilsContainer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "pilsContainers"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "we are product pills"))));
+};
+
+var _default = ProductsPils;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./ProductPill.scss":"components/ProductsPills/ProductPill.scss"}],"components/pages/Categories/Categories.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Categories.scss");
+
+var _Sidebar = _interopRequireDefault(require("../../Sidebar/Sidebar"));
+
+var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Categories = function Categories(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Categories"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "categoriesContainer"
+  }, /*#__PURE__*/_react.default.createElement(_Sidebar.default, null), /*#__PURE__*/_react.default.createElement(_ProductPill.default, null)));
+};
+
+var _default = Categories;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Categories.scss":"components/pages/Categories/Categories.scss","../../Sidebar/Sidebar":"components/Sidebar/Sidebar.js","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -31517,16 +31608,23 @@ var _router = require("@reach/router");
 
 var _Home = _interopRequireDefault(require("./components/pages/Home"));
 
+var _Categories = _interopRequireDefault(require("./components/pages/Categories/Categories"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
   return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
-    path: "/"
+    path: "/",
+    exact: true,
+    component: _Home.default
+  }), /*#__PURE__*/_react.default.createElement(_Categories.default, {
+    path: "/categories",
+    component: _Categories.default
   })));
 };
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./components/pages/Home":"components/pages/Home.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -31554,7 +31652,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63007" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50765" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
