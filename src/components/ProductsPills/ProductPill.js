@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ProductPill.scss';
+import image from '../../utils/homepills/loveseat.jpg';
+import { Link } from '@reach/router';
 
 const ProductsPils = (props) => {
+  useEffect(() => {});
+
   return (
     <div className="ProductsPils">
       <div className="productsPilsContainer">
         <div className="pilsContainers">
-          <p>we are product pills</p>
+          <Link to="/productPage">
+            <img src={image} />
+          </Link>
+          <Link to="/productPage">
+            <p>Name</p>
+          </Link>
+          <Link to="/productPage">
+            <p>Price</p>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,5 +1,26 @@
 .Sidebar {
-  border: 2px solid black;
+  margin-top: 5rem;
+  // border: 2px solid black;
   width: 30%;
   height: 100%;
+  div {
+    padding: 2rem;
+    color: black;
+    ul {
+      li {
+        padding: 2rem;
+        list-style: none;
+        font-size: 1.5rem;
+        color: black;
+        border-bottom: 1px solid black;
+        a {
+          color: black;
+        }
+      }
+      .noBorder {
+        border: none;
+        color: black;
+      }
+    }
+  }
 }

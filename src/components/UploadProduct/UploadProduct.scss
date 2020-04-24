@@ -1,0 +1,24 @@
+.UploadProduct {
+  border: 2px solid gold;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  div {
+    margin: 0 auto;
+    width: 90%;
+    form {
+      div {
+        width: 100%;
+        padding: 1rem;
+        input {
+          padding: 1.5rem;
+          width: 100%;
+        }
+        textarea {
+          padding: 2rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import './Categories.scss';
 import Sidebar from '../../Sidebar/Sidebar';
 import ProductsPils from '../../ProductsPills/ProductPill';
+import Footer from '../../Footer/footer';
 
 const Categories = (props) => {
   return (
@@ -10,6 +11,7 @@ const Categories = (props) => {
         <Sidebar />
         <ProductsPils />
       </div>
+      <Footer />
     </div>
   );
 };
