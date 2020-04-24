@@ -9,7 +9,7 @@ const Categories = (props) => {
     <div className="Categories">
       <div className="categoriesContainer">
         <Sidebar />
-        <ProductsPils />
+        <ProductsPils data={props.ProductData} />
       </div>
       <Footer />
     </div>

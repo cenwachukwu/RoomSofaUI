@@ -4,7 +4,7 @@ import image from '../../utils/homepills/loveseat.jpg';
 import { Link } from '@reach/router';
 
 const ProductsPils = (props) => {
-  useEffect(() => {});
+  console.log(props.data.data);
 
   return (
     <div className="ProductsPils">

@@ -30937,772 +30937,7 @@ var createRoute = function createRoute(basepath) {
 var shouldNavigate = function shouldNavigate(event) {
   return !event.defaultPrevented && event.button === 0 && !(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }; ////////////////////////////////////////////////////////////////////////
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","invariant":"../node_modules/invariant/browser.js","create-react-context":"../node_modules/create-react-context/lib/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","./lib/utils":"../node_modules/@reach/router/es/lib/utils.js","./lib/history":"../node_modules/@reach/router/es/lib/history.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/Navbar/navbar.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/DropDown/dropdown.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/DropDown/dropdown.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-require("./dropdown.scss");
-
-var _router = require("@reach/router");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var Dropdown = function Dropdown() {
-  var data = ['Sofa', 'Love Seat', 'Chair'];
-  var activatorRef = (0, _react.useRef)(null);
-  var dropdownListRef = (0, _react.useRef)(null);
-
-  var _useState = (0, _react.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      isOpen = _useState2[0],
-      setIsOpen = _useState2[1];
-
-  var clickHandler = function clickHandler(e) {
-    setIsOpen(!isOpen);
-  };
-
-  var keyHandler = function keyHandler(e) {
-    console.log(e.code); // Code for esc is 27
-
-    if (e.code === 27 && isOpen) {
-      setIsOpen(false);
-    }
-  }; //   if what the user is clicking isnt in the dropdown, close the dropdown
-
-
-  var clickOutsideHandler = function clickOutsideHandler(e) {
-    //   event.target
-    if (dropdownListRef.current.contains(event.target) || activatorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setIsOpen(false);
-  }; //   we'll use useEffect toggled with isOpen to send focus to the first element in the dropdown
-  //   we'll also use it to be able to close the dropdown by clicking outside of it. we will achieve this using a document.addEventListener
-
-
-  (0, _react.useEffect)(function () {
-    if (isOpen) {
-      dropdownListRef.current.querySelector('a').focus();
-      document.addEventListener('mousedown', clickOutsideHandler);
-    } else {
-      // if it's not open and to prevent a memory leak, we remove eventListener
-      document.removeEventListener('mousedown', clickOutsideHandler);
-    }
-  }, [isOpen]);
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "dropdown-wrap",
-    onKeyUp: keyHandler
-  }, /*#__PURE__*/_react.default.createElement("button", {
-    "aria-haspopup": "true",
-    "aria-controls": "dropdown1",
-    onClick: clickHandler,
-    ref: activatorRef,
-    className: "dropdown-activator"
-  }, "Living Room"), /*#__PURE__*/_react.default.createElement("ul", {
-    id: "dropdown1",
-    ref: dropdownListRef // we now say if isOpen is true, we want to add an active class but if its false, dont add a class
-    ,
-    className: "dropdown-itemList ".concat(isOpen ? 'active' : '') // adding role="list" helps us make sure that assistive technology eg screen readers will annouce how many items are in the list
-    ,
-    role: "list"
-  }, data.map(function (item, index) {
-    return /*#__PURE__*/_react.default.createElement("li", {
-      key: index
-    }, /*#__PURE__*/_react.default.createElement("a", {
-      href: "#"
-    }, item));
-  })));
-};
-
-var _default = Dropdown;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./dropdown.scss":"components/DropDown/dropdown.scss","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/Navbar/navbar.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./navbar.scss");
-
-var _router = require("@reach/router");
-
-var _dropdown = _interopRequireDefault(require("../DropDown/dropdown"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Navbar = function Navbar() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Navbar"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "navContainer"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "logo"
-  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, "Room Sofas")), /*#__PURE__*/_react.default.createElement("ul", {
-    className: "navbarCategoryLinks"
-  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/categories"
-  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, "Sectionals"))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "navbarUserLinks"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fas fa-shopping-cart"
-  }), /*#__PURE__*/_react.default.createElement("p", null, "cart"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "far fa-user"
-  }), /*#__PURE__*/_react.default.createElement("p", null, "account"))))));
-};
-
-var _default = Navbar;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./navbar.scss":"components/Navbar/navbar.scss","@reach/router":"../node_modules/@reach/router/es/index.js","../DropDown/dropdown":"components/DropDown/dropdown.js"}],"components/Footer/footer.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Footer/footer.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./footer.scss");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Footer = function Footer() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Footer"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "Footer-div"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "FooterCategoryDiv"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "FooterCategory"
-  }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Delivery Policy")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "About Us")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Financing & Leasing")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Privacy Policy")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Contact Us")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Careers")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "My Account"))))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "FooterIconsDiv"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Home")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "FooterIconsDiv-icons"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fab fa-facebook-f"
-  })), /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fab fa-instagram"
-  })), /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fab fa-youtube"
-  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Contact Us"))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "FooterCopyRightDiv"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "All rights reserved", /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fas fa-copyright"
-  })), "2020"))));
-};
-
-var _default = Footer;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./footer.scss":"components/Footer/footer.scss"}],"components/Carrousel/carrousel.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"utils/carrousel.jpg":[function(require,module,exports) {
-module.exports = "/carrousel.1794819c.jpg";
-},{}],"components/Carrousel/carrousel.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./carrousel.scss");
-
-var _carrousel2 = _interopRequireDefault(require("../../utils/carrousel.jpg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Carrousel = function Carrousel() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "tempCarrouselPic"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    title: "tempImg",
-    alt: "Cozi Sofa",
-    src: _carrousel2.default
-  }));
-};
-
-var _default = Carrousel;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./carrousel.scss":"components/Carrousel/carrousel.scss","../../utils/carrousel.jpg":"utils/carrousel.jpg"}],"components/HomePagePills/homePagePills.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Pills/Pills.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Pills/Pills.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./Pills.scss");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Pills = function Pills(props) {
-  // console.log(props.props);
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Pills"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: props.props
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, props.categoryName)));
-};
-
-var _default = Pills;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Pills.scss":"components/Pills/Pills.scss"}],"utils/homepills/chair.jpg":[function(require,module,exports) {
-module.exports = "/chair.afb95e18.jpg";
-},{}],"utils/homepills/loveseat.jpg":[function(require,module,exports) {
-module.exports = "/loveseat.9b3251e3.jpg";
-},{}],"utils/homepills/recliner.jpg":[function(require,module,exports) {
-module.exports = "/recliner.ff18c3dd.jpg";
-},{}],"utils/homepills/sectional.jpg":[function(require,module,exports) {
-module.exports = "/sectional.41362077.jpg";
-},{}],"utils/homepills/sofa.jpg":[function(require,module,exports) {
-module.exports = "/sofa.1982d464.jpg";
-},{}],"components/HomePagePills/homePagePills.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./homePagePills.scss");
-
-var _Pills = _interopRequireDefault(require("../Pills/Pills"));
-
-var _chair = _interopRequireDefault(require("../../utils/homepills/chair.jpg"));
-
-var _loveseat = _interopRequireDefault(require("../../utils/homepills/loveseat.jpg"));
-
-var _recliner = _interopRequireDefault(require("../../utils/homepills/recliner.jpg"));
-
-var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
-
-var _sofa = _interopRequireDefault(require("../../utils/homepills/sofa.jpg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PillBox = function PillBox() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "PillBox"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "boxPills"
-  }, /*#__PURE__*/_react.default.createElement(_Pills.default, {
-    props: _sofa.default,
-    categoryName: 'Sofa'
-  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
-    props: _loveseat.default,
-    categoryName: 'Love Seat'
-  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
-    props: _chair.default,
-    categoryName: 'Chair'
-  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
-    props: _recliner.default,
-    categoryName: 'Recliners'
-  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
-    props: _sectional.default,
-    categoryName: 'Sectionals'
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "extraPill"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
-  }, "Shop all")))));
-};
-
-var _default = PillBox;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./homePagePills.scss":"components/HomePagePills/homePagePills.scss","../Pills/Pills":"components/Pills/Pills.js","../../utils/homepills/chair.jpg":"utils/homepills/chair.jpg","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","../../utils/homepills/recliner.jpg":"utils/homepills/recliner.jpg","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../../utils/homepills/sofa.jpg":"utils/homepills/sofa.jpg"}],"components/MobileNavbar/MobileNav.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileNavbar/Hamburger.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileNavbar/Hamburger.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _router = require("@reach/router");
-
-require("./Hamburger.scss");
-
-var _dropdown = _interopRequireDefault(require("../DropDown/dropdown"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Hamburger = function Hamburger() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "Hamburger__wrapper"
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "checkbox",
-    className: "toggler"
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "hamburger"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "hamburger-lines"
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "fixednavbar"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "xyz"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
-    className: "MobileNav__logoLink"
-  }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
-    className: "MobileNav__logoLink"
-  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
-    className: "MobileNav__logoLink"
-  }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
-    className: "MobileNav__logoLink"
-  }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
-    className: "MobileNav__logoLink"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fas fa-shopping-cart"
-  }))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
-    className: "MobileNav__logoLink"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "far fa-user"
-  })))))))));
-};
-
-var _default = Hamburger;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./Hamburger.scss":"components/MobileNavbar/Hamburger.scss","../DropDown/dropdown":"components/DropDown/dropdown.js"}],"components/MobileNavbar/MobileNav.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./MobileNav.scss");
-
-var _router = require("@reach/router");
-
-var _Hamburger = _interopRequireDefault(require("./Hamburger"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var MobileNav = function MobileNav() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "MobileNav"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "MobileNav__container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "MobileNav__logo"
-  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
-    className: "MobileNav__logoLink"
-  }, /*#__PURE__*/_react.default.createElement("h4", {
-    className: "homeLogo"
-  }, "Room Sofas"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Hamburger.default, null)))));
-};
-
-var _default = MobileNav;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./MobileNav.scss":"components/MobileNavbar/MobileNav.scss","@reach/router":"../node_modules/@reach/router/es/index.js","./Hamburger":"components/MobileNavbar/Hamburger.js"}],"components/pages/Home.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _navbar = _interopRequireDefault(require("../Navbar/navbar"));
-
-var _footer = _interopRequireDefault(require("../Footer/footer"));
-
-var _carrousel = _interopRequireDefault(require("../Carrousel/carrousel"));
-
-var _homePagePills = _interopRequireDefault(require("../HomePagePills/homePagePills"));
-
-var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Home = function Home(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Home"
-  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), /*#__PURE__*/_react.default.createElement(_carrousel.default, null), /*#__PURE__*/_react.default.createElement(_homePagePills.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
-};
-
-var _default = Home;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js","../HomePagePills/homePagePills":"components/HomePagePills/homePagePills.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Categories/Categories.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Sidebar/Sidebar.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Sidebar/Sidebar.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./Sidebar.scss");
-
-var _router = require("@reach/router");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Sidebar = function Sidebar(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Sidebar"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "fas fa-shopping-cart"
-  }))), /*#__PURE__*/_react.default.createElement("li", {
-    className: "noBorder"
-  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "far fa-user"
-  }))))));
-};
-
-var _default = Sidebar;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Sidebar.scss":"components/Sidebar/Sidebar.scss","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/ProductsPills/ProductPill.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ProductsPills/ProductPill.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-require("./ProductPill.scss");
-
-var _loveseat = _interopRequireDefault(require("../../utils/homepills/loveseat.jpg"));
-
-var _router = require("@reach/router");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-var ProductsPils = function ProductsPils(props) {
-  (0, _react.useEffect)(function () {});
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "ProductsPils"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "productsPilsContainer"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "pilsContainers"
-  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _loveseat.default
-  })), /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Name")), /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Price")))));
-};
-
-var _default = ProductsPils;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./ProductPill.scss":"components/ProductsPills/ProductPill.scss","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/pages/Categories/Categories.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./Categories.scss");
-
-var _Sidebar = _interopRequireDefault(require("../../Sidebar/Sidebar"));
-
-var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
-
-var _footer = _interopRequireDefault(require("../../Footer/footer"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Categories = function Categories(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "Categories"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "categoriesContainer"
-  }, /*#__PURE__*/_react.default.createElement(_Sidebar.default, null), /*#__PURE__*/_react.default.createElement(_ProductPill.default, null)), /*#__PURE__*/_react.default.createElement(_footer.default, null));
-};
-
-var _default = Categories;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Categories.scss":"components/pages/Categories/Categories.scss","../../Sidebar/Sidebar":"components/Sidebar/Sidebar.js","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js","../../Footer/footer":"components/Footer/footer.js"}],"components/ProductInfo/ProductInfo.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ProductInfo/ProductInfo.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-require("./ProductInfo.scss");
-
-var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ProductInfo = function ProductInfo(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "ProductInfo"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "ProductInfoContainer"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "productPictures"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _sectional.default
-  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "productInfoSection"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Name"), /*#__PURE__*/_react.default.createElement("p", null, "Price"), /*#__PURE__*/_react.default.createElement("p", null, "Description"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "file",
-    id: "fileInput"
-  }), /*#__PURE__*/_react.default.createElement("p", null, "features"), /*#__PURE__*/_react.default.createElement("p", null, "Product Details"), /*#__PURE__*/_react.default.createElement("p", null, "Upholstered"), /*#__PURE__*/_react.default.createElement("p", null, "Natural Variation"), /*#__PURE__*/_react.default.createElement("p", null, "Shipping and returns"), /*#__PURE__*/_react.default.createElement("p", null, "Question and answer"), /*#__PURE__*/_react.default.createElement("p", null, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", null, "Weight and Dimension"), /*#__PURE__*/_react.default.createElement("p", null, "love"), /*#__PURE__*/_react.default.createElement("p", null, "Style Number"), /*#__PURE__*/_react.default.createElement("p", null, "Do you have questions about this product? Our experts are here to help! call us ish"), /*#__PURE__*/_react.default.createElement("p", null, "Box spring require true or false"))));
-};
-
-var _default = ProductInfo;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg"}],"components/pages/Product.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _navbar = _interopRequireDefault(require("../Navbar/navbar"));
-
-var _footer = _interopRequireDefault(require("../Footer/footer"));
-
-var _ProductInfo = _interopRequireDefault(require("../ProductInfo/ProductInfo"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ProductPage = function ProductPage(props) {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "ProductPage"
-  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_ProductInfo.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
-};
-
-var _default = ProductPage;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../ProductInfo/ProductInfo":"components/ProductInfo/ProductInfo.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","invariant":"../node_modules/invariant/browser.js","create-react-context":"../node_modules/create-react-context/lib/index.js","react-lifecycles-compat":"../node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js","./lib/utils":"../node_modules/@reach/router/es/lib/utils.js","./lib/history":"../node_modules/@reach/router/es/lib/history.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -33465,7 +32700,774 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"components/UploadProduct/UploadProduct.scss":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"components/Navbar/navbar.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/DropDown/dropdown.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/DropDown/dropdown.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./dropdown.scss");
+
+var _router = require("@reach/router");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var Dropdown = function Dropdown() {
+  var data = ['Sofa', 'Love Seat', 'Chair'];
+  var activatorRef = (0, _react.useRef)(null);
+  var dropdownListRef = (0, _react.useRef)(null);
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isOpen = _useState2[0],
+      setIsOpen = _useState2[1];
+
+  var clickHandler = function clickHandler(e) {
+    setIsOpen(!isOpen);
+  };
+
+  var keyHandler = function keyHandler(e) {
+    console.log(e.code); // Code for esc is 27
+
+    if (e.code === 27 && isOpen) {
+      setIsOpen(false);
+    }
+  }; //   if what the user is clicking isnt in the dropdown, close the dropdown
+
+
+  var clickOutsideHandler = function clickOutsideHandler(e) {
+    //   event.target
+    if (dropdownListRef.current.contains(event.target) || activatorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setIsOpen(false);
+  }; //   we'll use useEffect toggled with isOpen to send focus to the first element in the dropdown
+  //   we'll also use it to be able to close the dropdown by clicking outside of it. we will achieve this using a document.addEventListener
+
+
+  (0, _react.useEffect)(function () {
+    if (isOpen) {
+      dropdownListRef.current.querySelector('a').focus();
+      document.addEventListener('mousedown', clickOutsideHandler);
+    } else {
+      // if it's not open and to prevent a memory leak, we remove eventListener
+      document.removeEventListener('mousedown', clickOutsideHandler);
+    }
+  }, [isOpen]);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "dropdown-wrap",
+    onKeyUp: keyHandler
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    "aria-haspopup": "true",
+    "aria-controls": "dropdown1",
+    onClick: clickHandler,
+    ref: activatorRef,
+    className: "dropdown-activator"
+  }, "Living Room"), /*#__PURE__*/_react.default.createElement("ul", {
+    id: "dropdown1",
+    ref: dropdownListRef // we now say if isOpen is true, we want to add an active class but if its false, dont add a class
+    ,
+    className: "dropdown-itemList ".concat(isOpen ? 'active' : '') // adding role="list" helps us make sure that assistive technology eg screen readers will annouce how many items are in the list
+    ,
+    role: "list"
+  }, data.map(function (item, index) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      key: index
+    }, /*#__PURE__*/_react.default.createElement("a", {
+      href: "#"
+    }, item));
+  })));
+};
+
+var _default = Dropdown;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./dropdown.scss":"components/DropDown/dropdown.scss","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/Navbar/navbar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./navbar.scss");
+
+var _router = require("@reach/router");
+
+var _dropdown = _interopRequireDefault(require("../DropDown/dropdown"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Navbar = function Navbar() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Navbar"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "navContainer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "logo"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, "Room Sofas")), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "navbarCategoryLinks"
+  }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories"
+  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, "Sectionals"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "navbarUserLinks"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-shopping-cart"
+  }), /*#__PURE__*/_react.default.createElement("p", null, "cart"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "far fa-user"
+  }), /*#__PURE__*/_react.default.createElement("p", null, "account"))))));
+};
+
+var _default = Navbar;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./navbar.scss":"components/Navbar/navbar.scss","@reach/router":"../node_modules/@reach/router/es/index.js","../DropDown/dropdown":"components/DropDown/dropdown.js"}],"components/Footer/footer.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Footer/footer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./footer.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Footer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "Footer-div"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterCategoryDiv"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterCategory"
+  }, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Delivery Policy")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "About Us")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Financing & Leasing")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Privacy Policy")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Contact Us")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Careers")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "My Account"))))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterIconsDiv"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Home")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterIconsDiv-icons"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fab fa-facebook-f"
+  })), /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fab fa-instagram"
+  })), /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fab fa-youtube"
+  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Contact Us"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "FooterCopyRightDiv"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "All rights reserved", /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-copyright"
+  })), "2020"))));
+};
+
+var _default = Footer;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./footer.scss":"components/Footer/footer.scss"}],"components/Carrousel/carrousel.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"utils/carrousel.jpg":[function(require,module,exports) {
+module.exports = "/carrousel.1794819c.jpg";
+},{}],"components/Carrousel/carrousel.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./carrousel.scss");
+
+var _carrousel2 = _interopRequireDefault(require("../../utils/carrousel.jpg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Carrousel = function Carrousel() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "tempCarrouselPic"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    title: "tempImg",
+    alt: "Cozi Sofa",
+    src: _carrousel2.default
+  }));
+};
+
+var _default = Carrousel;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./carrousel.scss":"components/Carrousel/carrousel.scss","../../utils/carrousel.jpg":"utils/carrousel.jpg"}],"components/HomePagePills/homePagePills.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Pills/Pills.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Pills/Pills.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Pills.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Pills = function Pills(props) {
+  // console.log(props.props);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Pills"
+  }, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: props.props
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, props.categoryName)));
+};
+
+var _default = Pills;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Pills.scss":"components/Pills/Pills.scss"}],"utils/homepills/chair.jpg":[function(require,module,exports) {
+module.exports = "/chair.afb95e18.jpg";
+},{}],"utils/homepills/loveseat.jpg":[function(require,module,exports) {
+module.exports = "/loveseat.9b3251e3.jpg";
+},{}],"utils/homepills/recliner.jpg":[function(require,module,exports) {
+module.exports = "/recliner.ff18c3dd.jpg";
+},{}],"utils/homepills/sectional.jpg":[function(require,module,exports) {
+module.exports = "/sectional.41362077.jpg";
+},{}],"utils/homepills/sofa.jpg":[function(require,module,exports) {
+module.exports = "/sofa.1982d464.jpg";
+},{}],"components/HomePagePills/homePagePills.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./homePagePills.scss");
+
+var _Pills = _interopRequireDefault(require("../Pills/Pills"));
+
+var _chair = _interopRequireDefault(require("../../utils/homepills/chair.jpg"));
+
+var _loveseat = _interopRequireDefault(require("../../utils/homepills/loveseat.jpg"));
+
+var _recliner = _interopRequireDefault(require("../../utils/homepills/recliner.jpg"));
+
+var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
+
+var _sofa = _interopRequireDefault(require("../../utils/homepills/sofa.jpg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PillBox = function PillBox() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "PillBox"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "boxPills"
+  }, /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _sofa.default,
+    categoryName: 'Sofa'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _loveseat.default,
+    categoryName: 'Love Seat'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _chair.default,
+    categoryName: 'Chair'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _recliner.default,
+    categoryName: 'Recliners'
+  }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
+    props: _sectional.default,
+    categoryName: 'Sectionals'
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "extraPill"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "#"
+  }, "Shop all")))));
+};
+
+var _default = PillBox;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./homePagePills.scss":"components/HomePagePills/homePagePills.scss","../Pills/Pills":"components/Pills/Pills.js","../../utils/homepills/chair.jpg":"utils/homepills/chair.jpg","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","../../utils/homepills/recliner.jpg":"utils/homepills/recliner.jpg","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../../utils/homepills/sofa.jpg":"utils/homepills/sofa.jpg"}],"components/MobileNavbar/MobileNav.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileNavbar/Hamburger.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileNavbar/Hamburger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _router = require("@reach/router");
+
+require("./Hamburger.scss");
+
+var _dropdown = _interopRequireDefault(require("../DropDown/dropdown"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Hamburger = function Hamburger() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "Hamburger__wrapper"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    className: "toggler"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "hamburger"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "hamburger-lines"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "fixednavbar"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "xyz"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-shopping-cart"
+  }))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "far fa-user"
+  })))))))));
+};
+
+var _default = Hamburger;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./Hamburger.scss":"components/MobileNavbar/Hamburger.scss","../DropDown/dropdown":"components/DropDown/dropdown.js"}],"components/MobileNavbar/MobileNav.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./MobileNav.scss");
+
+var _router = require("@reach/router");
+
+var _Hamburger = _interopRequireDefault(require("./Hamburger"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MobileNav = function MobileNav() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav__container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav__logo"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "MobileNav__logoLink"
+  }, /*#__PURE__*/_react.default.createElement("h4", {
+    className: "homeLogo"
+  }, "Room Sofas"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Hamburger.default, null)))));
+};
+
+var _default = MobileNav;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./MobileNav.scss":"components/MobileNavbar/MobileNav.scss","@reach/router":"../node_modules/@reach/router/es/index.js","./Hamburger":"components/MobileNavbar/Hamburger.js"}],"components/pages/Home.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _navbar = _interopRequireDefault(require("../Navbar/navbar"));
+
+var _footer = _interopRequireDefault(require("../Footer/footer"));
+
+var _carrousel = _interopRequireDefault(require("../Carrousel/carrousel"));
+
+var _homePagePills = _interopRequireDefault(require("../HomePagePills/homePagePills"));
+
+var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Home = function Home(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Home"
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), /*#__PURE__*/_react.default.createElement(_carrousel.default, null), /*#__PURE__*/_react.default.createElement(_homePagePills.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+};
+
+var _default = Home;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../Carrousel/carrousel":"components/Carrousel/carrousel.js","../HomePagePills/homePagePills":"components/HomePagePills/homePagePills.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Categories/Categories.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Sidebar/Sidebar.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Sidebar/Sidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Sidebar.scss");
+
+var _router = require("@reach/router");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Sidebar = function Sidebar(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Sidebar"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-shopping-cart"
+  }))), /*#__PURE__*/_react.default.createElement("li", {
+    className: "noBorder"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "far fa-user"
+  }))))));
+};
+
+var _default = Sidebar;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Sidebar.scss":"components/Sidebar/Sidebar.scss","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/ProductsPills/ProductPill.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ProductsPills/ProductPill.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("./ProductPill.scss");
+
+var _loveseat = _interopRequireDefault(require("../../utils/homepills/loveseat.jpg"));
+
+var _router = require("@reach/router");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var ProductsPils = function ProductsPils(props) {
+  console.log(props.data.data);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "ProductsPils"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "productsPilsContainer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "pilsContainers"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/productPage"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _loveseat.default
+  })), /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/productPage"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Name")), /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/productPage"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Price")))));
+};
+
+var _default = ProductsPils;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./ProductPill.scss":"components/ProductsPills/ProductPill.scss","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/pages/Categories/Categories.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Categories.scss");
+
+var _Sidebar = _interopRequireDefault(require("../../Sidebar/Sidebar"));
+
+var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
+
+var _footer = _interopRequireDefault(require("../../Footer/footer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Categories = function Categories(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Categories"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "categoriesContainer"
+  }, /*#__PURE__*/_react.default.createElement(_Sidebar.default, null), /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
+    data: props.ProductData
+  })), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+};
+
+var _default = Categories;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Categories.scss":"components/pages/Categories/Categories.scss","../../Sidebar/Sidebar":"components/Sidebar/Sidebar.js","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js","../../Footer/footer":"components/Footer/footer.js"}],"components/ProductInfo/ProductInfo.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ProductInfo/ProductInfo.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./ProductInfo.scss");
+
+var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductInfo = function ProductInfo(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "ProductInfo"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "ProductInfoContainer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "productPictures"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _sectional.default
+  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "productInfoSection"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Name"), /*#__PURE__*/_react.default.createElement("p", null, "Price"), /*#__PURE__*/_react.default.createElement("p", null, "Description"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "file",
+    id: "fileInput"
+  }), /*#__PURE__*/_react.default.createElement("p", null, "features"), /*#__PURE__*/_react.default.createElement("p", null, "Product Details"), /*#__PURE__*/_react.default.createElement("p", null, "Upholstered"), /*#__PURE__*/_react.default.createElement("p", null, "Natural Variation"), /*#__PURE__*/_react.default.createElement("p", null, "Shipping and returns"), /*#__PURE__*/_react.default.createElement("p", null, "Question and answer"), /*#__PURE__*/_react.default.createElement("p", null, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", null, "Weight and Dimension"), /*#__PURE__*/_react.default.createElement("p", null, "love"), /*#__PURE__*/_react.default.createElement("p", null, "Style Number"), /*#__PURE__*/_react.default.createElement("p", null, "Do you have questions about this product? Our experts are here to help! call us ish"), /*#__PURE__*/_react.default.createElement("p", null, "Box spring require true or false"))));
+};
+
+var _default = ProductInfo;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg"}],"components/pages/Product.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _navbar = _interopRequireDefault(require("../Navbar/navbar"));
+
+var _footer = _interopRequireDefault(require("../Footer/footer"));
+
+var _ProductInfo = _interopRequireDefault(require("../ProductInfo/ProductInfo"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ProductPage = function ProductPage(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "ProductPage"
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_ProductInfo.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+};
+
+var _default = ProductPage;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../ProductInfo/ProductInfo":"components/ProductInfo/ProductInfo.js"}],"components/UploadProduct/UploadProduct.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -33730,6 +33732,8 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _router = require("@reach/router");
 
+var _axios = _interopRequireDefault(require("axios"));
+
 var _Home = _interopRequireDefault(require("./components/pages/Home"));
 
 var _Categories = _interopRequireDefault(require("./components/pages/Categories/Categories"));
@@ -33744,15 +33748,46 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var App = function App() {
-  (0, _react.useEffect)(function () {});
+  var _useState = (0, _react.useState)({
+    products: []
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      productData = _useState2[0],
+      setProductData = _useState2[1];
+
+  (0, _react.useEffect)(function () {
+    _axios.default.get('http://localhost:8080/products').then(function (res) {
+      // console.log(res);
+      var Product = res.data;
+      setProductData(Product);
+    }).catch(function (err) {
+      console.log(err);
+    }); // because We only want to fetch data when the component mounts.
+    // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
+    // on component updates but only for the mounting of the component.
+
+  }, []);
   return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
     path: "/",
     exact: true,
     component: _Home.default
   }), /*#__PURE__*/_react.default.createElement(_Categories.default, {
     path: "/categories",
-    component: _Categories.default
+    component: _Categories.default,
+    ProductData: productData
   }), /*#__PURE__*/_react.default.createElement(_Product.default, {
     path: "/productPage",
     component: _Product.default
@@ -33763,7 +33798,7 @@ var App = function App() {
 };
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","axios":"../node_modules/axios/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
