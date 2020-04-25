@@ -24,7 +24,7 @@ const Hamburger = () => {
                   <Dropdown />
                 </li>
                 <li>
-                  <Link to="/" className="MobileNav__logoLink">
+                  <Link to="/categories" className="MobileNav__logoLink">
                     Recliners
                   </Link>
                 </li>

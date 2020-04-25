@@ -33181,7 +33181,7 @@ var Hamburger = function Hamburger() {
     to: "/",
     className: "MobileNav__logoLink"
   }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
+    to: "/categories",
     className: "MobileNav__logoLink"
   }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/",
