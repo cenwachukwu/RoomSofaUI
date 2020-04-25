@@ -24,3 +24,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 1365px) {
+  .Sidebar {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .Sidebar {
+    display: none;
+  }
+}

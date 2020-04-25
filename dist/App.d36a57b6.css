@@ -585,6 +585,17 @@ i didnt give the elements classnames, so if you give it classnames you dont have
   border: none;
   color: black;
 }
+
+@media only screen and (max-width: 1365px) {
+  .Sidebar {
+    width: 40%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .Sidebar {
+    display: none;
+  }
+}
 .ProductsPils {
   width: 100%;
   height: 100%;
@@ -620,6 +631,35 @@ i didnt give the elements classnames, so if you give it classnames you dont have
 .ProductsPils .productsPilsContainer div p {
   font-size: 1.5rem;
   padding: 0.5rem;
+}
+
+@media only screen and (max-width: 1337px) {
+  .ProductsPils .productsPilsContainer {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ProductsPils .productsPilsContainer div {
+    width: 22rem;
+  }
+}
+@media only screen and (max-width: 823px) {
+  .ProductsPils .productsPilsContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .ProductsPils .productsPilsContainer div {
+    width: 27rem;
+  }
+  .ProductsPils .productsPilsContainer div img {
+    width: 26rem;
+  }
+}
+@media only screen and (max-width: 414px) {
+  .ProductsPils .productsPilsContainer div {
+    width: 100%;
+  }
+  .ProductsPils .productsPilsContainer div img {
+    width: 95%;
+  }
 }
 .ProductInfo {
   width: 100%;

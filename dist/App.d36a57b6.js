@@ -33342,6 +33342,8 @@ var _loveseat = _interopRequireDefault(require("../../utils/homepills/loveseat.j
 
 var _router = require("@reach/router");
 
+var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -33349,27 +33351,32 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var ProductsPils = function ProductsPils(props) {
-  console.log(props.data.data);
+  var productData = props.data.data;
+  console.log(productData);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductsPils"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), productData ? /*#__PURE__*/_react.default.createElement("div", {
     className: "productsPilsContainer"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "pilsContainers"
-  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _loveseat.default
-  })), /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Name")), /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Price")))));
+  }, productData.map(function (product, index) {
+    console.log(product);
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: index + 0,
+      className: "pilsContainers"
+    }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+      to: "/productPage"
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: _loveseat.default
+    })), /*#__PURE__*/_react.default.createElement(_router.Link, {
+      to: "/productPage"
+    }, /*#__PURE__*/_react.default.createElement("p", null, product.name)), /*#__PURE__*/_react.default.createElement(_router.Link, {
+      to: "/productPage"
+    }, /*#__PURE__*/_react.default.createElement("p", null, "$", product.price)));
+  })) : null);
 };
 
 var _default = ProductsPils;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./ProductPill.scss":"components/ProductsPills/ProductPill.scss","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/pages/Categories/Categories.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ProductPill.scss":"components/ProductsPills/ProductPill.scss","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","@reach/router":"../node_modules/@reach/router/es/index.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Categories/Categories.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
