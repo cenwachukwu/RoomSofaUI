@@ -14,7 +14,7 @@ const ProductsPils = (props) => {
       {productData ? (
         <div className="productsPilsContainer">
           {productData.map((product, index) => {
-            console.log(product);
+            // console.log(product);
             return (
               <div key={index + 0} className="pilsContainers">
                 <Link to={`/productPage/${product._id}`}>

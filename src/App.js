@@ -9,6 +9,7 @@ import UploadProduct from './components/UploadProduct/UploadProduct';
 
 const App = () => {
   const [productData, setProductData] = useState({ products: [] });
+  const [cartItems, setcartItems] = useState({ cart: [] });
 
   useEffect(() => {
     axios
@@ -25,6 +26,12 @@ const App = () => {
     // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
     // on component updates but only for the mounting of the component.
   }, []);
+
+  // add to cart function
+  // const handleAddToCart = (e, product) => {
+  //   alert('added to cart');
+  //   console.log(product);
+  // };
 
   return (
     <React.StrictMode>

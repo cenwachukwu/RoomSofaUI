@@ -6,10 +6,14 @@ import MobileNav from '../MobileNavbar/MobileNav';
 
 const ProductInfo = (props) => {
   const productData = props.data.ProductData.data;
-  // console.log(productData);
+  // console.log(props);
 
   const productId = props.data.productid;
-  // console.log(productId);
+
+  const handleAddToCart = (e, product) => {
+    alert('added to cart');
+    console.log(product);
+  };
 
   return (
     <div className="ProductInfo">
@@ -36,7 +40,9 @@ const ProductInfo = (props) => {
                       {util.formatCurrency(product.price)}
                     </p>
 
-                    <button>Add to cart</button>
+                    <button onClick={(e) => handleAddToCart(e, product)}>
+                      Add to cart
+                    </button>
 
                     <p className="productDescription">{product.description}</p>
                     <input type="file" id="fileInput" />

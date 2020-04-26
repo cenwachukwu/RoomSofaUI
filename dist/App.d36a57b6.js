@@ -33358,7 +33358,7 @@ var ProductsPils = function ProductsPils(props) {
   }, /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), productData ? /*#__PURE__*/_react.default.createElement("div", {
     className: "productsPilsContainer"
   }, productData.map(function (product, index) {
-    console.log(product);
+    // console.log(product);
     return /*#__PURE__*/_react.default.createElement("div", {
       key: index + 0,
       className: "pilsContainers"
@@ -33447,9 +33447,14 @@ var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductInfo = function ProductInfo(props) {
-  var productData = props.data.ProductData.data; // console.log(productData);
+  var productData = props.data.ProductData.data; // console.log(props);
 
-  var productId = props.data.productid; // console.log(productId);
+  var productId = props.data.productid;
+
+  var handleAddToCart = function handleAddToCart(e, product) {
+    alert('added to cart');
+    console.log(product);
+  };
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductInfo"
@@ -33467,7 +33472,11 @@ var ProductInfo = function ProductInfo(props) {
         className: "productInfoSection"
       }, /*#__PURE__*/_react.default.createElement("h1", null, product.name), /*#__PURE__*/_react.default.createElement("p", {
         className: "productPrice"
-      }, _CurrencyFormatter.default.formatCurrency(product.price)), /*#__PURE__*/_react.default.createElement("button", null, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", {
+      }, _CurrencyFormatter.default.formatCurrency(product.price)), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: function onClick(e) {
+          return handleAddToCart(e, product);
+        }
+      }, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", {
         className: "productDescription"
       }, product.description), /*#__PURE__*/_react.default.createElement("input", {
         type: "file",
@@ -33821,6 +33830,13 @@ var App = function App() {
       productData = _useState2[0],
       setProductData = _useState2[1];
 
+  var _useState3 = (0, _react.useState)({
+    cart: []
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      cartItems = _useState4[0],
+      setcartItems = _useState4[1];
+
   (0, _react.useEffect)(function () {
     _axios.default.get('http://localhost:8080/products').then(function (res) {
       // console.log(res);
@@ -33832,7 +33848,12 @@ var App = function App() {
     // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
     // on component updates but only for the mounting of the component.
 
-  }, []);
+  }, []); // add to cart function
+  // const handleAddToCart = (e, product) => {
+  //   alert('added to cart');
+  //   console.log(product);
+  // };
+
   return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
     path: "/",
     exact: true,
