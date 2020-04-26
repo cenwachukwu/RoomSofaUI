@@ -10,7 +10,7 @@ import Cart from './components/pages/Cart';
 
 const App = () => {
   const [productData, setProductData] = useState({ products: [] });
-  const [cartItems, setcartItems] = useState({ cart: [] });
+  const [cartItems, setcartItems] = useState([]);
 
   useEffect(() => {
     axios
@@ -32,6 +32,12 @@ const App = () => {
   const handleAddToCart = (e, product) => {
     alert('added to cart');
     console.log(product);
+    setcartItems((prevState) => [...prevState, product]);
+  };
+
+  // remove item from cart function
+  const removeItemFromCart = (e, product) => {
+    alert('Item Removed');
   };
 
   return (
@@ -50,7 +56,7 @@ const App = () => {
           handleAddToCart={handleAddToCart}
         />
         <UploadProduct path="/admin/UploadProduct" component={UploadProduct} />
-        <Cart path="/cart" component={Cart} />
+        <Cart path="/cart" component={Cart} cartItems={cartItems} />
       </Router>
     </React.StrictMode>
   );

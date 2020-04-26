@@ -33800,6 +33800,7 @@ require("./CartItems.scss");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CartItems = function CartItems(props) {
+  console.log(props);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CartItems"
   }, /*#__PURE__*/_react.default.createElement("p", null, "Its me, Cartisha"));
@@ -33830,7 +33831,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Cart = function Cart(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "Cart"
-  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), /*#__PURE__*/_react.default.createElement(_CartItems.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), /*#__PURE__*/_react.default.createElement(_CartItems.default, {
+    data: props
+  }), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 };
 
 var _default = Cart;
@@ -33862,6 +33865,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -33882,9 +33893,7 @@ var App = function App() {
       productData = _useState2[0],
       setProductData = _useState2[1];
 
-  var _useState3 = (0, _react.useState)({
-    cart: []
-  }),
+  var _useState3 = (0, _react.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
       cartItems = _useState4[0],
       setcartItems = _useState4[1];
@@ -33905,6 +33914,14 @@ var App = function App() {
   var handleAddToCart = function handleAddToCart(e, product) {
     alert('added to cart');
     console.log(product);
+    setcartItems(function (prevState) {
+      return [].concat(_toConsumableArray(prevState), [product]);
+    });
+  }; // remove item from cart function
+
+
+  var removeItemFromCart = function removeItemFromCart(e, product) {
+    alert('Item Removed');
   };
 
   return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
@@ -33925,7 +33942,8 @@ var App = function App() {
     component: _UploadProduct.default
   }), /*#__PURE__*/_react.default.createElement(_Cart.default, {
     path: "/cart",
-    component: _Cart.default
+    component: _Cart.default,
+    cartItems: cartItems
   })));
 };
 

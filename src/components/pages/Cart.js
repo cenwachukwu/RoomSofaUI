@@ -9,7 +9,7 @@ const Cart = (props) => {
     <div className="Cart">
       <Navbar />
       <MobileNav />
-      <CartItems />
+      <CartItems data={props} />
       <Footer />
     </div>
   );
