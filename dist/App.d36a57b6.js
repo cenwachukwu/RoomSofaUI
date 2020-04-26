@@ -33413,7 +33413,20 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/ProductInfo/ProductInfo.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"utils/CurrencyFormatter/CurrencyFormatter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  formatCurrency: function formatCurrency(num) {
+    return '$' + Number(num.toFixed(2)).toLocaleString() + ' ';
+  }
+};
+exports.default = _default;
+},{}],"components/ProductInfo/ProductInfo.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33424,6 +33437,8 @@ exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 require("./ProductInfo.scss");
+
+var _CurrencyFormatter = _interopRequireDefault(require("../../utils/CurrencyFormatter/CurrencyFormatter"));
 
 var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
 
@@ -33452,7 +33467,7 @@ var ProductInfo = function ProductInfo(props) {
         className: "productInfoSection"
       }, /*#__PURE__*/_react.default.createElement("h1", null, product.name), /*#__PURE__*/_react.default.createElement("p", {
         className: "productPrice"
-      }, "$", product.price), /*#__PURE__*/_react.default.createElement("button", null, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", {
+      }, _CurrencyFormatter.default.formatCurrency(product.price)), /*#__PURE__*/_react.default.createElement("button", null, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", {
         className: "productDescription"
       }, product.description), /*#__PURE__*/_react.default.createElement("input", {
         type: "file",
@@ -33475,7 +33490,7 @@ var ProductInfo = function ProductInfo(props) {
 
 var _default = ProductInfo;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Product.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/CurrencyFormatter/CurrencyFormatter":"utils/CurrencyFormatter/CurrencyFormatter.js","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Product.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

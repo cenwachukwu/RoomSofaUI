@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductInfo.scss';
+import util from '../../utils/CurrencyFormatter/CurrencyFormatter';
 import sectional from '../../utils/homepills/sectional.jpg';
 import MobileNav from '../MobileNavbar/MobileNav';
 
@@ -30,7 +31,10 @@ const ProductInfo = (props) => {
 
                   <div className="productInfoSection">
                     <h1>{product.name}</h1>
-                    <p className="productPrice">${product.price}</p>
+
+                    <p className="productPrice">
+                      {util.formatCurrency(product.price)}
+                    </p>
 
                     <button>Add to cart</button>
 
