@@ -35,7 +35,11 @@ const App = () => {
           component={Categories}
           ProductData={productData}
         />
-        <ProductPage path="/productPage" component={ProductPage} />
+        <ProductPage
+          path="/productPage/:productid"
+          component={ProductPage}
+          ProductData={productData}
+        />
         <UploadProduct path="/admin/UploadProduct" component={UploadProduct} />
       </Router>
     </React.StrictMode>

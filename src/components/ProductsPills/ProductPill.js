@@ -6,7 +6,7 @@ import MobileNav from '../MobileNavbar/MobileNav';
 
 const ProductsPils = (props) => {
   const productData = props.data.data;
-  console.log(productData);
+  // console.log(productData);
 
   return (
     <div className="ProductsPils">
@@ -17,20 +17,22 @@ const ProductsPils = (props) => {
             console.log(product);
             return (
               <div key={index + 0} className="pilsContainers">
-                <Link to="/productPage">
+                <Link to={`/productPage/${product._id}`}>
                   <img src={image} />
                 </Link>
-                <Link to="/productPage">
+                <Link to={`/productPage/${product._id}`}>
                   <p>{product.name}</p>
                 </Link>
-                <Link to="/productPage">
+                <Link to={`/productPage/${product._id}`}>
                   <p>${product.price}</p>
                 </Link>
               </div>
             );
           })}
         </div>
-      ) : null}
+      ) : (
+        <p>Coming soon</p>
+      )}
     </div>
   );
 };

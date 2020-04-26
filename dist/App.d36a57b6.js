@@ -33351,8 +33351,8 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var ProductsPils = function ProductsPils(props) {
-  var productData = props.data.data;
-  console.log(productData);
+  var productData = props.data.data; // console.log(productData);
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductsPils"
   }, /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), productData ? /*#__PURE__*/_react.default.createElement("div", {
@@ -33363,15 +33363,15 @@ var ProductsPils = function ProductsPils(props) {
       key: index + 0,
       className: "pilsContainers"
     }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-      to: "/productPage"
+      to: "/productPage/".concat(product._id)
     }, /*#__PURE__*/_react.default.createElement("img", {
       src: _loveseat.default
     })), /*#__PURE__*/_react.default.createElement(_router.Link, {
-      to: "/productPage"
+      to: "/productPage/".concat(product._id)
     }, /*#__PURE__*/_react.default.createElement("p", null, product.name)), /*#__PURE__*/_react.default.createElement(_router.Link, {
-      to: "/productPage"
+      to: "/productPage/".concat(product._id)
     }, /*#__PURE__*/_react.default.createElement("p", null, "$", product.price)));
-  })) : null);
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "Coming soon"));
 };
 
 var _default = ProductsPils;
@@ -33427,28 +33427,55 @@ require("./ProductInfo.scss");
 
 var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
 
+var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductInfo = function ProductInfo(props) {
+  var productData = props.data.ProductData.data; // console.log(productData);
+
+  var productId = props.data.productid; // console.log(productId);
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductInfo"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "ProductInfoContainer"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "productPictures"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    src: _sectional.default
-  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "productInfoSection"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Name"), /*#__PURE__*/_react.default.createElement("p", null, "Price"), /*#__PURE__*/_react.default.createElement("p", null, "Description"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "file",
-    id: "fileInput"
-  }), /*#__PURE__*/_react.default.createElement("p", null, "features"), /*#__PURE__*/_react.default.createElement("p", null, "Product Details"), /*#__PURE__*/_react.default.createElement("p", null, "Upholstered"), /*#__PURE__*/_react.default.createElement("p", null, "Natural Variation"), /*#__PURE__*/_react.default.createElement("p", null, "Shipping and returns"), /*#__PURE__*/_react.default.createElement("p", null, "Question and answer"), /*#__PURE__*/_react.default.createElement("p", null, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", null, "Weight and Dimension"), /*#__PURE__*/_react.default.createElement("p", null, "love"), /*#__PURE__*/_react.default.createElement("p", null, "Style Number"), /*#__PURE__*/_react.default.createElement("p", null, "Do you have questions about this product? Our experts are here to help! call us ish"), /*#__PURE__*/_react.default.createElement("p", null, "Box spring require true or false"))));
+  }, productData ? /*#__PURE__*/_react.default.createElement("div", null, productData.map(function (product, index) {
+    // console.log(product);
+    if (productId === product._id) {
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "ProductInfoContainer",
+        key: index + 0
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "productPictures"
+      }, /*#__PURE__*/_react.default.createElement("img", {
+        src: _sectional.default
+      }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "productInfoSection"
+      }, /*#__PURE__*/_react.default.createElement("h1", null, product.name), /*#__PURE__*/_react.default.createElement("p", {
+        className: "productPrice"
+      }, "$", product.price), /*#__PURE__*/_react.default.createElement("button", null, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", {
+        className: "productDescription"
+      }, product.description), /*#__PURE__*/_react.default.createElement("input", {
+        type: "file",
+        id: "fileInput"
+      }), product.dimension.length ? /*#__PURE__*/_react.default.createElement("div", null, product.dimension.map(function (dimension, index) {
+        return /*#__PURE__*/_react.default.createElement("div", {
+          key: index + 0
+        }, /*#__PURE__*/_react.default.createElement("p", {
+          className: "productDimension"
+        }, "Dimensions:", ' ', /*#__PURE__*/_react.default.createElement("span", null, dimension.product_type, " :", ' ', dimension.product_dimension)));
+      })) : null, product.features.length ? /*#__PURE__*/_react.default.createElement("div", null, product.features.map(function (feature, index) {
+        // console.log(feature);
+        return /*#__PURE__*/_react.default.createElement("div", {
+          key: index + 0
+        }, /*#__PURE__*/_react.default.createElement("p", null, "features : ", feature.feature));
+      })) : null, product.isFreeShipping ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Free Shipping to the DMV")) : /*#__PURE__*/_react.default.createElement("p", null, "We only ship to the DMV"), product.isSoldOut ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is soldout")) : null, /*#__PURE__*/_react.default.createElement("p", null, "Question and answer???"), /*#__PURE__*/_react.default.createElement("p", null, "love"), /*#__PURE__*/_react.default.createElement("p", null, "Style no : ", product.styleNumber), /*#__PURE__*/_react.default.createElement("p", null, "Do you have questions about this product? Our experts are here to help! call us ish"), /*#__PURE__*/_react.default.createElement("p", null, "Box spring require true or false")));
+    }
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "Product not available"));
 };
 
 var _default = ProductInfo;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg"}],"components/pages/Product.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Product.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33464,17 +33491,21 @@ var _footer = _interopRequireDefault(require("../Footer/footer"));
 
 var _ProductInfo = _interopRequireDefault(require("../ProductInfo/ProductInfo"));
 
+var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductPage = function ProductPage(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductPage"
-  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_ProductInfo.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), /*#__PURE__*/_react.default.createElement(_ProductInfo.default, {
+    data: props
+  }), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 };
 
 var _default = ProductPage;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../ProductInfo/ProductInfo":"components/ProductInfo/ProductInfo.js"}],"components/UploadProduct/UploadProduct.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../ProductInfo/ProductInfo":"components/ProductInfo/ProductInfo.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/UploadProduct/UploadProduct.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -33796,8 +33827,9 @@ var App = function App() {
     component: _Categories.default,
     ProductData: productData
   }), /*#__PURE__*/_react.default.createElement(_Product.default, {
-    path: "/productPage",
-    component: _Product.default
+    path: "/productPage/:productid",
+    component: _Product.default,
+    ProductData: productData
   }), /*#__PURE__*/_react.default.createElement(_UploadProduct.default, {
     path: "/admin/UploadProduct",
     component: _UploadProduct.default
