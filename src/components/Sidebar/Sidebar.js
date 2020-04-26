@@ -20,7 +20,7 @@ const Sidebar = (props) => {
             <Link to="/">Contact</Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/cart">
               <i className="fas fa-shopping-cart"></i>
             </Link>
           </li>

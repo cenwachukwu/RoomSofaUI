@@ -6,6 +6,7 @@ import Home from './components/pages/Home';
 import Categories from './components/pages/Categories/Categories';
 import ProductPage from './components/pages/Product';
 import UploadProduct from './components/UploadProduct/UploadProduct';
+import Cart from './components/pages/Cart';
 
 const App = () => {
   const [productData, setProductData] = useState({ products: [] });
@@ -28,10 +29,10 @@ const App = () => {
   }, []);
 
   // add to cart function
-  // const handleAddToCart = (e, product) => {
-  //   alert('added to cart');
-  //   console.log(product);
-  // };
+  const handleAddToCart = (e, product) => {
+    alert('added to cart');
+    console.log(product);
+  };
 
   return (
     <React.StrictMode>
@@ -46,8 +47,10 @@ const App = () => {
           path="/productPage/:productid"
           component={ProductPage}
           ProductData={productData}
+          handleAddToCart={handleAddToCart}
         />
         <UploadProduct path="/admin/UploadProduct" component={UploadProduct} />
+        <Cart path="/cart" component={Cart} />
       </Router>
     </React.StrictMode>
   );

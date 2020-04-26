@@ -32913,7 +32913,7 @@ var Navbar = function Navbar() {
   }, "Sectionals"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "navbarUserLinks"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
+    to: "/cart"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fas fa-shopping-cart"
   }), /*#__PURE__*/_react.default.createElement("p", null, "cart"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
@@ -33190,7 +33190,7 @@ var Hamburger = function Hamburger() {
     to: "/",
     className: "MobileNav__logoLink"
   }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/",
+    to: "/cart",
     className: "MobileNav__logoLink"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fas fa-shopping-cart"
@@ -33307,7 +33307,7 @@ var Sidebar = function Sidebar(props) {
   }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/"
   }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
+    to: "/cart"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fas fa-shopping-cart"
   }))), /*#__PURE__*/_react.default.createElement("li", {
@@ -33450,12 +33450,7 @@ var ProductInfo = function ProductInfo(props) {
   var productData = props.data.ProductData.data; // console.log(props);
 
   var productId = props.data.productid;
-
-  var handleAddToCart = function handleAddToCart(e, product) {
-    alert('added to cart');
-    console.log(product);
-  };
-
+  var handleAddToCart = props.data.handleAddToCart;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductInfo"
   }, productData ? /*#__PURE__*/_react.default.createElement("div", null, productData.map(function (product, index) {
@@ -33785,7 +33780,62 @@ var UploadProduct = function UploadProduct(props) {
 
 var _default = UploadProduct;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","./UploadProduct.scss":"components/UploadProduct/UploadProduct.scss"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","./UploadProduct.scss":"components/UploadProduct/UploadProduct.scss"}],"components/CartItems/CartItems.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/CartItems/CartItems.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./CartItems.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CartItems = function CartItems(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "CartItems"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Its me, Cartisha"));
+};
+
+var _default = CartItems;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./CartItems.scss":"components/CartItems/CartItems.scss"}],"components/pages/Cart.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _navbar = _interopRequireDefault(require("../Navbar/navbar"));
+
+var _footer = _interopRequireDefault(require("../Footer/footer"));
+
+var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
+
+var _CartItems = _interopRequireDefault(require("../CartItems/CartItems"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Cart = function Cart(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "Cart"
+  }, /*#__PURE__*/_react.default.createElement(_navbar.default, null), /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), /*#__PURE__*/_react.default.createElement(_CartItems.default, null), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+};
+
+var _default = Cart;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js","../CartItems/CartItems":"components/CartItems/CartItems.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireWildcard(require("react"));
@@ -33803,6 +33853,8 @@ var _Categories = _interopRequireDefault(require("./components/pages/Categories/
 var _Product = _interopRequireDefault(require("./components/pages/Product"));
 
 var _UploadProduct = _interopRequireDefault(require("./components/UploadProduct/UploadProduct"));
+
+var _Cart = _interopRequireDefault(require("./components/pages/Cart"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33849,10 +33901,11 @@ var App = function App() {
     // on component updates but only for the mounting of the component.
 
   }, []); // add to cart function
-  // const handleAddToCart = (e, product) => {
-  //   alert('added to cart');
-  //   console.log(product);
-  // };
+
+  var handleAddToCart = function handleAddToCart(e, product) {
+    alert('added to cart');
+    console.log(product);
+  };
 
   return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
     path: "/",
@@ -33865,15 +33918,19 @@ var App = function App() {
   }), /*#__PURE__*/_react.default.createElement(_Product.default, {
     path: "/productPage/:productid",
     component: _Product.default,
-    ProductData: productData
+    ProductData: productData,
+    handleAddToCart: handleAddToCart
   }), /*#__PURE__*/_react.default.createElement(_UploadProduct.default, {
     path: "/admin/UploadProduct",
     component: _UploadProduct.default
+  }), /*#__PURE__*/_react.default.createElement(_Cart.default, {
+    path: "/cart",
+    component: _Cart.default
   })));
 };
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","axios":"../node_modules/axios/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","axios":"../node_modules/axios/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js","./components/pages/Cart":"components/pages/Cart.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

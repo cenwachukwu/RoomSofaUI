@@ -39,7 +39,7 @@ const Hamburger = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="MobileNav__logoLink">
+                  <Link to="/cart" className="MobileNav__logoLink">
                     <i className="fas fa-shopping-cart"></i>
                   </Link>
                 </li>

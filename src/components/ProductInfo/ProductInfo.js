@@ -10,10 +10,7 @@ const ProductInfo = (props) => {
 
   const productId = props.data.productid;
 
-  const handleAddToCart = (e, product) => {
-    alert('added to cart');
-    console.log(product);
-  };
+  const handleAddToCart = props.data.handleAddToCart;
 
   return (
     <div className="ProductInfo">

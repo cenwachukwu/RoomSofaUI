@@ -25,7 +25,7 @@ const Navbar = () => {
 
         <div className="navbarUserLinks">
           <div>
-            <Link to="/">
+            <Link to="/cart">
               <i className="fas fa-shopping-cart"></i>
               <p>cart</p>
             </Link>
