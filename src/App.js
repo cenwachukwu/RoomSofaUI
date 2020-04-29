@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from '@reach/router';
 import axios from 'axios';
+
+// pages
 import Home from './components/pages/Home';
 import Categories from './components/pages/Categories/Categories';
 import ProductPage from './components/pages/Product';
@@ -74,8 +76,10 @@ const App = () => {
           ProductData={productData}
           handleAddToCart={handleAddToCart}
         />
-        <UploadProduct path="/admin/UploadProduct" component={UploadProduct} />
+
         <Cart path="/cart" component={Cart} cartItems={cartItems} />
+
+        <UploadProduct path="/admin/UploadProduct" component={UploadProduct} />
       </Router>
     </React.StrictMode>
   );
