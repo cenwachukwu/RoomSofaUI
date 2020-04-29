@@ -28,6 +28,25 @@ const App = () => {
     // on component updates but only for the mounting of the component.
   }, []);
 
+  // make sure the add cart function adds each product once and increases the quantity
+  const cartItemQuantities = (items) => {
+    return items.reduce((acc, item) => {
+      // _item and item are not the same, we use _item as a shadow to compare to item to see it they are the same
+      // if they are that means they already in the cart[] and we dont want to add it but increase the quantity i.e. ++
+      // we use _id but we might change it to the sku id thing
+      const found = acc.find((_item) => _item._id === item._id);
+      if (found) {
+        found.quantity++;
+      } else {
+        acc.push({
+          quantity: 1,
+          ...item,
+        });
+      }
+      return acc;
+    }, []);
+  };
+
   // add to cart function
   const handleAddToCart = (e, product) => {
     alert('added to cart');

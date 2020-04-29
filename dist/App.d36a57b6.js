@@ -33873,6 +33873,12 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -33909,7 +33915,29 @@ var App = function App() {
     // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
     // on component updates but only for the mounting of the component.
 
-  }, []); // add to cart function
+  }, []); // make sure the add cart function adds each product once and increases the quantity
+
+  var cartItemQuantities = function cartItemQuantities(items) {
+    return items.reduce(function (acc, item) {
+      // _item and item are not the same, we use _item as a shadow to compare to item to see it they are the same
+      // if they are that means they already in the cart[] and we dont want to add it but increase the quantity i.e. ++
+      // we use _id but we might change it to the sku id thing
+      var found = acc.find(function (_item) {
+        return _item._id === item._id;
+      });
+
+      if (found) {
+        found.quantity++;
+      } else {
+        acc.push(_objectSpread({
+          quantity: 1
+        }, item));
+      }
+
+      return acc;
+    }, []);
+  }; // add to cart function
+
 
   var handleAddToCart = function handleAddToCart(e, product) {
     alert('added to cart');
