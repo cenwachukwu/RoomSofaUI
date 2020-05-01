@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './CartItems.scss';
 import axios from 'axios';
 
@@ -24,6 +24,7 @@ import {
 
 const CartItems = (props, { success }) => {
   console.log(props.data.cartItems);
+
   const stripe = useStripe();
   const elements = useElements();
 

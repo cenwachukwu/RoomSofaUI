@@ -35292,13 +35292,17 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 require("./CartItems.scss");
 
 var _axios = _interopRequireDefault(require("axios"));
 
 var _reactStripeJs = require("@stripe/react-stripe-js");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35628,13 +35632,23 @@ var App = function App() {
   }),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
       productData = _useState2[0],
-      setProductData = _useState2[1];
+      setProductData = _useState2[1]; // we want to retrieve our data in the localStorage
+  // we use localStorage.getItem('name of the storage')
 
-  var _useState3 = (0, _react.useState)([]),
+
+  var localData = localStorage.getItem('Cart'); // we want to be able to get the previous value of cartItems
+  // ie. we dont want cartItems start of as empty if there is something there
+
+  var _useState3 = (0, _react.useState)( // we use JSON.parse to return a usable object b/c localStorage stores it as a string object"{}"
+  localData ? JSON.parse(localData) : []),
       _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
       cartItems = _useState4[0],
-      setcartItems = _useState4[1];
+      setcartItems = _useState4[1]; // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
 
+
+  (0, _react.useEffect)(function () {
+    localStorage.setItem('Cart', JSON.stringify(cartItems));
+  }, [cartItems]);
   (0, _react.useEffect)(function () {
     _axios.default.get('http://localhost:8080/products').then(function (res) {
       // console.log(res);
@@ -35655,16 +35669,14 @@ var App = function App() {
     }); // if found is true they already in the cart[] and we dont want to add it but increase the quantity i.e. ++
 
     if (found) {
-      product.quantity++;
-      console.log('found worked');
+      product.quantity++; // console.log('found worked');
     } // if not, we want to add a quality property to the product object and set it to 1
     // and then add that product to our array
     else {
         product.quantity = 1;
         setcartItems(function (prevState) {
           return [].concat((0, _toConsumableArray2.default)(prevState), [product]);
-        });
-        console.log('this is the product', product);
+        }); // console.log('this is the product', product);
       }
   }; // remove item from cart function
   // basically remove this product object from the cartItems
