@@ -31,29 +31,22 @@ const App = () => {
   }, []);
 
   // make sure the add cart function adds each product once and increases the quantity
-  const cartItemQuantities = (items) => {
-    return items.reduce((acc, item) => {
-      // _item and item are not the same, we use _item as a shadow to compare to item to see it they are the same
-      // if they are that means they already in the cart[] and we dont want to add it but increase the quantity i.e. ++
-      // we use _id but we might change it to the sku id thing
-      const found = acc.find((_item) => _item._id === item._id);
-      if (found) {
-        found.quantity++;
-      } else {
-        acc.push({
-          quantity: 1,
-          ...item,
-        });
-      }
-      return acc;
-    }, []);
-  };
-
-  // add to cart function
   const handleAddToCart = (e, product) => {
     alert('added to cart');
-    console.log(product);
-    setcartItems((prevState) => [...prevState, product]);
+
+    const found = cartItems.find((productId) => productId._id === product._id);
+    // if found is true they already in the cart[] and we dont want to add it but increase the quantity i.e. ++
+    if (found) {
+      product.quantity++;
+      console.log('found worked');
+    }
+    // if not, we want to add a quality property to the product object and set it to 1
+    // and then add that product to our array
+    else {
+      product.quantity = 1;
+      setcartItems((prevState) => [...prevState, product]);
+      console.log('this is the product', product);
+    }
   };
 
   // remove item from cart function
