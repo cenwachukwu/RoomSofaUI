@@ -35302,6 +35302,16 @@ var _reactStripeJs = require("@stripe/react-stripe-js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// we need to increase the price to reflect according to quantity
+// we will do this in the cartItems page
+// we will multiply the quantity by the product.price to display in the cart view
+// product.price = product.quantity * product.price;
+// we also need to save props.data.cartItems in localStorage
+// its either we save in localStorage in app.js or here
+// we need a total:
+// product.price = product.quantity * product.price;
+// make a new array called product.price that consists of all [product.price = product.quantity * product.price]
+// then add all the elements in the product.price array
 var CartItems = function CartItems(props, _ref) {
   var success = _ref.success;
   console.log(props.data.cartItems);
