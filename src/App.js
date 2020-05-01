@@ -50,8 +50,21 @@ const App = () => {
   };
 
   // remove item from cart function
+  // basically remove this product object from the cartItems
   const removeItemFromCart = (e, product) => {
     alert('Item Removed');
+  };
+
+  // decrease the product quantity
+  const decreaseProductQuantity = (e, product) => {
+    alert('Quantity Increase ');
+    product.quantity++;
+  };
+
+  // increase the product quantity
+  const increaseProductQuantity = (e, product) => {
+    alert('Item Removed');
+    product.quantity = product.quantity - 1;
   };
 
   return (

@@ -35657,10 +35657,23 @@ var App = function App() {
         console.log('this is the product', product);
       }
   }; // remove item from cart function
+  // basically remove this product object from the cartItems
 
 
   var removeItemFromCart = function removeItemFromCart(e, product) {
     alert('Item Removed');
+  }; // decrease the product quantity
+
+
+  var decreaseProductQuantity = function decreaseProductQuantity(e, product) {
+    alert('Quantity Increase ');
+    product.quantity++;
+  }; // increase the product quantity
+
+
+  var increaseProductQuantity = function increaseProductQuantity(e, product) {
+    alert('Item Removed');
+    product.quantity = product.quantity - 1;
   };
 
   return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
