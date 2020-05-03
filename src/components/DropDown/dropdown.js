@@ -3,8 +3,6 @@ import './dropdown.scss';
 import { Link } from '@reach/router';
 
 const Dropdown = () => {
-  const data = ['Sofa', 'Love Seat', 'Chair'];
-
   const activatorRef = useRef(null);
 
   const dropdownListRef = useRef(null);
@@ -68,13 +66,13 @@ const Dropdown = () => {
         role="list"
       >
         <li>
-          <Link to="#">Chair</Link>
+          <Link to="/categories/chair">Chair</Link>
         </li>
         <li>
-          <Link to="#">Accent Chair</Link>
+          <Link to="/categories/accentchair">Accent Chair</Link>
         </li>
         <li>
-          <Link to="#">Sofa & Loveseat</Link>
+          <Link to="/categories/sofaandloveseat">Sofa & Loveseat</Link>
         </li>
       </ul>
     </div>

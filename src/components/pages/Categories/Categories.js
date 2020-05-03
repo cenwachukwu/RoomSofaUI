@@ -8,7 +8,7 @@ const Categories = (props) => {
     <div className="Categories">
       <div className="categoriesContainer">
         <Sidebar />
-        {this.props.children}
+        {props.children}
       </div>
       <Footer />
     </div>

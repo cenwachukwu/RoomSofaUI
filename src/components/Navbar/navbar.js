@@ -16,10 +16,10 @@ const Navbar = () => {
             <Dropdown />
           </li>
           <li>
-            <Link to="/categories">Recliners</Link>
+            <Link to="/categories/recliner">Recliners</Link>
           </li>
           <li>
-            <Link to="/">Sectionals</Link>
+            <Link to="/categories/sectionals">Sectionals</Link>
           </li>
         </ul>
 

@@ -11,10 +11,22 @@ const Sidebar = (props) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">Recliners</Link>
+            <Link to="/categories">View All</Link>
           </li>
           <li>
-            <Link to="/">Sectionals</Link>
+            <Link to="/categories/chair">Chair</Link>
+          </li>
+          <li>
+            <Link to="/categories/accentchair">Accent Chair</Link>
+          </li>
+          <li>
+            <Link to="/categories/sofaandloveseat">Sofa & Loveseat</Link>
+          </li>
+          <li>
+            <Link to="/categories/recliner">Recliners</Link>
+          </li>
+          <li>
+            <Link to="/categories/sectionals">Sectionals</Link>
           </li>
           <li>
             <Link to="/">Contact</Link>

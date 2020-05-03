@@ -11,11 +11,31 @@ const PillBox = () => {
   return (
     <div className="PillBox">
       <div className="boxPills">
-        <Pills props={sofa} categoryName={'Sofa'} />
-        <Pills props={loveseat} categoryName={'Love Seat'} />
-        <Pills props={chair} categoryName={'Chair'} />
-        <Pills props={recliner} categoryName={'Recliners'} />
-        <Pills props={sectional} categoryName={'Sectionals'} />
+        <Pills
+          props={sofa}
+          categoryName={'Sofa & Loveseat'}
+          link={'/categories/sofaandloveseat'}
+        />
+        <Pills
+          props={loveseat}
+          categoryName={'Accent chair'}
+          link={'/categories/accentchair'}
+        />
+        <Pills
+          props={chair}
+          categoryName={'Chair'}
+          link={'/categories/chair'}
+        />
+        <Pills
+          props={recliner}
+          categoryName={'Recliners'}
+          link={'/categories/recliner'}
+        />
+        <Pills
+          props={sectional}
+          categoryName={'Sectionals'}
+          link={'/categories/sectionals'}
+        />
 
         <div className="extraPill">
           <div>

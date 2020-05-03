@@ -32914,7 +32914,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Dropdown = function Dropdown() {
-  var data = ['Sofa', 'Love Seat', 'Chair'];
   var activatorRef = (0, _react.useRef)(null);
   var dropdownListRef = (0, _react.useRef)(null);
 
@@ -32973,11 +32972,11 @@ var Dropdown = function Dropdown() {
     ,
     role: "list"
   }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "#"
+    to: "/categories/chair"
   }, "Chair")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "#"
+    to: "/categories/accentchair"
   }, "Accent Chair")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "#"
+    to: "/categories/sofaandloveseat"
   }, "Sofa & Loveseat"))));
 };
 
@@ -33013,9 +33012,9 @@ var Navbar = function Navbar() {
   }, "Room Sofas")), /*#__PURE__*/_react.default.createElement("ul", {
     className: "navbarCategoryLinks"
   }, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_dropdown.default, null)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/categories"
+    to: "/categories/recliner"
   }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
+    to: "/categories/sectionals"
   }, "Sectionals"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "navbarUserLinks"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
@@ -33159,24 +33158,26 @@ var _react = _interopRequireDefault(require("react"));
 
 require("./Pills.scss");
 
+var _router = require("@reach/router");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Pills = function Pills(props) {
   // console.log(props.props);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "Pills"
-  }, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: props.link
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: props.props
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: props.link
   }, props.categoryName)));
 };
 
 var _default = Pills;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Pills.scss":"components/Pills/Pills.scss"}],"utils/homepills/chair.jpg":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Pills.scss":"components/Pills/Pills.scss","@reach/router":"../node_modules/@reach/router/es/index.js"}],"utils/homepills/chair.jpg":[function(require,module,exports) {
 module.exports = "/chair.afb95e18.jpg";
 },{}],"utils/homepills/loveseat.jpg":[function(require,module,exports) {
 module.exports = "/loveseat.9b3251e3.jpg";
@@ -33219,19 +33220,24 @@ var PillBox = function PillBox() {
     className: "boxPills"
   }, /*#__PURE__*/_react.default.createElement(_Pills.default, {
     props: _sofa.default,
-    categoryName: 'Sofa'
+    categoryName: 'Sofa & Loveseat',
+    link: '/categories/sofaandloveseat'
   }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
     props: _loveseat.default,
-    categoryName: 'Love Seat'
+    categoryName: 'Accent chair',
+    link: '/categories/accentchair'
   }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
     props: _chair.default,
-    categoryName: 'Chair'
+    categoryName: 'Chair',
+    link: '/categories/chair'
   }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
     props: _recliner.default,
-    categoryName: 'Recliners'
+    categoryName: 'Recliners',
+    link: '/categories/recliner'
   }), /*#__PURE__*/_react.default.createElement(_Pills.default, {
     props: _sectional.default,
-    categoryName: 'Sectionals'
+    categoryName: 'Sectionals',
+    link: '/categories/sectionals'
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "extraPill"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
@@ -33407,9 +33413,17 @@ var Sidebar = function Sidebar(props) {
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/"
   }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
+    to: "/categories"
+  }, "View All")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/chair"
+  }, "Chair")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/accentchair"
+  }, "Accent Chair")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/sofaandloveseat"
+  }, "Sofa & Loveseat")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/recliner"
   }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
+    to: "/categories/sectionals"
   }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/"
   }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
@@ -33443,8 +33457,6 @@ var _Sidebar = _interopRequireDefault(require("../../Sidebar/Sidebar"));
 
 var _footer = _interopRequireDefault(require("../../Footer/footer"));
 
-var _this = void 0;
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Categories = function Categories(props) {
@@ -33452,7 +33464,7 @@ var Categories = function Categories(props) {
     className: "Categories"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "categoriesContainer"
-  }, /*#__PURE__*/_react.default.createElement(_Sidebar.default, null), _this.props.children), /*#__PURE__*/_react.default.createElement(_footer.default, null));
+  }, /*#__PURE__*/_react.default.createElement(_Sidebar.default, null), props.children), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 };
 
 var _default = Categories;
