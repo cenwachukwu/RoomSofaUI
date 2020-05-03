@@ -19,11 +19,20 @@
   }
 }
 
-@media only screen and (max-width: 1337px) {
+@media only screen and (max-width: 1343px) {
   .CategoriesPage {
     .CategoriesPageContainer {
-      width: 90%;
+      column-gap: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1338px) {
+  .CategoriesPage {
+    .CategoriesPageContainer {
+      width: 100%;
       grid-template-columns: repeat(2, 1fr);
+      column-gap: 3rem;
     }
   }
 }

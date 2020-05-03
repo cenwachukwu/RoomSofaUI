@@ -11,7 +11,7 @@
     color: black;
     ul {
       li {
-        padding: 2rem;
+        padding: 1.7rem;
         list-style: none;
         font-size: 1.2rem;
         color: black;
@@ -28,13 +28,13 @@
   }
 }
 
-@media only screen and (max-width: 1365px) {
+@media only screen and (max-width: 1338px) {
   .Sidebar {
-    width: 40%;
+    width: 25%;
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1241px) {
   .Sidebar {
     display: none;
   }

@@ -16,7 +16,7 @@ const ProductsPils = (props) => {
             <img src={image} />
           </Link>
           <Link to={`/productPage/${productData._id}`}>
-            <p>{productData.name}</p>
+            <p className="productsPilsContainerName">{productData.name}</p>
           </Link>
           <Link to={`/productPage/${productData._id}`}>
             <p>${productData.price / 100}</p>

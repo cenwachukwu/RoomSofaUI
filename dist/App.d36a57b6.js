@@ -33384,7 +33384,148 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Sidebar/Sidebar.scss":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileSidebar/Container/Container.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/@babel/runtime/helpers/defineProperty.js":[function(require,module,exports) {
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+},{}],"components/MobileSidebar/Hamburger/Hamburger.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/MobileSidebar/Hamburger/Hamburger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _router = require("@reach/router");
+
+require("./Hamburger.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Hamburger = function Hamburger() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "Hamburger__wrapper"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    className: "toggler"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "hamburger"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "hamburger-lines"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "fixednavbar"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "xyz"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/",
+    className: "mobileNavLink"
+  }, "Home")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/viewall",
+    className: "mobileNavLink"
+  }, "View All")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/chair",
+    className: "mobileNavLink"
+  }, "Chair")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/accentchair",
+    className: "mobileNavLink"
+  }, "Accent Chair")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/sofaandloveseat",
+    className: "mobileNavLink"
+  }, "Sofa & Loveseat")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/recliner",
+    className: "mobileNavLink"
+  }, "Recliners")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/sectionals",
+    className: "mobileNavLink"
+  }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "mobileNavli"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, (0, _defineProperty2.default)({
+    to: "/",
+    className: "mobileNavLink"
+  }, "className", "mobileNavLink"), "Contact")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "noBorder"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/cart",
+    className: "mobileNavLink"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "fas fa-shopping-cart"
+  })))))))));
+};
+
+var _default = Hamburger;
+exports.default = _default;
+},{"@babel/runtime/helpers/defineProperty":"../node_modules/@babel/runtime/helpers/defineProperty.js","react":"../node_modules/react/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","./Hamburger.scss":"components/MobileSidebar/Hamburger/Hamburger.scss"}],"components/MobileSidebar/Container/Container.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+require("./Container.scss");
+
+var _router = require("@reach/router");
+
+var _Hamburger = _interopRequireDefault(require("../Hamburger/Hamburger"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Container = function Container() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav__container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "MobileNav__logo"
+  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Hamburger.default, null)))));
+};
+
+var _default = Container;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Container.scss":"components/MobileSidebar/Container/Container.scss","@reach/router":"../node_modules/@reach/router/es/index.js","../Hamburger/Hamburger":"components/MobileSidebar/Hamburger/Hamburger.js"}],"components/Sidebar/Sidebar.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -33447,6 +33588,8 @@ var _react = _interopRequireDefault(require("react"));
 
 require("./Categories.scss");
 
+var _Container = _interopRequireDefault(require("../../MobileSidebar/Container/Container"));
+
 var _Sidebar = _interopRequireDefault(require("../../Sidebar/Sidebar"));
 
 var _footer = _interopRequireDefault(require("../../Footer/footer"));
@@ -33456,14 +33599,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Categories = function Categories(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "Categories"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement(_Container.default, null), /*#__PURE__*/_react.default.createElement("div", {
     className: "categoriesContainer"
   }, /*#__PURE__*/_react.default.createElement(_Sidebar.default, null), props.children), /*#__PURE__*/_react.default.createElement(_footer.default, null));
 };
 
 var _default = Categories;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Categories.scss":"components/pages/Categories/Categories.scss","../../Sidebar/Sidebar":"components/Sidebar/Sidebar.js","../../Footer/footer":"components/Footer/footer.js"}],"components/ProductInfo/ProductInfo.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Categories.scss":"components/pages/Categories/Categories.scss","../../MobileSidebar/Container/Container":"components/MobileSidebar/Container/Container.js","../../Sidebar/Sidebar":"components/Sidebar/Sidebar.js","../../Footer/footer":"components/Footer/footer.js"}],"components/ProductInfo/ProductInfo.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -35588,7 +35731,9 @@ var ProductsPils = function ProductsPils(props) {
     src: _loveseat.default
   })), /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/productPage/".concat(productData._id)
-  }, /*#__PURE__*/_react.default.createElement("p", null, productData.name)), /*#__PURE__*/_react.default.createElement(_router.Link, {
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "productsPilsContainerName"
+  }, productData.name)), /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/productPage/".concat(productData._id)
   }, /*#__PURE__*/_react.default.createElement("p", null, "$", productData.price / 100))) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };

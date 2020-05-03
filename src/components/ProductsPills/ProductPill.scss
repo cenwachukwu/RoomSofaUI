@@ -19,17 +19,23 @@
       width: 19rem;
       height: 20rem;
     }
-    p {
+    .productsPilsContainerName {
       font-size: 1.5rem;
+    }
+    p {
+      font-size: 1.2rem;
       padding: 0.5rem;
     }
   }
 }
 
-@media only screen and (max-width: 1337px) {
+@media only screen and (max-width: 1338px) {
   .ProductsPils {
     .productsPilsContainer {
-      width: 22rem;
+      width: 28rem;
+      img {
+        width: 26rem;
+      }
     }
   }
 }
