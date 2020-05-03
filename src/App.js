@@ -9,6 +9,11 @@ import Categories from './components/pages/Categories/Categories';
 import ProductPage from './components/pages/Product';
 import UploadProduct from './components/UploadProduct/UploadProduct';
 import Cart from './components/pages/Cart';
+import AccentChair from './components/Categories/categoriesPages/AccentChair';
+import Chair from './components/Categories/categoriesPages/Chair';
+import Recliner from './components/Categories/categoriesPages/Recliner';
+import Sectionals from './components/Categories/categoriesPages/Sectionals';
+import SofaAndLoveseat from './components/Categories/categoriesPages/SofaandLoveseat';
 
 const App = () => {
   const [productData, setProductData] = useState({ products: [] });
@@ -31,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/products')
+      .get('https://roomsofa.herokuapp.com/products')
       .then((res) => {
         // console.log(res);
         const Product = res.data;
@@ -87,11 +92,19 @@ const App = () => {
     <React.StrictMode>
       <Router>
         <Home path="/" exact component={Home} />
+
         <Categories
           path="/categories"
           component={Categories}
           ProductData={productData}
-        />
+        >
+          <AccentChair path="accentchair" ProductData={productData} />
+          <Chair path="chair" ProductData={productData} />
+          <Recliner path="recliner" ProductData={productData} />
+          <Sectionals path="sectionals" ProductData={productData} />
+          <SofaAndLoveseat path="sofaandloveseat" ProductData={productData} />
+        </Categories>
+
         <ProductPage
           path="/productPage/:productid"
           component={ProductPage}

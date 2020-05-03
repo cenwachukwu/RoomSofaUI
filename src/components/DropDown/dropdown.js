@@ -67,13 +67,15 @@ const Dropdown = () => {
         // adding role="list" helps us make sure that assistive technology eg screen readers will annouce how many items are in the list
         role="list"
       >
-        {data.map((item, index) => {
-          return (
-            <li key={index}>
-              <a href="#">{item}</a>
-            </li>
-          );
-        })}
+        <li>
+          <Link to="#">Chair</Link>
+        </li>
+        <li>
+          <Link to="#">Accent Chair</Link>
+        </li>
+        <li>
+          <Link to="#">Sofa & Loveseat</Link>
+        </li>
       </ul>
     </div>
   );
