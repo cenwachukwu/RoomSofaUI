@@ -35,18 +35,53 @@
       width: 28rem;
       img {
         width: 26rem;
+        height: 22rem;
       }
     }
   }
 }
 
-@media only screen and (max-width: 823px) {
+@media only screen and (max-width: 1241px) {
   .ProductsPils {
     .productsPilsContainer {
-      width: 27rem;
+      width: 31rem;
+      img {
+        width: 29rem;
+      }
+    }
+  }
+}
 
+@media only screen and (max-width: 1095px) {
+  .ProductsPils {
+    .productsPilsContainer {
+      width: 28rem;
       img {
         width: 26rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 998px) {
+  .ProductsPils {
+    .productsPilsContainer {
+      width: 24rem;
+      img {
+        width: 22rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 885px) {
+  .ProductsPils {
+    padding: 4rem;
+    .productsPilsContainer {
+      width: 100%;
+
+      img {
+        width: 100%;
       }
     }
   }
@@ -56,9 +91,9 @@
   .ProductsPils {
     .productsPilsContainer {
       width: 100%;
-      img {
-        width: 95%;
-      }
+      // img {
+      //   width: 95%;
+      // }
     }
   }
 }

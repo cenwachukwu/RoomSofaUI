@@ -92,7 +92,7 @@
 /* styling for the first classless div (please give your divs classnames) */
 .Hamburger__wrapper .fixednavbar > div {
   background: var(--overlay-color);
-  width: 30%;
+  width: 28%;
   height: 100%;
   display: flex;
   flex: none;
@@ -125,7 +125,7 @@
 }
 
 .mobileNavLink {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
   padding: 1.5rem;
   // border-bottom: 1px solid white;
 }

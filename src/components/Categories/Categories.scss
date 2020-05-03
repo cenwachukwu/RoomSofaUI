@@ -2,6 +2,7 @@
   //   margin: 0 auto;
   // border: 1px solid black;
   padding: 1rem;
+  // max-width: 600rem;
   width: 100%;
   height: 100%;
   .CategoriesPageContainer {
@@ -37,7 +38,26 @@
   }
 }
 
-@media only screen and (max-width: 823px) {
+@media only screen and (max-width: 1241px) {
+  .CategoriesPage {
+    margin: 0 auto;
+    .CategoriesPageContainer {
+      width: 100%;
+      padding: 4rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1173px) {
+  .CategoriesPage {
+    .CategoriesPageContainer {
+      width: 100%;
+      padding: 2rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 885px) {
   .CategoriesPage {
     .CategoriesPageContainer {
       grid-template-columns: repeat(1, 1fr);

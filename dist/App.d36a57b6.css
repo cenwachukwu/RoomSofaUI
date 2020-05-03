@@ -564,6 +564,7 @@ i didnt give the elements classnames, so if you give it classnames you dont have
   margin: 0 auto;
 }
 .Categories .categoriesContainer {
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   background-color: rgba(214, 222, 228, 0.2);
@@ -697,7 +698,7 @@ i didnt give the elements classnames, so if you give it classnames you dont have
 /* styling for the first classless div (please give your divs classnames) */
 .Hamburger__wrapper .fixednavbar > div {
   background: var(--overlay-color);
-  width: 30%;
+  width: 28%;
   height: 100%;
   display: flex;
   flex: none;
@@ -732,7 +733,7 @@ i didnt give the elements classnames, so if you give it classnames you dont have
 }
 
 .mobileNavLink {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
   padding: 1.5rem;
 }
 
@@ -901,7 +902,22 @@ i didnt give the elements classnames, so if you give it classnames you dont have
     column-gap: 3rem;
   }
 }
-@media only screen and (max-width: 823px) {
+@media only screen and (max-width: 1241px) {
+  .CategoriesPage {
+    margin: 0 auto;
+  }
+  .CategoriesPage .CategoriesPageContainer {
+    width: 100%;
+    padding: 4rem;
+  }
+}
+@media only screen and (max-width: 1173px) {
+  .CategoriesPage .CategoriesPageContainer {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+@media only screen and (max-width: 885px) {
   .CategoriesPage .CategoriesPageContainer {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -942,22 +958,47 @@ i didnt give the elements classnames, so if you give it classnames you dont have
   }
   .ProductsPils .productsPilsContainer img {
     width: 26rem;
+    height: 22rem;
   }
 }
-@media only screen and (max-width: 823px) {
+@media only screen and (max-width: 1241px) {
   .ProductsPils .productsPilsContainer {
-    width: 27rem;
+    width: 31rem;
+  }
+  .ProductsPils .productsPilsContainer img {
+    width: 29rem;
+  }
+}
+@media only screen and (max-width: 1095px) {
+  .ProductsPils .productsPilsContainer {
+    width: 28rem;
   }
   .ProductsPils .productsPilsContainer img {
     width: 26rem;
   }
 }
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 998px) {
+  .ProductsPils .productsPilsContainer {
+    width: 24rem;
+  }
+  .ProductsPils .productsPilsContainer img {
+    width: 22rem;
+  }
+}
+@media only screen and (max-width: 885px) {
+  .ProductsPils {
+    padding: 4rem;
+  }
   .ProductsPils .productsPilsContainer {
     width: 100%;
   }
   .ProductsPils .productsPilsContainer img {
-    width: 95%;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 414px) {
+  .ProductsPils .productsPilsContainer {
+    width: 100%;
   }
 }
 
