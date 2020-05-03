@@ -6,6 +6,7 @@ import loveseat from '../../utils/homepills/loveseat.jpg';
 import recliner from '../../utils/homepills/recliner.jpg';
 import sectional from '../../utils/homepills/sectional.jpg';
 import sofa from '../../utils/homepills/sofa.jpg';
+import { Link } from '@reach/router';
 
 const PillBox = () => {
   return (
@@ -39,7 +40,7 @@ const PillBox = () => {
 
         <div className="extraPill">
           <div>
-            <a href="#">Shop all</a>
+            <Link to="/categories/viewall">Shop all</Link>
           </div>
         </div>
       </div>

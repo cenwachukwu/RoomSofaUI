@@ -1,8 +1,11 @@
 .Sidebar {
-  margin-top: 5rem;
+  // margin-top: 3rem;
   // border: 2px solid black;
   width: 20%;
   height: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   div {
     padding: 2rem;
     color: black;

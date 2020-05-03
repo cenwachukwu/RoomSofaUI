@@ -3,6 +3,8 @@ import '../Categories.scss';
 import ProductsPils from '../../ProductsPills/ProductPill';
 
 const Chair = (props) => {
+  const categoriesProps = props.ProductData.data;
+  console.log(categoriesProps);
   return (
     <div className="CategoriesPage">
       {categoriesProps ? (

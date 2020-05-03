@@ -11,7 +11,7 @@ const Sidebar = (props) => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/categories">View All</Link>
+            <Link to="/categories/viewall">View All</Link>
           </li>
           <li>
             <Link to="/categories/chair">Chair</Link>

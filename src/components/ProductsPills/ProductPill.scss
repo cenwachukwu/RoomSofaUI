@@ -29,11 +29,7 @@
 @media only screen and (max-width: 1337px) {
   .ProductsPils {
     .productsPilsContainer {
-      width: 90%;
-      grid-template-columns: repeat(2, 1fr);
-      div {
-        width: 22rem;
-      }
+      width: 22rem;
     }
   }
 }
@@ -41,12 +37,10 @@
 @media only screen and (max-width: 823px) {
   .ProductsPils {
     .productsPilsContainer {
-      grid-template-columns: repeat(1, 1fr);
-      div {
-        width: 27rem;
-        img {
-          width: 26rem;
-        }
+      width: 27rem;
+
+      img {
+        width: 26rem;
       }
     }
   }
@@ -55,11 +49,9 @@
 @media only screen and (max-width: 414px) {
   .ProductsPils {
     .productsPilsContainer {
-      div {
-        width: 100%;
-        img {
-          width: 95%;
-        }
+      width: 100%;
+      img {
+        width: 95%;
       }
     }
   }

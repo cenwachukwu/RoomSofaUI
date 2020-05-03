@@ -14,6 +14,7 @@ import Chair from './components/Categories/categoriesPages/Chair';
 import Recliner from './components/Categories/categoriesPages/Recliner';
 import Sectionals from './components/Categories/categoriesPages/Sectionals';
 import SofaAndLoveseat from './components/Categories/categoriesPages/SofaandLoveseat';
+import ViewAll from './components/Categories/categoriesPages/ViewAll';
 
 const App = () => {
   const [productData, setProductData] = useState({ products: [] });
@@ -103,6 +104,7 @@ const App = () => {
           <Recliner path="recliner" ProductData={productData} />
           <Sectionals path="sectionals" ProductData={productData} />
           <SofaAndLoveseat path="sofaandloveseat" ProductData={productData} />
+          <ViewAll path="viewall" ProductData={productData} />
         </Categories>
 
         <ProductPage

@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import '../Categories.scss';
 import ProductsPils from '../../ProductsPills/ProductPill';
 
-const AccentChair = (props) => {
+const ViewAll = (props) => {
   const categoriesProps = props.ProductData.data;
   console.log(categoriesProps);
+
   return (
     <div className="CategoriesPage">
       {categoriesProps ? (
         <div className="CategoriesPageContainer">
           {categoriesProps.map((product, index) => {
-            if (product.category == 'AccentChair') {
-              // console.log(product);
-              return (
-                <div key={index + 0}>
-                  <ProductsPils data={product} />
-                </div>
-              );
-            }
+            // console.log(product);
+            return (
+              <div key={index + 0}>
+                <ProductsPils data={product} />
+              </div>
+            );
           })}
         </div>
       ) : (
@@ -32,4 +31,4 @@ const AccentChair = (props) => {
   );
 };
 
-export default AccentChair;
+export default ViewAll;

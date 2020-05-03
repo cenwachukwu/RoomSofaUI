@@ -33207,6 +33207,8 @@ var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional
 
 var _sofa = _interopRequireDefault(require("../../utils/homepills/sofa.jpg"));
 
+var _router = require("@reach/router");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PillBox = function PillBox() {
@@ -33236,14 +33238,14 @@ var PillBox = function PillBox() {
     link: '/categories/sectionals'
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "extraPill"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
-    href: "#"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/categories/viewall"
   }, "Shop all")))));
 };
 
 var _default = PillBox;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./homePagePills.scss":"components/HomePagePills/homePagePills.scss","../Pills/Pills":"components/Pills/Pills.js","../../utils/homepills/chair.jpg":"utils/homepills/chair.jpg","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","../../utils/homepills/recliner.jpg":"utils/homepills/recliner.jpg","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../../utils/homepills/sofa.jpg":"utils/homepills/sofa.jpg"}],"components/MobileNavbar/MobileNav.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./homePagePills.scss":"components/HomePagePills/homePagePills.scss","../Pills/Pills":"components/Pills/Pills.js","../../utils/homepills/chair.jpg":"utils/homepills/chair.jpg","../../utils/homepills/loveseat.jpg":"utils/homepills/loveseat.jpg","../../utils/homepills/recliner.jpg":"utils/homepills/recliner.jpg","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../../utils/homepills/sofa.jpg":"utils/homepills/sofa.jpg","@reach/router":"../node_modules/@reach/router/es/index.js"}],"components/MobileNavbar/MobileNav.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -33409,7 +33411,7 @@ var Sidebar = function Sidebar(props) {
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/"
   }, "Home")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/categories"
+    to: "/categories/viewall"
   }, "View All")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/categories/chair"
   }, "Chair")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
@@ -35614,12 +35616,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var AccentChair = function AccentChair(props) {
+  var categoriesProps = props.ProductData.data;
+  console.log(categoriesProps);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
   }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
   }, categoriesProps.map(function (product, index) {
-    if (product.category == 'Chair') {
+    if (product.category == 'AccentChair') {
       // console.log(product);
       return /*#__PURE__*/_react.default.createElement("div", {
         key: index + 0
@@ -35649,6 +35653,8 @@ var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPi
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Chair = function Chair(props) {
+  var categoriesProps = props.ProductData.data;
+  console.log(categoriesProps);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
   }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
@@ -35781,6 +35787,45 @@ var SofaAndLoveseat = function SofaAndLoveseat(props) {
 
 var _default = SofaAndLoveseat;
 exports.default = _default;
+},{"react":"../node_modules/react/index.js","../Categories.scss":"components/Categories/Categories.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/ViewAll.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+require("../Categories.scss");
+
+var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var ViewAll = function ViewAll(props) {
+  var categoriesProps = props.ProductData.data;
+  console.log(categoriesProps);
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "CategoriesPage"
+  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "CategoriesPageContainer"
+  }, categoriesProps.map(function (product, index) {
+    // console.log(product);
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: index + 0
+    }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
+      data: product
+    }));
+  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
+};
+
+var _default = ViewAll;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js","../Categories.scss":"components/Categories/Categories.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
@@ -35815,6 +35860,8 @@ var _Recliner = _interopRequireDefault(require("./components/Categories/categori
 var _Sectionals = _interopRequireDefault(require("./components/Categories/categoriesPages/Sectionals"));
 
 var _SofaandLoveseat = _interopRequireDefault(require("./components/Categories/categoriesPages/SofaandLoveseat"));
+
+var _ViewAll = _interopRequireDefault(require("./components/Categories/categoriesPages/ViewAll"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -35918,6 +35965,9 @@ var App = function App() {
   }), /*#__PURE__*/_react.default.createElement(_SofaandLoveseat.default, {
     path: "sofaandloveseat",
     ProductData: productData
+  }), /*#__PURE__*/_react.default.createElement(_ViewAll.default, {
+    path: "viewall",
+    ProductData: productData
   })), /*#__PURE__*/_react.default.createElement(_Product.default, {
     path: "/productPage/:productid",
     component: _Product.default,
@@ -35934,7 +35984,7 @@ var App = function App() {
 };
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById('root'));
-},{"@babel/runtime/helpers/toConsumableArray":"../node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","axios":"../node_modules/axios/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js","./components/pages/Cart":"components/pages/Cart.js","./components/Categories/categoriesPages/AccentChair":"components/Categories/categoriesPages/AccentChair.js","./components/Categories/categoriesPages/Chair":"components/Categories/categoriesPages/Chair.js","./components/Categories/categoriesPages/Recliner":"components/Categories/categoriesPages/Recliner.js","./components/Categories/categoriesPages/Sectionals":"components/Categories/categoriesPages/Sectionals.js","./components/Categories/categoriesPages/SofaandLoveseat":"components/Categories/categoriesPages/SofaandLoveseat.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/toConsumableArray":"../node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","axios":"../node_modules/axios/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js","./components/pages/Cart":"components/pages/Cart.js","./components/Categories/categoriesPages/AccentChair":"components/Categories/categoriesPages/AccentChair.js","./components/Categories/categoriesPages/Chair":"components/Categories/categoriesPages/Chair.js","./components/Categories/categoriesPages/Recliner":"components/Categories/categoriesPages/Recliner.js","./components/Categories/categoriesPages/Sectionals":"components/Categories/categoriesPages/Sectionals.js","./components/Categories/categoriesPages/SofaandLoveseat":"components/Categories/categoriesPages/SofaandLoveseat.js","./components/Categories/categoriesPages/ViewAll":"components/Categories/categoriesPages/ViewAll.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
