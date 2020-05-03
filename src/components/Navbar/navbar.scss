@@ -62,19 +62,20 @@ a:hover {
 }
 
 .navbarUserLinks {
-  margin-top: -3.5rem;
+  margin-top: -3rem;
 
   div {
-    padding: 0.4rem 0;
+    padding: 1rem;
+    border: 1px solid rgba(38, 38, 38, 0.123);
     a {
       text-decoration: none;
       padding: 1rem 0;
       i {
-        color: black;
-        font-size: 2rem;
+        color: rgb(38, 38, 38);
+        font-size: 4rem;
       }
       p {
-        font-size: 1rem;
+        font-size: 2rem;
         color: black;
       }
     }

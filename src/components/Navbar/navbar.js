@@ -27,15 +27,15 @@ const Navbar = () => {
           <div>
             <Link to="/cart">
               <i className="fas fa-shopping-cart"></i>
-              <p>cart</p>
+              {/* <p>cart</p> */}
             </Link>
           </div>
-          <div>
+          {/* <div>
             <Link to="/">
               <i className="far fa-user"></i>
               <p>account</p>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

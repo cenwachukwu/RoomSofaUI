@@ -33021,11 +33021,7 @@ var Navbar = function Navbar() {
     to: "/cart"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fas fa-shopping-cart"
-  }), /*#__PURE__*/_react.default.createElement("p", null, "cart"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "far fa-user"
-  }), /*#__PURE__*/_react.default.createElement("p", null, "account"))))));
+  }))))));
 };
 
 var _default = Navbar;
@@ -33426,16 +33422,12 @@ var Sidebar = function Sidebar(props) {
     to: "/categories/sectionals"
   }, "Sectionals")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/"
-  }, "Contact")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement(_router.Link, {
+  }, "Contact")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "noBorder"
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
     to: "/cart"
   }, /*#__PURE__*/_react.default.createElement("i", {
     className: "fas fa-shopping-cart"
-  }))), /*#__PURE__*/_react.default.createElement("li", {
-    className: "noBorder"
-  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    className: "far fa-user"
   }))))));
 };
 
@@ -35547,7 +35539,7 @@ var Cart = function Cart(props) {
 
 var _default = Cart;
 exports.default = _default;
-},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js","../CartItems/CartItems":"components/CartItems/CartItems.js","@stripe/stripe-js":"../node_modules/@stripe/stripe-js/dist/stripe.esm.js","@stripe/react-stripe-js":"../node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js"}],"components/Categories/categoriesPages/categoriesPage.scss":[function(require,module,exports) {
+},{"@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","../Navbar/navbar":"components/Navbar/navbar.js","../Footer/footer":"components/Footer/footer.js","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js","../CartItems/CartItems":"components/CartItems/CartItems.js","@stripe/stripe-js":"../node_modules/@stripe/stripe-js/dist/stripe.esm.js","@stripe/react-stripe-js":"../node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js"}],"components/Categories/Categories.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -35582,27 +35574,21 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var ProductsPils = function ProductsPils(props) {
-  var productData = props.data.data; // console.log(productData);
-
+  var productData = props.data;
+  console.log(productData);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductsPils"
-  }, /*#__PURE__*/_react.default.createElement(_MobileNav.default, null), productData ? /*#__PURE__*/_react.default.createElement("div", {
+  }, productData ? /*#__PURE__*/_react.default.createElement("div", {
     className: "productsPilsContainer"
-  }, productData.map(function (product, index) {
-    // console.log(product);
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: index + 0,
-      className: "pilsContainers"
-    }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-      to: "/productPage/".concat(product._id)
-    }, /*#__PURE__*/_react.default.createElement("img", {
-      src: _loveseat.default
-    })), /*#__PURE__*/_react.default.createElement(_router.Link, {
-      to: "/productPage/".concat(product._id)
-    }, /*#__PURE__*/_react.default.createElement("p", null, product.name)), /*#__PURE__*/_react.default.createElement(_router.Link, {
-      to: "/productPage/".concat(product._id)
-    }, /*#__PURE__*/_react.default.createElement("p", null, "$", product.price)));
-  })) : /*#__PURE__*/_react.default.createElement("p", null, "Coming soon"));
+  }, /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/productPage/".concat(productData._id)
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _loveseat.default
+  })), /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/productPage/".concat(productData._id)
+  }, /*#__PURE__*/_react.default.createElement("p", null, productData.name)), /*#__PURE__*/_react.default.createElement(_router.Link, {
+    to: "/productPage/".concat(productData._id)
+  }, /*#__PURE__*/_react.default.createElement("p", null, "$", productData.price / 100))) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };
 
 var _default = ProductsPils;
@@ -35615,27 +35601,38 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-require("./categoriesPage.scss");
+require("../Categories.scss");
 
 var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 var AccentChair = function AccentChair(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
-  }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
-    data: props.ProductData
-  })));
+  }, categoriesProps.map(function (product, index) {
+    if (product.category == 'Chair') {
+      // console.log(product);
+      return /*#__PURE__*/_react.default.createElement("div", {
+        key: index + 0
+      }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
+        data: product
+      }));
+    }
+  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };
 
 var _default = AccentChair;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./categoriesPage.scss":"components/Categories/categoriesPages/categoriesPage.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/Chair.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Categories.scss":"components/Categories/Categories.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/Chair.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35645,7 +35642,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./categoriesPage.scss");
+require("../Categories.scss");
 
 var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
 
@@ -35654,16 +35651,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Chair = function Chair(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
-  }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
-    data: props.ProductData
-  })));
+  }, categoriesProps.map(function (product, index) {
+    if (product.category == 'Chair') {
+      // console.log(product);
+      return /*#__PURE__*/_react.default.createElement("div", {
+        key: index + 0
+      }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
+        data: product
+      }));
+    }
+  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };
 
 var _default = Chair;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./categoriesPage.scss":"components/Categories/categoriesPages/categoriesPage.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/Recliner.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Categories.scss":"components/Categories/Categories.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/Recliner.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35673,25 +35677,34 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./categoriesPage.scss");
+require("../Categories.scss");
 
 var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Recliner = function Recliner(props) {
+  var categoriesProps = props.ProductData.data;
+  console.log(categoriesProps);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
-  }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
-    data: props.ProductData
-  })));
+  }, categoriesProps.map(function (product, index) {
+    if (product.category == 'Recliner') {
+      // console.log(product);
+      return /*#__PURE__*/_react.default.createElement("div", {
+        key: index + 0
+      }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
+        data: product
+      }));
+    }
+  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };
 
 var _default = Recliner;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./categoriesPage.scss":"components/Categories/categoriesPages/categoriesPage.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/Sectionals.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Categories.scss":"components/Categories/Categories.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/Sectionals.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35701,25 +35714,33 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./categoriesPage.scss");
+require("../Categories.scss");
 
 var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Sectionals = function Sectionals(props) {
+  var categoriesProps = props.ProductData.data;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
-  }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
-    data: props.ProductData
-  })));
+  }, categoriesProps.map(function (product, index) {
+    if (product.category == 'Sectionals') {
+      // console.log(product);
+      return /*#__PURE__*/_react.default.createElement("div", {
+        key: index + 0
+      }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
+        data: product
+      }));
+    }
+  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };
 
 var _default = Sectionals;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./categoriesPage.scss":"components/Categories/categoriesPages/categoriesPage.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/SofaandLoveseat.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Categories.scss":"components/Categories/Categories.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"components/Categories/categoriesPages/SofaandLoveseat.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35727,27 +35748,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-require("./categoriesPage.scss");
+require("../Categories.scss");
 
 var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPill"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 var SofaAndLoveseat = function SofaAndLoveseat(props) {
+  var categoriesProps = props.ProductData.data;
+  console.log(categoriesProps);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
-  }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
-    data: props.ProductData
-  })));
+  }, categoriesProps.map(function (product, index) {
+    if (product.category == 'SofaandLoveseat') {
+      // console.log(product);
+      return /*#__PURE__*/_react.default.createElement("div", {
+        key: index + 0
+      }, /*#__PURE__*/_react.default.createElement(_ProductPill.default, {
+        data: product
+      }));
+    }
+  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };
 
 var _default = SofaAndLoveseat;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./categoriesPage.scss":"components/Categories/categoriesPages/categoriesPage.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../Categories.scss":"components/Categories/Categories.scss","../../ProductsPills/ProductPill":"components/ProductsPills/ProductPill.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));

@@ -59,21 +59,22 @@ a:hover {
 }
 
 .navbarUserLinks {
-  margin-top: -3.5rem;
+  margin-top: -3rem;
 }
 .navbarUserLinks div {
-  padding: 0.4rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(38, 38, 38, 0.123);
 }
 .navbarUserLinks div a {
   text-decoration: none;
   padding: 1rem 0;
 }
 .navbarUserLinks div a i {
-  color: black;
-  font-size: 2rem;
+  color: #262626;
+  font-size: 4rem;
 }
 .navbarUserLinks div a p {
-  font-size: 1rem;
+  font-size: 2rem;
   color: black;
 }
 .navbarUserLinks div a:hover {
@@ -557,14 +558,19 @@ i didnt give the elements classnames, so if you give it classnames you dont have
   opacity: 1;
   transition: opacity 0.4s ease 0.4s;
 }
-.categoriesContainer {
+.Categories {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.Categories .categoriesContainer {
   display: flex;
   flex-direction: row;
   background-color: rgba(214, 222, 228, 0.2);
 }
 .Sidebar {
   margin-top: 5rem;
-  width: 30%;
+  width: 20%;
   height: 100%;
 }
 .Sidebar div {
@@ -574,7 +580,7 @@ i didnt give the elements classnames, so if you give it classnames you dont have
 .Sidebar div ul li {
   padding: 2rem;
   list-style: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: black;
   border-bottom: 1px solid black;
 }
@@ -673,30 +679,49 @@ i didnt give the elements classnames, so if you give it classnames you dont have
   padding: 2rem;
   width: 100%;
 }
+.CategoriesPage {
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+}
+.CategoriesPage .CategoriesPageContainer {
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  column-gap: 2.2rem;
+  row-gap: 2rem;
+  justify-items: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1337px) {
+  .CategoriesPage .CategoriesPageContainer {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 823px) {
+  .CategoriesPage .CategoriesPageContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .ProductsPils {
   width: 100%;
   height: 100%;
 }
 .ProductsPils .productsPilsContainer {
-  margin: 2rem auto;
-  width: 97%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  row-gap: 2rem;
-  justify-items: center;
-  align-items: center;
-}
-.ProductsPils .productsPilsContainer div {
-  padding: 1rem;
+  padding: 1rem 0;
   width: 20rem;
   height: 27rem;
-  background-color: white;
+  border: 1px solid white;
 }
-.ProductsPils .productsPilsContainer div a {
+.ProductsPils .productsPilsContainer a {
   color: black;
 }
-.ProductsPils .productsPilsContainer div img {
+.ProductsPils .productsPilsContainer img {
   margin-top: -1rem;
   padding: 1rem;
   object-fit: cover;
@@ -705,7 +730,7 @@ i didnt give the elements classnames, so if you give it classnames you dont have
   width: 19rem;
   height: 20rem;
 }
-.ProductsPils .productsPilsContainer div p {
+.ProductsPils .productsPilsContainer p {
   font-size: 1.5rem;
   padding: 0.5rem;
 }

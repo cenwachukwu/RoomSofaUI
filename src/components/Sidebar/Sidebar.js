@@ -31,16 +31,16 @@ const Sidebar = (props) => {
           <li>
             <Link to="/">Contact</Link>
           </li>
-          <li>
+          <li className="noBorder">
             <Link to="/cart">
               <i className="fas fa-shopping-cart"></i>
             </Link>
           </li>
-          <li className="noBorder">
+          {/* <li className="noBorder">
             <Link to="/">
               <i className="far fa-user"></i>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

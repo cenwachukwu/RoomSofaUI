@@ -5,33 +5,30 @@ import { Link } from '@reach/router';
 import MobileNav from '../MobileNavbar/MobileNav';
 
 const ProductsPils = (props) => {
-  const productData = props.data.data;
-  // console.log(productData);
+  const productData = props.data;
+  console.log(productData);
 
   return (
     <div className="ProductsPils">
-      <MobileNav />
       {productData ? (
         <div className="productsPilsContainer">
-          {productData.map((product, index) => {
-            // console.log(product);
-            return (
-              <div key={index + 0} className="pilsContainers">
-                <Link to={`/productPage/${product._id}`}>
-                  <img src={image} />
-                </Link>
-                <Link to={`/productPage/${product._id}`}>
-                  <p>{product.name}</p>
-                </Link>
-                <Link to={`/productPage/${product._id}`}>
-                  <p>${product.price}</p>
-                </Link>
-              </div>
-            );
-          })}
+          <Link to={`/productPage/${productData._id}`}>
+            <img src={image} />
+          </Link>
+          <Link to={`/productPage/${productData._id}`}>
+            <p>{productData.name}</p>
+          </Link>
+          <Link to={`/productPage/${productData._id}`}>
+            <p>${productData.price / 100}</p>
+          </Link>
         </div>
       ) : (
-        <p>Coming soon</p>
+        <div>
+          <p>
+            This product is coming soon but while you are here check out other
+            products
+          </p>
+        </div>
       )}
     </div>
   );
