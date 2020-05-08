@@ -12,13 +12,13 @@ const ProductsPils = (props) => {
     <div className="ProductsPils">
       {productData ? (
         <div className="productsPilsContainer">
-          <Link to={`/productPage/${productData._id}`}>
+          <Link to={'/productPage/' + productData._id}>
             <img src={image} />
           </Link>
-          <Link to={`/productPage/${productData._id}`}>
+          <Link to={'/productPage/' + productData._id}>
             <p className="productsPilsContainerName">{productData.name}</p>
           </Link>
-          <Link to={`/productPage/${productData._id}`}>
+          <Link to={'/productPage/' + productData._id}>
             <p>${productData.price / 100}</p>
           </Link>
         </div>

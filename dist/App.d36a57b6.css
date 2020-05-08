@@ -797,58 +797,124 @@ i didnt give the elements classnames, so if you give it classnames you dont have
 }
 .ProductInfo {
   width: 100%;
+  min-height: 40em;
   height: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
 }
-.ProductInfo div .ProductInfoContainer {
-  margin: 0 auto;
-  padding: 1rem;
+.ProductInfo .ProductInfoContainerHolder {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  min-height: 40em;
+  height: 100%;
+  padding: 0.5rem;
 }
-.ProductInfo div .ProductInfoContainer .productPictures {
-  margin-top: -10rem;
-  padding: 1rem;
-  width: 100%;
-}
-.ProductInfo div .ProductInfoContainer .productPictures img {
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer {
   width: 100%;
   height: 100%;
-  padding: 1rem 0.5rem 4rem 0.5rem;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  column-gap: 0.5rem;
 }
-.ProductInfo div .ProductInfoContainer .productPictures div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid yellow;
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .prod {
+  width: 100%;
+  height: 100%;
 }
-.ProductInfo div .ProductInfoContainer .productPictures div div {
-  margin: 0.5rem;
-  width: 10rem;
-  height: 10rem;
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductImages {
+  width: 100%;
+  height: 100%;
 }
-.ProductInfo div .ProductInfoContainer .productInfoSection {
-  padding: 2rem;
-  width: 65%;
-}
-.ProductInfo div .ProductInfoContainer .productInfoSection h1 {
-  text-align: left;
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductImages div {
   padding: 1rem;
-  font-size: 2rem;
 }
-.ProductInfo div .ProductInfoContainer .productInfoSection p {
-  padding: 1.5rem;
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductImages div img {
+  width: 100%;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText {
+  padding: 1rem;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div {
+  padding: 1rem;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div h1 {
   text-align: left;
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
-.ProductInfo div .ProductInfoContainer .productInfoSection .productPrice {
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div .prodPrice {
   color: red;
-  font-size: 2rem;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div button {
+  width: 70%;
+  font-size: 1.3rem;
+  color: white;
+  height: 4rem;
+  border-radius: 15%;
+  margin-left: -10rem;
+  background-color: #b99053;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div .prodDescriptionFeature {
+  text-align: left;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div .descriptionUl {
+  padding: 0.5rem;
+  list-style: none;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div .descriptionUl li {
+  text-align: Left;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText div h3 {
+  text-align: Left;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .prodDescriptions {
+  border-bottom: 1px solid rgba(33, 33, 33, 0.4);
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .prodDescriptions .prodDescriptionFeatureHeader {
+  border-bottom: 1px solid rgba(33, 33, 33, 0.4);
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand {
+  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  column-gap: 0.5rem;
+  border-top: 1px solid rgba(33, 33, 33, 0.4);
+  border-bottom: 1px solid rgba(33, 33, 33, 0.4);
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProdbrandName {
+  width: 100%;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProdbrandInfo {
+  width: 30em;
+  font-size: 1.3rem;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProdbrandInfo p {
+  text-align: left;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProdbrandInfo p span {
+  font-size: 1rem;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProddimensionProdtype {
+  width: 100%;
+  border-right: 1px solid rgba(33, 33, 33, 0.4);
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProddimensionProdtype .prodDimension {
+  font-weight: bold;
+  text-align: right;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProddimensionProddimension {
+  width: 36em;
+  font-size: 1rem;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .Prodbrand .ProddimensionProddimension p {
+  text-align: left;
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .ProdDimenss {
+  border: 1px solid rgba(33, 33, 33, 0.4);
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .ProdDimenss .ProdDimenssHeader {
+  border-bottom: 1px solid rgba(33, 33, 33, 0.4);
+}
+.ProductInfo .ProductInfoContainerHolder .ProductInfoContainer .ProductText .ProdDimenss .noBorder {
+  border: none;
 }
 .UploadProduct {
   border: 2px solid gold;

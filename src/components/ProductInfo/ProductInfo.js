@@ -1,103 +1,98 @@
 import React from 'react';
 import './ProductInfo.scss';
 import util from '../../utils/CurrencyFormatter/CurrencyFormatter';
+import { Link } from '@reach/router';
 import sectional from '../../utils/homepills/sectional.jpg';
 import MobileNav from '../MobileNavbar/MobileNav';
 
 const ProductInfo = (props) => {
   const productData = props.data.ProductData.data;
-  // console.log(props);
 
   const productId = props.data.productid;
-
-  const handleAddToCart = props.data.handleAddToCart;
 
   return (
     <div className="ProductInfo">
       {productData ? (
-        <div>
-          {productData.map((product, index) => {
-            // console.log(product);
-            if (productId === product._id) {
+        <div className="ProductInfoContainerHolder">
+          {productData.map((x, index) => {
+            if (x._id === productId) {
+              console.log(x);
               return (
-                <div className="ProductInfoContainer" key={index + 0}>
-                  <div className="productPictures">
-                    <img src={sectional} />
-                    <div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                    </div>
+                <div key={index + 0} className="ProductInfoContainer">
+                  <div className="prod ProductImages">
+                    {x.images.map((image, index) => {
+                      return (
+                        <div key={index + 0}>
+                          <img src={image.image} className="img" />
+                        </div>
+                      );
+                    })}
                   </div>
+                  <div className="prod ProductText">
+                    <div>
+                      <h1 className="prodDetail prodName">{x.name}</h1>
+                    </div>
+                    <div>
+                      <h1 className="prodDetail prodPrice">
+                        {util.formatCurrency(x.price / 100)}
+                      </h1>
+                    </div>
+                    <div>
+                      <button>Add to Cart</button>
+                    </div>
 
-                  <div className="productInfoSection">
-                    <h1>{product.name}</h1>
+                    <div className="prodDescriptions">
+                      <div className="prodDescriptionFeatureHeader">
+                        <h2 className="prodDescriptionFeature">
+                          Product Descriptions and Features:
+                        </h2>
+                      </div>
 
-                    <p className="productPrice">
-                      {util.formatCurrency(product.price)}
-                    </p>
-
-                    <button onClick={(e) => handleAddToCart(e, product)}>
-                      Add to cart
-                    </button>
-
-                    <p className="productDescription">{product.description}</p>
-                    <input type="file" id="fileInput" />
-
-                    {product.dimension.length ? (
                       <div>
-                        {product.dimension.map((dimension, index) => {
+                        {x.description.map((feature, index) => {
                           return (
-                            <div key={index + 0}>
-                              <p className="productDimension">
-                                Dimensions:{' '}
-                                <span>
-                                  {dimension.product_type} :{' '}
-                                  {dimension.product_dimension}
-                                </span>
+                            <ul key={index + 0} className="descriptionUl">
+                              <li className="descriptionList">
+                                {feature.descriptionFeatures}
+                              </li>
+                            </ul>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="Prodbrand">
+                      <div className="ProdbrandName">
+                        <h2>Brand:</h2>
+                      </div>
+                      <div className="ProdbrandInfo">
+                        <p>
+                          {x.brand[0].brandName}{' '}
+                          <span>ID: {x.brand[0].productId}</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="ProdDimenss">
+                      <div className="ProdDimenssHeader">
+                        <h3>Product dimensions:</h3>
+                      </div>
+
+                      {x.dimension.map((dimension, index) => {
+                        return (
+                          <div className="Prodbrand noBorder" key={index + 0}>
+                            <div className="ProddimensionProdtype">
+                              <p className="prodDimension">
+                                {dimension.product_type}
                               </p>
                             </div>
-                          );
-                        })}
-                      </div>
-                    ) : null}
-
-                    {product.features.length ? (
-                      <div>
-                        {product.features.map((feature, index) => {
-                          // console.log(feature);
-                          return (
-                            <div key={index + 0}>
-                              <p>features : {feature.feature}</p>
+                            <div className="ProddimensionProddimension">
+                              <p>{dimension.product_dimension}</p>
                             </div>
-                          );
-                        })}
-                      </div>
-                    ) : null}
-
-                    {product.isFreeShipping ? (
-                      <div>
-                        <p>Free Shipping to the DMV</p>
-                      </div>
-                    ) : (
-                      <p>We only ship to the DMV</p>
-                    )}
-
-                    {product.isSoldOut ? (
-                      <div>
-                        <p>This product is soldout</p>
-                      </div>
-                    ) : null}
-
-                    <p>Question and answer???</p>
-
-                    <p>love</p>
-                    <p>Style no : {product.styleNumber}</p>
-                    <p>
-                      Do you have questions about this product? Our experts are
-                      here to help! call us ish
-                    </p>
-                    <p>Box spring require true or false</p>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               );
@@ -105,7 +100,7 @@ const ProductInfo = (props) => {
           })}
         </div>
       ) : (
-        <p>Product not available</p>
+        <p>Product detail not available</p>
       )}
     </div>
   );

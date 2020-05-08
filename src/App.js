@@ -19,6 +19,11 @@ import ViewAll from './components/Categories/categoriesPages/ViewAll';
 const App = () => {
   const [productData, setProductData] = useState({ products: [] });
 
+  // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
+  useEffect(() => {
+    localStorage.setItem('Cart', JSON.stringify(cartItems));
+  }, [cartItems]);
+
   // we want to retrieve our data in the localStorage
   // we use localStorage.getItem('name of the storage')
   const localData = localStorage.getItem('Cart');
@@ -29,11 +34,6 @@ const App = () => {
     // we use JSON.parse to return a usable object b/c localStorage stores it as a string object"{}"
     localData ? JSON.parse(localData) : []
   );
-
-  // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
-  useEffect(() => {
-    localStorage.setItem('Cart', JSON.stringify(cartItems));
-  }, [cartItems]);
 
   useEffect(() => {
     axios
@@ -103,7 +103,11 @@ const App = () => {
           <Chair path="chair" ProductData={productData} />
           <Recliner path="recliner" ProductData={productData} />
           <Sectionals path="sectionals" ProductData={productData} />
-          <SofaAndLoveseat path="sofaandloveseat" ProductData={productData} />
+          <SofaAndLoveseat
+            path="sofaandloveseat"
+            ProductData={productData}
+            component={SofaAndLoveseat}
+          />
           <ViewAll path="viewall" ProductData={productData} />
         </Categories>
 

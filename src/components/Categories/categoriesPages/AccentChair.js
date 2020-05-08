@@ -5,6 +5,8 @@ import ProductsPils from '../../ProductsPills/ProductPill';
 const AccentChair = (props) => {
   const categoriesProps = props.ProductData.data;
   console.log(categoriesProps);
+
+    // we can say if category == prop.location.pathname
   return (
     <div className="CategoriesPage">
       {categoriesProps ? (

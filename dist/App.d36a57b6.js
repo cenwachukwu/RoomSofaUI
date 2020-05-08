@@ -33638,6 +33638,8 @@ require("./ProductInfo.scss");
 
 var _CurrencyFormatter = _interopRequireDefault(require("../../utils/CurrencyFormatter/CurrencyFormatter"));
 
+var _router = require("@reach/router");
+
 var _sectional = _interopRequireDefault(require("../../utils/homepills/sectional.jpg"));
 
 var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
@@ -33645,54 +33647,75 @@ var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductInfo = function ProductInfo(props) {
-  var productData = props.data.ProductData.data; // console.log(props);
-
+  var productData = props.data.ProductData.data;
   var productId = props.data.productid;
-  var handleAddToCart = props.data.handleAddToCart;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductInfo"
-  }, productData ? /*#__PURE__*/_react.default.createElement("div", null, productData.map(function (product, index) {
-    // console.log(product);
-    if (productId === product._id) {
+  }, productData ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "ProductInfoContainerHolder"
+  }, productData.map(function (x, index) {
+    if (x._id === productId) {
+      console.log(x);
       return /*#__PURE__*/_react.default.createElement("div", {
-        className: "ProductInfoContainer",
-        key: index + 0
+        key: index + 0,
+        className: "ProductInfoContainer"
       }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "productPictures"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        src: _sectional.default
-      }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", {
-        className: "productInfoSection"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, product.name), /*#__PURE__*/_react.default.createElement("p", {
-        className: "productPrice"
-      }, _CurrencyFormatter.default.formatCurrency(product.price)), /*#__PURE__*/_react.default.createElement("button", {
-        onClick: function onClick(e) {
-          return handleAddToCart(e, product);
-        }
-      }, "Add to cart"), /*#__PURE__*/_react.default.createElement("p", {
-        className: "productDescription"
-      }, product.description), /*#__PURE__*/_react.default.createElement("input", {
-        type: "file",
-        id: "fileInput"
-      }), product.dimension.length ? /*#__PURE__*/_react.default.createElement("div", null, product.dimension.map(function (dimension, index) {
+        className: "prod ProductImages"
+      }, x.images.map(function (image, index) {
         return /*#__PURE__*/_react.default.createElement("div", {
           key: index + 0
+        }, /*#__PURE__*/_react.default.createElement("img", {
+          src: image.image,
+          className: "img"
+        }));
+      })), /*#__PURE__*/_react.default.createElement("div", {
+        className: "prod ProductText"
+      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", {
+        className: "prodDetail prodName"
+      }, x.name)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", {
+        className: "prodDetail prodPrice"
+      }, _CurrencyFormatter.default.formatCurrency(x.price / 100))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "Add to Cart")), /*#__PURE__*/_react.default.createElement("div", {
+        className: "prodDescriptions"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "prodDescriptionFeatureHeader"
+      }, /*#__PURE__*/_react.default.createElement("h2", {
+        className: "prodDescriptionFeature"
+      }, "Product Descriptions and Features:")), /*#__PURE__*/_react.default.createElement("div", null, x.description.map(function (feature, index) {
+        return /*#__PURE__*/_react.default.createElement("ul", {
+          key: index + 0,
+          className: "descriptionUl"
+        }, /*#__PURE__*/_react.default.createElement("li", {
+          className: "descriptionList"
+        }, feature.descriptionFeatures));
+      }))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "Prodbrand"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "ProdbrandName"
+      }, /*#__PURE__*/_react.default.createElement("h2", null, "Brand:")), /*#__PURE__*/_react.default.createElement("div", {
+        className: "ProdbrandInfo"
+      }, /*#__PURE__*/_react.default.createElement("p", null, x.brand[0].brandName, ' ', /*#__PURE__*/_react.default.createElement("span", null, "ID: ", x.brand[0].productId)))), /*#__PURE__*/_react.default.createElement("div", {
+        className: "ProdDimenss"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "ProdDimenssHeader"
+      }, /*#__PURE__*/_react.default.createElement("h3", null, "Product dimensions:")), x.dimension.map(function (dimension, index) {
+        return /*#__PURE__*/_react.default.createElement("div", {
+          className: "Prodbrand noBorder",
+          key: index + 0
+        }, /*#__PURE__*/_react.default.createElement("div", {
+          className: "ProddimensionProdtype"
         }, /*#__PURE__*/_react.default.createElement("p", {
-          className: "productDimension"
-        }, "Dimensions:", ' ', /*#__PURE__*/_react.default.createElement("span", null, dimension.product_type, " :", ' ', dimension.product_dimension)));
-      })) : null, product.features.length ? /*#__PURE__*/_react.default.createElement("div", null, product.features.map(function (feature, index) {
-        // console.log(feature);
-        return /*#__PURE__*/_react.default.createElement("div", {
-          key: index + 0
-        }, /*#__PURE__*/_react.default.createElement("p", null, "features : ", feature.feature));
-      })) : null, product.isFreeShipping ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Free Shipping to the DMV")) : /*#__PURE__*/_react.default.createElement("p", null, "We only ship to the DMV"), product.isSoldOut ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is soldout")) : null, /*#__PURE__*/_react.default.createElement("p", null, "Question and answer???"), /*#__PURE__*/_react.default.createElement("p", null, "love"), /*#__PURE__*/_react.default.createElement("p", null, "Style no : ", product.styleNumber), /*#__PURE__*/_react.default.createElement("p", null, "Do you have questions about this product? Our experts are here to help! call us ish"), /*#__PURE__*/_react.default.createElement("p", null, "Box spring require true or false")));
+          className: "prodDimension"
+        }, dimension.product_type)), /*#__PURE__*/_react.default.createElement("div", {
+          className: "ProddimensionProddimension"
+        }, /*#__PURE__*/_react.default.createElement("p", null, dimension.product_dimension)));
+      }))));
     }
-  })) : /*#__PURE__*/_react.default.createElement("p", null, "Product not available"));
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "Product detail not available"));
 };
 
 var _default = ProductInfo;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/CurrencyFormatter/CurrencyFormatter":"utils/CurrencyFormatter/CurrencyFormatter.js","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Product.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ProductInfo.scss":"components/ProductInfo/ProductInfo.scss","../../utils/CurrencyFormatter/CurrencyFormatter":"utils/CurrencyFormatter/CurrencyFormatter.js","@reach/router":"../node_modules/@reach/router/es/index.js","../../utils/homepills/sectional.jpg":"utils/homepills/sectional.jpg","../MobileNavbar/MobileNav":"components/MobileNavbar/MobileNav.js"}],"components/pages/Product.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35726,15 +35749,15 @@ var ProductsPils = function ProductsPils(props) {
   }, productData ? /*#__PURE__*/_react.default.createElement("div", {
     className: "productsPilsContainer"
   }, /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage/".concat(productData._id)
+    to: '/productPage/' + productData._id
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _loveseat.default
   })), /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage/".concat(productData._id)
+    to: '/productPage/' + productData._id
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "productsPilsContainerName"
   }, productData.name)), /*#__PURE__*/_react.default.createElement(_router.Link, {
-    to: "/productPage/".concat(productData._id)
+    to: '/productPage/' + productData._id
   }, /*#__PURE__*/_react.default.createElement("p", null, "$", productData.price / 100))) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
 };
 
@@ -35762,7 +35785,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var AccentChair = function AccentChair(props) {
   var categoriesProps = props.ProductData.data;
-  console.log(categoriesProps);
+  console.log(categoriesProps); // we can say if category == prop.location.pathname
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
   }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
@@ -36021,9 +36045,13 @@ var App = function App() {
   }),
       _useState2 = (0, _slicedToArray2.default)(_useState, 2),
       productData = _useState2[0],
-      setProductData = _useState2[1]; // we want to retrieve our data in the localStorage
-  // we use localStorage.getItem('name of the storage')
+      setProductData = _useState2[1]; // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
 
+
+  (0, _react.useEffect)(function () {
+    localStorage.setItem('Cart', JSON.stringify(cartItems));
+  }, [cartItems]); // we want to retrieve our data in the localStorage
+  // we use localStorage.getItem('name of the storage')
 
   var localData = localStorage.getItem('Cart'); // we want to be able to get the previous value of cartItems
   // ie. we dont want cartItems start of as empty if there is something there
@@ -36032,12 +36060,8 @@ var App = function App() {
   localData ? JSON.parse(localData) : []),
       _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
       cartItems = _useState4[0],
-      setcartItems = _useState4[1]; // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
+      setcartItems = _useState4[1];
 
-
-  (0, _react.useEffect)(function () {
-    localStorage.setItem('Cart', JSON.stringify(cartItems));
-  }, [cartItems]);
   (0, _react.useEffect)(function () {
     _axios.default.get('https://roomsofa.herokuapp.com/products').then(function (res) {
       // console.log(res);
@@ -36109,7 +36133,8 @@ var App = function App() {
     ProductData: productData
   }), /*#__PURE__*/_react.default.createElement(_SofaandLoveseat.default, {
     path: "sofaandloveseat",
-    ProductData: productData
+    ProductData: productData,
+    component: _SofaandLoveseat.default
   }), /*#__PURE__*/_react.default.createElement(_ViewAll.default, {
     path: "viewall",
     ProductData: productData
@@ -36157,7 +36182,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61099" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53787" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
