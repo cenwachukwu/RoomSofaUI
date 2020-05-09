@@ -22,6 +22,11 @@ import store from './reduxStore';
 import { listProducts } from './actions/productActions';
 
 const App = () => {
+  // Add to cart
+  // we want to set a hook to manage the quantity of the products we add to cart
+  // we want the default value of everything added to cart to be 1
+  const [qty, setQty] = useState(1);
+
   // Incorporating redux
   // instead of using useState to get our state we will use useSelector to get our state from redux
   // useSelector will accept the state parameter and return state.productList
