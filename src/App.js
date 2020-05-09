@@ -15,9 +15,21 @@ import Recliner from './components/Categories/categoriesPages/Recliner';
 import Sectionals from './components/Categories/categoriesPages/Sectionals';
 import SofaAndLoveseat from './components/Categories/categoriesPages/SofaandLoveseat';
 import ViewAll from './components/Categories/categoriesPages/ViewAll';
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import store from './reduxStore';
+import { listProducts } from './actions/productActions';
 
 const App = () => {
-  const [productData, setProductData] = useState({ products: [] });
+  // const [productData, setProductData] = useState({ products: [] });
+
+  // Incorporating redux
+  const productList = useSelector((state) => state.productList);
+  const { productData, loading, error } = productList;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(listProducts());
+  }, []);
 
   // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
   useEffect(() => {
@@ -35,21 +47,21 @@ const App = () => {
     localData ? JSON.parse(localData) : []
   );
 
-  useEffect(() => {
-    axios
-      .get('https://roomsofa.herokuapp.com/products')
-      .then((res) => {
-        // console.log(res);
-        const Product = res.data;
-        setProductData(Product);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    // because We only want to fetch data when the component mounts.
-    // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
-    // on component updates but only for the mounting of the component.
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('https://roomsofa.herokuapp.com/products')
+  //     .then((res) => {
+  //       // console.log(res);
+  //       const Product = res.data;
+  //       setProductData(Product);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   // because We only want to fetch data when the component mounts.
+  //   // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
+  //   // on component updates but only for the mounting of the component.
+  // }, []);
 
   // make sure the add cart function adds each product once and increases the quantity
   const handleAddToCart = (e, product) => {
@@ -126,4 +138,9 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
