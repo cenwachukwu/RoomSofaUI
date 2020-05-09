@@ -949,6 +949,13 @@ i didnt give the elements classnames, so if you give it classnames you dont have
   padding: 2rem;
   width: 100%;
 }
+.CartItems {
+  border: 2px solid brown;
+  width: 100%;
+  min-height: 40em;
+  height: 100%;
+  padding: 1rem;
+}
 .CategoriesPage {
   padding: 1rem;
   width: 100%;

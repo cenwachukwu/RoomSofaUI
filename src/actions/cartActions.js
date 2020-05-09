@@ -3,20 +3,23 @@ import { CART_ADD_ITEM } from '../constants/cartConstants';
 
 const addToCart = (productId, quantity) => async (dispatch) => {
   try {
-    const { data } = await axios.get(
-      'https://roomsofa.herokuapp.com/products/' + productId
+    const { data } = await axios.get('https://roomsofa.herokuapp.com/products');
+    // console.log(data.data);
+    const productData = await data.data.filter(
+      (data) => productId === data._id
     );
-    console.log(data);
+    // console.log('productData', productData[0]._id);
+
     dispatch({
       type: CART_ADD_ITEM,
       payload: {
-        product: data._id,
-        name: data.name,
-        brand: data.brand,
-        image: data.image,
-        price: data.price,
-        countInStock: data.isSoldOut,
-        qty,
+        product: productData[0]._id,
+        name: productData[0].name,
+        brand: productData[0].brand,
+        image: productData[0].image,
+        price: productData[0].price,
+        countInStock: productData[0].isSoldOut,
+        quantity,
       },
     });
   } catch (error) {}

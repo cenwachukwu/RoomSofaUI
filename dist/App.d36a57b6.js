@@ -37337,7 +37337,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var addToCart = function addToCart(productId, quantity) {
   return /*#__PURE__*/function () {
     var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(dispatch) {
-      var _yield$axios$get, data;
+      var _yield$axios$get, data, productData;
 
       return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
@@ -37345,37 +37345,44 @@ var addToCart = function addToCart(productId, quantity) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return _axios.default.get('https://roomsofa.herokuapp.com/products/' + productId);
+              return _axios.default.get('https://roomsofa.herokuapp.com/products');
 
             case 3:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
-              console.log(data);
+              _context.next = 7;
+              return data.data.filter(function (data) {
+                return productId === data._id;
+              });
+
+            case 7:
+              productData = _context.sent;
+              // console.log('productData', productData[0]._id);
               dispatch({
                 type: _cartConstants.CART_ADD_ITEM,
                 payload: {
-                  product: data._id,
-                  name: data.name,
-                  brand: data.brand,
-                  image: data.image,
-                  price: data.price,
-                  countInStock: data.isSoldOut,
-                  qty: qty
+                  product: productData[0]._id,
+                  name: productData[0].name,
+                  brand: productData[0].brand,
+                  image: productData[0].image,
+                  price: productData[0].price,
+                  countInStock: productData[0].isSoldOut,
+                  quantity: quantity
                 }
               });
-              _context.next = 11;
+              _context.next = 13;
               break;
 
-            case 9:
-              _context.prev = 9;
+            case 11:
+              _context.prev = 11;
               _context.t0 = _context["catch"](0);
 
-            case 11:
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[0, 11]]);
     }));
 
     return function (_x) {
@@ -37418,11 +37425,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 // make a new array called product.price that consists of all [product.price = product.quantity * product.price]
 // then add all the elements in the product.price array
 var CartItems = function CartItems(props) {
-  console.log(props);
+  // console.log(props);
   var productId = props.data['*'];
-  console.log(productId);
-  var quantity = props.data.location.search ? Number(props.data.location.search.split('=')[1]) : 1;
-  console.log(quantity);
+  var quantity = props.data.location.search ? Number(props.data.location.search.split('=')[1]) : 1; // getting the cart state
+
+  var cart = (0, _reactRedux.useSelector)(function (state) {
+    return state.cart;
+  });
+  var cartItems = cart.cartItems;
+  console.log(cartItems);
   var dispatch = (0, _reactRedux.useDispatch)(); // now that we have gotten the productId and the quantity from the props
   // we will use useEffect to make a dispatch
   // this dispatch will accept productId, quantity
@@ -37434,7 +37445,7 @@ var CartItems = function CartItems(props) {
   }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CartItems"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Cart is here"));
+  }, /*#__PURE__*/_react.default.createElement("div", null));
 };
 
 var _default = CartItems;
@@ -37998,28 +38009,28 @@ var listProducts = function listProducts() {
             case 4:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
-              console.log(data);
+              // console.log(data);
               dispatch({
                 type: _productConstants.PRODUCT_LIST_SUCCESS,
                 payload: data
               });
-              _context.next = 13;
+              _context.next = 12;
               break;
 
-            case 10:
-              _context.prev = 10;
+            case 9:
+              _context.prev = 9;
               _context.t0 = _context["catch"](0);
               dispatch({
                 type: _productConstants.PRODUCT_LIST_FAIL,
                 payload: _context.t0.message
               });
 
-            case 13:
+            case 12:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 10]]);
+      }, _callee, null, [[0, 9]]);
     }));
 
     return function (_x) {

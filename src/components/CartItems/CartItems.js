@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './CartItems.scss';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../actions/cartActions';
 
 // we need to increase the price to reflect according to quantity
@@ -15,16 +15,18 @@ import { addToCart } from '../../actions/cartActions';
 // then add all the elements in the product.price array
 
 const CartItems = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const productId = props.data['*'];
-  console.log(productId);
 
   const quantity = props.data.location.search
     ? Number(props.data.location.search.split('=')[1])
     : 1;
 
-  console.log(quantity);
+  // getting the cart state
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  console.log(cartItems);
 
   const dispatch = useDispatch();
 
@@ -39,7 +41,7 @@ const CartItems = (props) => {
 
   return (
     <div className="CartItems">
-      <p>Cart is here</p>
+      <div></div>
     </div>
   );
 };
