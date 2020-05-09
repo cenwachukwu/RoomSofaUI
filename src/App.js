@@ -15,17 +15,25 @@ import Recliner from './components/Categories/categoriesPages/Recliner';
 import Sectionals from './components/Categories/categoriesPages/Sectionals';
 import SofaAndLoveseat from './components/Categories/categoriesPages/SofaandLoveseat';
 import ViewAll from './components/Categories/categoriesPages/ViewAll';
+
+// redux
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import store from './reduxStore';
 import { listProducts } from './actions/productActions';
 
 const App = () => {
   // Incorporating redux
+  // instead of using useState to get our state we will use useSelector to get our state from redux
+  // useSelector will accept the state parameter and return state.productList
+  // remember we set this productList in reduxStore.js
   const productList = useSelector((state) => state.productList);
+  // we are getting the states we named in productList... check productReducer.js in the reducer folder
   const { products, loading, error } = productList;
+  // we use useDispatch to name an action we want useEffect to do
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // the action we want useEffect to do is make an api call to get our product data
     dispatch(listProducts());
     return () => {
       //

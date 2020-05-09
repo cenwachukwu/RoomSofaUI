@@ -38709,16 +38709,23 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 // pages
+// redux
 var App = function App() {
   // Incorporating redux
+  // instead of using useState to get our state we will use useSelector to get our state from redux
+  // useSelector will accept the state parameter and return state.productList
+  // remember we set this productList in reduxStore.js
   var productList = (0, _reactRedux.useSelector)(function (state) {
     return state.productList;
-  });
+  }); // we are getting the states we named in productList... check productReducer.js in the reducer folder
+
   var products = productList.products,
       loading = productList.loading,
-      error = productList.error;
+      error = productList.error; // we use useDispatch to name an action we want useEffect to do
+
   var dispatch = (0, _reactRedux.useDispatch)();
   (0, _react.useEffect)(function () {
+    // the action we want useEffect to do is make an api call to get our product data
     dispatch((0, _productActions.listProducts)());
     return function () {//
     };
