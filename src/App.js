@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useReducer } from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from '@reach/router';
+import { LocationProvider, Router } from '@reach/router';
+import { history } from './routerHistory';
 import axios from 'axios';
 
 // pages
@@ -22,11 +23,6 @@ import store from './reduxStore';
 import { listProducts } from './actions/productActions';
 
 const App = () => {
-  // Add to cart
-  // we want to set a hook to manage the quantity of the products we add to cart
-  // we want the default value of everything added to cart to be 1
-  const [qty, setQty] = useState(1);
-
   // Incorporating redux
   // instead of using useState to get our state we will use useSelector to get our state from redux
   // useSelector will accept the state parameter and return state.productList
@@ -102,7 +98,7 @@ const App = () => {
           error={error}
         />
 
-        <Cart path="/cart" component={Cart} />
+        <Cart path="/cart/*" component={Cart} />
 
         <UploadProduct path="/admin/UploadProduct" component={UploadProduct} />
       </Router>

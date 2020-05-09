@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductInfo.scss';
 import util from '../../utils/CurrencyFormatter/CurrencyFormatter';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import sectional from '../../utils/homepills/sectional.jpg';
 import MobileNav from '../MobileNavbar/MobileNav';
 
@@ -14,6 +14,17 @@ const ProductInfo = (props) => {
   const error = props.data.error;
 
   const productId = props.data.productid;
+
+  const quantity = [0, 1, 2, 3];
+
+  // Add to cart
+  // we want to set a hook to manage the quantity of the products we add to cart
+  // we want the default value of everything added to cart to be 1
+  const [qty, setQty] = useState(1);
+  const handleAddToCart = () => {
+    console.log(props);
+    navigate('/cart/' + productId + '?qty=' + qty);
+  };
 
   return (
     <div className="ProductInfo">
@@ -46,8 +57,27 @@ const ProductInfo = (props) => {
                         {util.formatCurrency(x.price / 100)}
                       </h1>
                     </div>
+                    <div className="quantity">
+                      <div className="quantityPTag">
+                        <p>Qty:</p>
+                      </div>
+                      <div className="quantitySelectHolder">
+                        <select
+                          value={qty}
+                          onChange={(e) => {
+                            setQty(e.target.value);
+                          }}
+                        >
+                          {quantity.map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
                     <div>
-                      <button>Add to Cart</button>
+                      <button onClick={handleAddToCart}>Add to Cart</button>
                     </div>
 
                     <div className="prodDescriptions">

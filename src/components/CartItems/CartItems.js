@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react';
 import './CartItems.scss';
 import axios from 'axios';
-
-import {
-  Elements,
-  CardElement,
-  useStripe,
-  useElements,
-} from '@stripe/react-stripe-js';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../actions/cartActions';
 
 // we need to increase the price to reflect according to quantity
 // we will do this in the cartItems page
@@ -19,57 +14,32 @@ import {
 // make a new array called product.price that consists of all [product.price = product.quantity * product.price]
 // then add all the elements in the product.price array
 
-const CartItems = (props, { success }) => {
-  console.log(props.data.cartItems);
+const CartItems = (props) => {
+  console.log(props);
 
-  const stripe = useStripe();
-  const elements = useElements();
+  const productId = props.data['*'];
+  console.log(productId);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const quantity = props.data.location.search
+    ? Number(props.data.location.search.split('=')[1])
+    : 1;
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-    });
+  console.log(quantity);
 
-    // if no error, we will post this to the backend to charge the person using axios
-    // if (!error) {
-    //   const { id } = paymentMethod;
+  const dispatch = useDispatch();
 
-    //   const url = "tbd"
-
-    //   try {
-    //     const { data } = await axios.post(url, { id, amount: 1099 });
-    //     console.log(data);
-    // if (!data.ok) {
-    //     throw Error(data.statusText);
-    //   }
-    //     success();
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
-  };
+  // now that we have gotten the productId and the quantity from the props
+  // we will use useEffect to make a dispatch
+  // this dispatch will accept productId, quantity
+  useEffect(() => {
+    if (productId) {
+      dispatch(addToCart(productId, quantity));
+    }
+  }, []);
 
   return (
     <div className="CartItems">
-      <form
-        onSubmit={handleSubmit}
-        style={{ width: '400px', margin: '0 auto' }}
-      >
-        <h2>Price: $10.99 USD</h2>
-        <img
-          src="https://images.ricardocuisine.com/services/recipes/500x675_7700.jpg"
-          style={{ maxWidth: '50px' }}
-        />
-
-        <CardElement />
-
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
-      </form>
+      <p>Cart is here</p>
     </div>
   );
 };
