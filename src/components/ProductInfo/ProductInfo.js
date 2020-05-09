@@ -6,13 +6,22 @@ import sectional from '../../utils/homepills/sectional.jpg';
 import MobileNav from '../MobileNavbar/MobileNav';
 
 const ProductInfo = (props) => {
-  const productData = props.data.ProductData.data;
+  console.log(props);
+  const productData = props.data.ProductData;
+
+  const loading = props.data.loading;
+
+  const error = props.data.error;
 
   const productId = props.data.productid;
 
   return (
     <div className="ProductInfo">
-      {productData ? (
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : productData ? (
         <div className="ProductInfoContainerHolder">
           {productData.map((x, index) => {
             if (x._id === productId) {
@@ -100,7 +109,7 @@ const ProductInfo = (props) => {
           })}
         </div>
       ) : (
-        <p>Product detail not available</p>
+        <p>something is wrong</p>
       )}
     </div>
   );

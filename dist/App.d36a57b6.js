@@ -117,121 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/@babel/runtime/helpers/arrayLikeToArray.js":[function(require,module,exports) {
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-
-  return arr2;
-}
-
-module.exports = _arrayLikeToArray;
-},{}],"../node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":[function(require,module,exports) {
-var arrayLikeToArray = require("./arrayLikeToArray");
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return arrayLikeToArray(arr);
-}
-
-module.exports = _arrayWithoutHoles;
-},{"./arrayLikeToArray":"../node_modules/@babel/runtime/helpers/arrayLikeToArray.js"}],"../node_modules/@babel/runtime/helpers/iterableToArray.js":[function(require,module,exports) {
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
-}
-
-module.exports = _iterableToArray;
-},{}],"../node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":[function(require,module,exports) {
-var arrayLikeToArray = require("./arrayLikeToArray");
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
-}
-
-module.exports = _unsupportedIterableToArray;
-},{"./arrayLikeToArray":"../node_modules/@babel/runtime/helpers/arrayLikeToArray.js"}],"../node_modules/@babel/runtime/helpers/nonIterableSpread.js":[function(require,module,exports) {
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-module.exports = _nonIterableSpread;
-},{}],"../node_modules/@babel/runtime/helpers/toConsumableArray.js":[function(require,module,exports) {
-var arrayWithoutHoles = require("./arrayWithoutHoles");
-
-var iterableToArray = require("./iterableToArray");
-
-var unsupportedIterableToArray = require("./unsupportedIterableToArray");
-
-var nonIterableSpread = require("./nonIterableSpread");
-
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
-}
-
-module.exports = _toConsumableArray;
-},{"./arrayWithoutHoles":"../node_modules/@babel/runtime/helpers/arrayWithoutHoles.js","./iterableToArray":"../node_modules/@babel/runtime/helpers/iterableToArray.js","./unsupportedIterableToArray":"../node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableSpread":"../node_modules/@babel/runtime/helpers/nonIterableSpread.js"}],"../node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-module.exports = _arrayWithHoles;
-},{}],"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":[function(require,module,exports) {
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-module.exports = _iterableToArrayLimit;
-},{}],"../node_modules/@babel/runtime/helpers/nonIterableRest.js":[function(require,module,exports) {
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-module.exports = _nonIterableRest;
-},{}],"../node_modules/@babel/runtime/helpers/slicedToArray.js":[function(require,module,exports) {
-var arrayWithHoles = require("./arrayWithHoles");
-
-var iterableToArrayLimit = require("./iterableToArrayLimit");
-
-var unsupportedIterableToArray = require("./unsupportedIterableToArray");
-
-var nonIterableRest = require("./nonIterableRest");
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
-}
-
-module.exports = _slicedToArray;
-},{"./arrayWithHoles":"../node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./unsupportedIterableToArray":"../node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableRest":"../node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"../node_modules/object-assign/index.js":[function(require,module,exports) {
+})({"../node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -32886,7 +32772,87 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/DropDown/dropdown.scss":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/@babel/runtime/helpers/arrayWithHoles.js":[function(require,module,exports) {
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+},{}],"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":[function(require,module,exports) {
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+},{}],"../node_modules/@babel/runtime/helpers/arrayLikeToArray.js":[function(require,module,exports) {
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+},{}],"../node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":[function(require,module,exports) {
+var arrayLikeToArray = require("./arrayLikeToArray");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
+},{"./arrayLikeToArray":"../node_modules/@babel/runtime/helpers/arrayLikeToArray.js"}],"../node_modules/@babel/runtime/helpers/nonIterableRest.js":[function(require,module,exports) {
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+},{}],"../node_modules/@babel/runtime/helpers/slicedToArray.js":[function(require,module,exports) {
+var arrayWithHoles = require("./arrayWithHoles");
+
+var iterableToArrayLimit = require("./iterableToArrayLimit");
+
+var unsupportedIterableToArray = require("./unsupportedIterableToArray");
+
+var nonIterableRest = require("./nonIterableRest");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+},{"./arrayWithHoles":"../node_modules/@babel/runtime/helpers/arrayWithHoles.js","./iterableToArrayLimit":"../node_modules/@babel/runtime/helpers/iterableToArrayLimit.js","./unsupportedIterableToArray":"../node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js","./nonIterableRest":"../node_modules/@babel/runtime/helpers/nonIterableRest.js"}],"components/DropDown/dropdown.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -33647,11 +33613,14 @@ var _MobileNav = _interopRequireDefault(require("../MobileNavbar/MobileNav"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ProductInfo = function ProductInfo(props) {
-  var productData = props.data.ProductData.data;
+  console.log(props);
+  var productData = props.data.ProductData;
+  var loading = props.data.loading;
+  var error = props.data.error;
   var productId = props.data.productid;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductInfo"
-  }, productData ? /*#__PURE__*/_react.default.createElement("div", {
+  }, loading ? /*#__PURE__*/_react.default.createElement("div", null, "Loading...") : error ? /*#__PURE__*/_react.default.createElement("div", null, error) : productData ? /*#__PURE__*/_react.default.createElement("div", {
     className: "ProductInfoContainerHolder"
   }, productData.map(function (x, index) {
     if (x._id === productId) {
@@ -33710,7 +33679,7 @@ var ProductInfo = function ProductInfo(props) {
         }, /*#__PURE__*/_react.default.createElement("p", null, dimension.product_dimension)));
       }))));
     }
-  })) : /*#__PURE__*/_react.default.createElement("p", null, "Product detail not available"));
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "something is wrong"));
 };
 
 var _default = ProductInfo;
@@ -35784,12 +35753,13 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var AccentChair = function AccentChair(props) {
-  var categoriesProps = props.ProductData.data;
-  console.log(categoriesProps); // we can say if category == prop.location.pathname
+  var categoriesProps = props.ProductData;
+  var loading = props.loading;
+  var error = props.error; // console.log(categoriesProps);
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
+  }, loading ? /*#__PURE__*/_react.default.createElement("div", null, "Loading...") : error ? /*#__PURE__*/_react.default.createElement("div", null, error) : categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
   }, categoriesProps.map(function (product, index) {
     if (product.category == 'AccentChair') {
@@ -35800,7 +35770,7 @@ var AccentChair = function AccentChair(props) {
         data: product
       }));
     }
-  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "something is wrong"));
 };
 
 var _default = AccentChair;
@@ -35822,11 +35792,13 @@ var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPi
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Chair = function Chair(props) {
-  var categoriesProps = props.ProductData.data;
-  console.log(categoriesProps);
+  var categoriesProps = props.ProductData;
+  var loading = props.loading;
+  var error = props.error; // console.log(categoriesProps);
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
+  }, loading ? /*#__PURE__*/_react.default.createElement("div", null, "Loading...") : error ? /*#__PURE__*/_react.default.createElement("div", null, error) : categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
   }, categoriesProps.map(function (product, index) {
     if (product.category == 'Chair') {
@@ -35837,7 +35809,7 @@ var Chair = function Chair(props) {
         data: product
       }));
     }
-  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "something is wrong"));
 };
 
 var _default = Chair;
@@ -35859,11 +35831,13 @@ var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPi
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Recliner = function Recliner(props) {
-  var categoriesProps = props.ProductData.data;
-  console.log(categoriesProps);
+  var categoriesProps = props.ProductData;
+  var loading = props.loading;
+  var error = props.error; // console.log(categoriesProps);
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
+  }, loading ? /*#__PURE__*/_react.default.createElement("div", null, "Loading...") : error ? /*#__PURE__*/_react.default.createElement("div", null, error) : categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
   }, categoriesProps.map(function (product, index) {
     if (product.category == 'Recliner') {
@@ -35874,7 +35848,7 @@ var Recliner = function Recliner(props) {
         data: product
       }));
     }
-  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "something is wrong"));
 };
 
 var _default = Recliner;
@@ -35896,10 +35870,13 @@ var _ProductPill = _interopRequireDefault(require("../../ProductsPills/ProductPi
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Sectionals = function Sectionals(props) {
-  var categoriesProps = props.ProductData.data;
+  var categoriesProps = props.ProductData;
+  var loading = props.loading;
+  var error = props.error;
+  console.log(categoriesProps);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
+  }, loading ? /*#__PURE__*/_react.default.createElement("div", null, "Loading...") : error ? /*#__PURE__*/_react.default.createElement("div", null, error) : categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
   }, categoriesProps.map(function (product, index) {
     if (product.category == 'Sectionals') {
@@ -35910,7 +35887,7 @@ var Sectionals = function Sectionals(props) {
         data: product
       }));
     }
-  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "something is wrong"));
 };
 
 var _default = Sectionals;
@@ -35936,11 +35913,13 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var SofaAndLoveseat = function SofaAndLoveseat(props) {
-  var categoriesProps = props.ProductData.data;
-  console.log(categoriesProps);
+  var categoriesProps = props.ProductData;
+  var loading = props.loading;
+  var error = props.error; // console.log(categoriesProps);
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPage"
-  }, categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
+  }, loading ? /*#__PURE__*/_react.default.createElement("div", null, "Loading...") : error ? /*#__PURE__*/_react.default.createElement("div", null, error) : categoriesProps ? /*#__PURE__*/_react.default.createElement("div", {
     className: "CategoriesPageContainer"
   }, categoriesProps.map(function (product, index) {
     if (product.category == 'SofaandLoveseat') {
@@ -35951,7 +35930,7 @@ var SofaAndLoveseat = function SofaAndLoveseat(props) {
         data: product
       }));
     }
-  })) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "This product is coming soon but while you are here check out other products")));
+  })) : /*#__PURE__*/_react.default.createElement("p", null, "something is wrong"));
 };
 
 var _default = SofaAndLoveseat;
@@ -38555,67 +38534,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.productListReducer = void 0;
 
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
 var _productConstants = require("../constants/productConstants");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var productListReducer = /*#__PURE__*/function () {
-  var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-    var state,
-        action,
-        _args = arguments;
-    return _regenerator.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            state = _args.length > 0 && _args[0] !== undefined ? _args[0] : {
-              productData: []
-            };
-            action = _args.length > 1 ? _args[1] : undefined;
-            _context.t0 = action.type;
-            _context.next = _context.t0 === _productConstants.PRODUCT_LIST_REQUEST ? 5 : _context.t0 === _productConstants.PRODUCT_LIST_SUCCESS ? 6 : _context.t0 === _productConstants.PRODUCT_LIST_FAIL ? 7 : 8;
-            break;
-
-          case 5:
-            return _context.abrupt("return", {
-              loading: true,
-              productData: []
-            });
-
-          case 6:
-            return _context.abrupt("return", {
-              loading: false,
-              productData: action.payload
-            });
-
-          case 7:
-            return _context.abrupt("return", {
-              loading: false,
-              error: action.payload
-            });
-
-          case 8:
-            return _context.abrupt("return", state);
-
-          case 9:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function productListReducer() {
-    return _ref.apply(this, arguments);
+var productListReducer = function productListReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    products: []
   };
-}();
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _productConstants.PRODUCT_LIST_REQUEST:
+      return {
+        loading: true,
+        products: []
+      };
+
+    case _productConstants.PRODUCT_LIST_SUCCESS:
+      return {
+        loading: false,
+        products: action.payload
+      };
+
+    case _productConstants.PRODUCT_LIST_FAIL:
+      return {
+        loading: false,
+        error: action.payload
+      };
+
+    default:
+      return state;
+  }
+};
 
 exports.productListReducer = productListReducer;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","../constants/productConstants":"constants/productConstants.js"}],"reduxStore.js":[function(require,module,exports) {
+},{"../constants/productConstants":"constants/productConstants.js"}],"reduxStore.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38680,27 +38632,28 @@ var listProducts = function listProducts() {
             case 4:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
+              console.log(data);
               dispatch({
                 type: _productConstants.PRODUCT_LIST_SUCCESS,
                 payload: data
               });
-              _context.next = 12;
+              _context.next = 13;
               break;
 
-            case 9:
-              _context.prev = 9;
+            case 10:
+              _context.prev = 10;
               _context.t0 = _context["catch"](0);
               dispatch({
                 type: _productConstants.PRODUCT_LIST_FAIL,
                 payload: _context.t0.message
               });
 
-            case 12:
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[0, 10]]);
     }));
 
     return function (_x) {
@@ -38712,10 +38665,6 @@ var listProducts = function listProducts() {
 exports.listProducts = listProducts;
 },{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","axios":"../node_modules/axios/index.js","../constants/productConstants":"constants/productConstants.js"}],"App.js":[function(require,module,exports) {
 "use strict";
-
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -38753,93 +38702,27 @@ var _reduxStore = _interopRequireDefault(require("./reduxStore"));
 
 var _productActions = require("./actions/productActions");
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 // pages
 var App = function App() {
-  // const [productData, setProductData] = useState({ products: [] });
   // Incorporating redux
   var productList = (0, _reactRedux.useSelector)(function (state) {
     return state.productList;
   });
-  var productData = productList.productData,
+  var products = productList.products,
       loading = productList.loading,
       error = productList.error;
   var dispatch = (0, _reactRedux.useDispatch)();
   (0, _react.useEffect)(function () {
     dispatch((0, _productActions.listProducts)());
-  }, []); // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
-
-  (0, _react.useEffect)(function () {
-    localStorage.setItem('Cart', JSON.stringify(cartItems));
-  }, [cartItems]); // we want to retrieve our data in the localStorage
-  // we use localStorage.getItem('name of the storage')
-
-  var localData = localStorage.getItem('Cart'); // we want to be able to get the previous value of cartItems
-  // ie. we dont want cartItems start of as empty if there is something there
-
-  var _useState = (0, _react.useState)( // we use JSON.parse to return a usable object b/c localStorage stores it as a string object"{}"
-  localData ? JSON.parse(localData) : []),
-      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-      cartItems = _useState2[0],
-      setcartItems = _useState2[1]; // useEffect(() => {
-  //   axios
-  //     .get('https://roomsofa.herokuapp.com/products')
-  //     .then((res) => {
-  //       // console.log(res);
-  //       const Product = res.data;
-  //       setProductData(Product);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   // because We only want to fetch data when the component mounts.
-  //   // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
-  //   // on component updates but only for the mounting of the component.
-  // }, []);
-  // make sure the add cart function adds each product once and increases the quantity
-
-
-  var handleAddToCart = function handleAddToCart(e, product) {
-    alert('added to cart');
-    var found = cartItems.find(function (productId) {
-      return productId._id === product._id;
-    }); // if found is true they already in the cart[] and we dont want to add it but increase the quantity i.e. ++
-
-    if (found) {
-      product.quantity++; // console.log('found worked');
-    } // if not, we want to add a quality property to the product object and set it to 1
-    // and then add that product to our array
-    else {
-        product.quantity = 1;
-        setcartItems(function (prevState) {
-          return [].concat((0, _toConsumableArray2.default)(prevState), [product]);
-        }); // console.log('this is the product', product);
-      }
-  }; // remove item from cart function
-  // basically remove this product object from the cartItems
-
-
-  var removeItemFromCart = function removeItemFromCart(e, product) {
-    alert('Item Removed');
-  }; // decrease the product quantity
-
-
-  var decreaseProductQuantity = function decreaseProductQuantity(e, product) {
-    alert('Quantity Increase ');
-    product.quantity++;
-  }; // increase the product quantity
-
-
-  var increaseProductQuantity = function increaseProductQuantity(e, product) {
-    alert('Item Removed');
-    product.quantity = product.quantity - 1;
-  };
-
+    return function () {//
+    };
+  }, []);
   return /*#__PURE__*/_react.default.createElement(_react.default.StrictMode, null, /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_Home.default, {
     path: "/",
     exact: true,
@@ -38847,35 +38730,47 @@ var App = function App() {
   }), /*#__PURE__*/_react.default.createElement(_Categories.default, {
     path: "/categories",
     component: _Categories.default,
-    ProductData: productData
+    ProductData: products
   }, /*#__PURE__*/_react.default.createElement(_AccentChair.default, {
     path: "accentchair",
-    ProductData: productData
+    ProductData: products.data,
+    loading: loading,
+    error: error
   }), /*#__PURE__*/_react.default.createElement(_Chair.default, {
     path: "chair",
-    ProductData: productData
+    ProductData: products.data,
+    loading: loading,
+    error: error
   }), /*#__PURE__*/_react.default.createElement(_Recliner.default, {
     path: "recliner",
-    ProductData: productData
+    ProductData: products.data,
+    loading: loading,
+    error: error
   }), /*#__PURE__*/_react.default.createElement(_Sectionals.default, {
     path: "sectionals",
-    ProductData: productData
+    ProductData: products.data,
+    loading: loading,
+    error: error
   }), /*#__PURE__*/_react.default.createElement(_SofaandLoveseat.default, {
     path: "sofaandloveseat",
-    ProductData: productData,
+    ProductData: products.data,
+    loading: loading,
+    error: error,
     component: _SofaandLoveseat.default
   }), /*#__PURE__*/_react.default.createElement(_ViewAll.default, {
     path: "viewall",
-    ProductData: productData
+    ProductData: products.data,
+    loading: loading,
+    error: error
   })), /*#__PURE__*/_react.default.createElement(_Product.default, {
     path: "/productPage/:productid",
     component: _Product.default,
-    ProductData: productData,
-    handleAddToCart: handleAddToCart
+    ProductData: products.data,
+    loading: loading,
+    error: error
   }), /*#__PURE__*/_react.default.createElement(_Cart.default, {
     path: "/cart",
-    component: _Cart.default,
-    cartItems: cartItems
+    component: _Cart.default
   }), /*#__PURE__*/_react.default.createElement(_UploadProduct.default, {
     path: "/admin/UploadProduct",
     component: _UploadProduct.default
@@ -38885,7 +38780,7 @@ var App = function App() {
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_reactRedux.Provider, {
   store: _reduxStore.default
 }, /*#__PURE__*/_react.default.createElement(App, null)), document.getElementById('root'));
-},{"@babel/runtime/helpers/toConsumableArray":"../node_modules/@babel/runtime/helpers/toConsumableArray.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","axios":"../node_modules/axios/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js","./components/pages/Cart":"components/pages/Cart.js","./components/Categories/categoriesPages/AccentChair":"components/Categories/categoriesPages/AccentChair.js","./components/Categories/categoriesPages/Chair":"components/Categories/categoriesPages/Chair.js","./components/Categories/categoriesPages/Recliner":"components/Categories/categoriesPages/Recliner.js","./components/Categories/categoriesPages/Sectionals":"components/Categories/categoriesPages/Sectionals.js","./components/Categories/categoriesPages/SofaandLoveseat":"components/Categories/categoriesPages/SofaandLoveseat.js","./components/Categories/categoriesPages/ViewAll":"components/Categories/categoriesPages/ViewAll.js","react-redux":"../node_modules/react-redux/es/index.js","./reduxStore":"reduxStore.js","./actions/productActions":"actions/productActions.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","@reach/router":"../node_modules/@reach/router/es/index.js","axios":"../node_modules/axios/index.js","./components/pages/Home":"components/pages/Home.js","./components/pages/Categories/Categories":"components/pages/Categories/Categories.js","./components/pages/Product":"components/pages/Product.js","./components/UploadProduct/UploadProduct":"components/UploadProduct/UploadProduct.js","./components/pages/Cart":"components/pages/Cart.js","./components/Categories/categoriesPages/AccentChair":"components/Categories/categoriesPages/AccentChair.js","./components/Categories/categoriesPages/Chair":"components/Categories/categoriesPages/Chair.js","./components/Categories/categoriesPages/Recliner":"components/Categories/categoriesPages/Recliner.js","./components/Categories/categoriesPages/Sectionals":"components/Categories/categoriesPages/Sectionals.js","./components/Categories/categoriesPages/SofaandLoveseat":"components/Categories/categoriesPages/SofaandLoveseat.js","./components/Categories/categoriesPages/ViewAll":"components/Categories/categoriesPages/ViewAll.js","react-redux":"../node_modules/react-redux/es/index.js","./reduxStore":"reduxStore.js","./actions/productActions":"actions/productActions.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

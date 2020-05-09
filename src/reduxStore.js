@@ -3,7 +3,6 @@ import thunk from 'redux-thunk';
 import { productListReducer } from './reducers/productReducer';
 
 const initialState = {};
-
 const reducer = combineReducers({
   productList: productListReducer,
 });
@@ -14,5 +13,4 @@ const store = createStore(
   initialState,
   composeEnhancer(applyMiddleware(thunk))
 );
-
 export default store;

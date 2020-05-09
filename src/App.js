@@ -20,86 +20,17 @@ import store from './reduxStore';
 import { listProducts } from './actions/productActions';
 
 const App = () => {
-  // const [productData, setProductData] = useState({ products: [] });
-
   // Incorporating redux
   const productList = useSelector((state) => state.productList);
-  const { productData, loading, error } = productList;
+  const { products, loading, error } = productList;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listProducts());
+    return () => {
+      //
+    };
   }, []);
-
-  // we use JSON.stringify because it helps us store our data as a JSON string object "{}"
-  useEffect(() => {
-    localStorage.setItem('Cart', JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  // we want to retrieve our data in the localStorage
-  // we use localStorage.getItem('name of the storage')
-  const localData = localStorage.getItem('Cart');
-
-  // we want to be able to get the previous value of cartItems
-  // ie. we dont want cartItems start of as empty if there is something there
-  const [cartItems, setcartItems] = useState(
-    // we use JSON.parse to return a usable object b/c localStorage stores it as a string object"{}"
-    localData ? JSON.parse(localData) : []
-  );
-
-  // useEffect(() => {
-  //   axios
-  //     .get('https://roomsofa.herokuapp.com/products')
-  //     .then((res) => {
-  //       // console.log(res);
-  //       const Product = res.data;
-  //       setProductData(Product);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   // because We only want to fetch data when the component mounts.
-  //   // That's why you can provide an empty array as second argument to the effect hook to avoid activating it
-  //   // on component updates but only for the mounting of the component.
-  // }, []);
-
-  // make sure the add cart function adds each product once and increases the quantity
-  const handleAddToCart = (e, product) => {
-    alert('added to cart');
-
-    const found = cartItems.find((productId) => productId._id === product._id);
-    // if found is true they already in the cart[] and we dont want to add it but increase the quantity i.e. ++
-    if (found) {
-      product.quantity++;
-      // console.log('found worked');
-    }
-    // if not, we want to add a quality property to the product object and set it to 1
-    // and then add that product to our array
-    else {
-      product.quantity = 1;
-      setcartItems((prevState) => [...prevState, product]);
-
-      // console.log('this is the product', product);
-    }
-  };
-
-  // remove item from cart function
-  // basically remove this product object from the cartItems
-  const removeItemFromCart = (e, product) => {
-    alert('Item Removed');
-  };
-
-  // decrease the product quantity
-  const decreaseProductQuantity = (e, product) => {
-    alert('Quantity Increase ');
-    product.quantity++;
-  };
-
-  // increase the product quantity
-  const increaseProductQuantity = (e, product) => {
-    alert('Item Removed');
-    product.quantity = product.quantity - 1;
-  };
 
   return (
     <React.StrictMode>
@@ -109,28 +40,56 @@ const App = () => {
         <Categories
           path="/categories"
           component={Categories}
-          ProductData={productData}
+          ProductData={products}
         >
-          <AccentChair path="accentchair" ProductData={productData} />
-          <Chair path="chair" ProductData={productData} />
-          <Recliner path="recliner" ProductData={productData} />
-          <Sectionals path="sectionals" ProductData={productData} />
+          <AccentChair
+            path="accentchair"
+            ProductData={products.data}
+            loading={loading}
+            error={error}
+          />
+          <Chair
+            path="chair"
+            ProductData={products.data}
+            loading={loading}
+            error={error}
+          />
+          <Recliner
+            path="recliner"
+            ProductData={products.data}
+            loading={loading}
+            error={error}
+          />
+          <Sectionals
+            path="sectionals"
+            ProductData={products.data}
+            loading={loading}
+            error={error}
+          />
           <SofaAndLoveseat
             path="sofaandloveseat"
-            ProductData={productData}
+            ProductData={products.data}
+            loading={loading}
+            error={error}
             component={SofaAndLoveseat}
           />
-          <ViewAll path="viewall" ProductData={productData} />
+          <ViewAll
+            path="viewall"
+            ProductData={products.data}
+            loading={loading}
+            error={error}
+          />
         </Categories>
 
         <ProductPage
           path="/productPage/:productid"
           component={ProductPage}
-          ProductData={productData}
-          handleAddToCart={handleAddToCart}
+          ProductData={products.data}
+          loading={loading}
+          error={error}
         />
 
-        <Cart path="/cart" component={Cart} cartItems={cartItems} />
+        <Cart path="/cart" component={Cart} />
 
         <UploadProduct path="/admin/UploadProduct" component={UploadProduct} />
       </Router>

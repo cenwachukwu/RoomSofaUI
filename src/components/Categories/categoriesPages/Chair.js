@@ -3,11 +3,18 @@ import '../Categories.scss';
 import ProductsPils from '../../ProductsPills/ProductPill';
 
 const Chair = (props) => {
-  const categoriesProps = props.ProductData.data;
-  console.log(categoriesProps);
+  const categoriesProps = props.ProductData;
+  const loading = props.loading;
+  const error = props.error;
+  // console.log(categoriesProps);
+
   return (
     <div className="CategoriesPage">
-      {categoriesProps ? (
+      {loading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : categoriesProps ? (
         <div className="CategoriesPageContainer">
           {categoriesProps.map((product, index) => {
             if (product.category == 'Chair') {
@@ -21,12 +28,7 @@ const Chair = (props) => {
           })}
         </div>
       ) : (
-        <div>
-          <p>
-            This product is coming soon but while you are here check out other
-            products
-          </p>
-        </div>
+        <p>something is wrong</p>
       )}
     </div>
   );
