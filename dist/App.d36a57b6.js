@@ -37322,7 +37322,7 @@ exports.CART_SAVE_PAYMENT = CART_SAVE_PAYMENT;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.addToCart = void 0;
+exports.removeFromCart = exports.addToCart = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
@@ -37334,6 +37334,7 @@ var _cartConstants = require("../constants/cartConstants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// the action we want to dipatch
 var addToCart = function addToCart(productId, quantity) {
   return /*#__PURE__*/function () {
     var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(dispatch) {
@@ -37392,6 +37393,17 @@ var addToCart = function addToCart(productId, quantity) {
 };
 
 exports.addToCart = addToCart;
+
+var removeFromCart = function removeFromCart(productId) {
+  return function (dispatch, getState) {
+    dispatch({
+      type: _cartConstants.CART_REMOVE_ITEM,
+      payload: productId
+    });
+  };
+};
+
+exports.removeFromCart = removeFromCart;
 },{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","axios":"../node_modules/axios/index.js","../constants/cartConstants":"constants/cartConstants.js"}],"components/CartItems/CartItems.js":[function(require,module,exports) {
 "use strict";
 
@@ -37449,8 +37461,8 @@ var CartItems = function CartItems(props) {
     alert('checkout'); // props.history.push("/signin?redirect=shipping");
   };
 
-  var removeFromCartHandler = function removeFromCartHandler() {
-    alert('removed');
+  var removeFromCartHandler = function removeFromCartHandler(productId) {
+    dispatch((0, _cartActions.removeFromCart)(productId));
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -37502,7 +37514,9 @@ var CartItems = function CartItems(props) {
     }))), /*#__PURE__*/_react.default.createElement("div", {
       className: "removeButtonDiv"
     }, /*#__PURE__*/_react.default.createElement("button", {
-      onClick: removeFromCartHandler,
+      onClick: function onClick() {
+        return removeFromCartHandler(product.product);
+      },
       className: "removeButton"
     }, "Remove")))));
   }), /*#__PURE__*/_react.default.createElement("div", {
@@ -37986,6 +38000,7 @@ var _cartConstants = require("../constants/cartConstants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// this is where we manage our state
 function cartReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     cartItems: []
@@ -37993,6 +38008,7 @@ function cartReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    //   so when we add item items to the cart
     case _cartConstants.CART_ADD_ITEM:
       var item = action.payload;
       var product = state.cartItems.find(function (x) {
@@ -38009,6 +38025,14 @@ function cartReducer() {
 
       return {
         cartItems: [].concat((0, _toConsumableArray2.default)(state.cartItems), [item])
+      };
+    //   when we remove items from the cart
+
+    case _cartConstants.CART_REMOVE_ITEM:
+      return {
+        cartItems: state.cartItems.filter(function (x) {
+          return x.product !== action.payload;
+        })
       };
 
     default:

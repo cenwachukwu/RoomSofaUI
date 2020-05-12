@@ -1,5 +1,7 @@
+// the action we want to dipatch
+
 import axios from 'axios';
-import { CART_ADD_ITEM } from '../constants/cartConstants';
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants';
 
 const addToCart = (productId, quantity) => async (dispatch) => {
   try {
@@ -25,4 +27,8 @@ const addToCart = (productId, quantity) => async (dispatch) => {
   } catch (error) {}
 };
 
-export { addToCart };
+const removeFromCart = (productId) => (dispatch, getState) => {
+  dispatch({ type: CART_REMOVE_ITEM, payload: productId });
+};
+
+export { addToCart, removeFromCart };

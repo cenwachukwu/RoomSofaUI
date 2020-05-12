@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './CartItems.scss';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../actions/cartActions';
+import { addToCart, removeFromCart } from '../../actions/cartActions';
 
 // we need to increase the price to reflect according to quantity
 // we will do this in the cartItems page
@@ -46,8 +46,8 @@ const CartItems = (props) => {
     // props.history.push("/signin?redirect=shipping");
   };
 
-  const removeFromCartHandler = () => {
-    alert('removed');
+  const removeFromCartHandler = (productId) => {
+    dispatch(removeFromCart(productId));
   };
 
   return (
@@ -108,7 +108,7 @@ const CartItems = (props) => {
                       </div>
                       <div className="removeButtonDiv">
                         <button
-                          onClick={removeFromCartHandler}
+                          onClick={() => removeFromCartHandler(product.product)}
                           className="removeButton"
                         >
                           Remove
