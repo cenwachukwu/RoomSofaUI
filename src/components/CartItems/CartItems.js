@@ -61,64 +61,70 @@ const CartItems = (props) => {
             <p>Cart is empty</p>
           </div>
         ) : (
-          <div className="CartDiv">
-            {cartItems.map((product, index) => {
-              return (
-                <div key={index} className="prodInCart">
-                  <div className="productImage">
-                    <img src={product.image[0].image} />
-                  </div>
-                  <div className="productInfoDiv">
-                    <div className="productNameDiv">
-                      <div className="productInfoName">
-                        <p>{product.name}</p>
+          <div className="CartDivCheckout">
+            <div className="CartDiv">
+              {cartItems.map((product, index) => {
+                return (
+                  <div key={index} className="prodInCart">
+                    <div className="productImage">
+                      <img src={product.image[0].image} />
+                    </div>
+                    <div className="productInfoDiv">
+                      <div className="productNameDiv">
+                        <div className="productInfoName">
+                          <p>{product.name}</p>
+                        </div>
+                        <div className="productInfoBrand">
+                          <p>
+                            by {product.brand[0].brandName} |{' '}
+                            {product.brand[0].productId}
+                          </p>
+                        </div>
+                        <div className="productFreeShipping">
+                          <p>Free shipping within the DMV</p>
+                        </div>
                       </div>
-                      <div className="productInfoBrand">
-                        <p>
-                          by {product.brand[0].brandName} |{' '}
-                          {product.brand[0].productId}
-                        </p>
-                      </div>
-                      <div className="productFreeShipping">
-                        <p>Free shipping within the DMV</p>
+                      <div className="priceContainerDiv">
+                        <div className="productPrice">
+                          <p className="productPriceQty">
+                            ${(product.price * product.quantity) / 100}{' '}
+                          </p>
+                          <p className="productPriceItem">
+                            ${product.price / 100} per item
+                          </p>
+                        </div>
+                        <div className="productQtyPrice">
+                          <select
+                            value={product.quantity}
+                            onChange={(e) =>
+                              dispatch(
+                                addToCart(product.product, e.target.value)
+                              )
+                            }
+                          >
+                            {qty.map((x) => (
+                              <option key={x + 1} value={x + 1}>
+                                {x + 1}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="removeButtonDiv">
+                          <button
+                            onClick={() =>
+                              removeFromCartHandler(product.product)
+                            }
+                            className="removeButton"
+                          >
+                            Remove
+                          </button>
+                        </div>
                       </div>
                     </div>
-                    <div className="priceContainerDiv">
-                      <div className="productPrice">
-                        <p className="productPriceQty">
-                          ${(product.price * product.quantity) / 100}{' '}
-                        </p>
-                        <p className="productPriceItem">
-                          ${product.price / 100} per item
-                        </p>
-                      </div>
-                      <div className="productQtyPrice">
-                        <select
-                          value={product.quantity}
-                          onChange={(e) =>
-                            dispatch(addToCart(product.product, e.target.value))
-                          }
-                        >
-                          {qty.map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div className="removeButtonDiv">
-                        <button
-                          onClick={() => removeFromCartHandler(product.product)}
-                          className="removeButton"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
             <div className="CheckoutDiv">
               <div className="CheckoutSubtotalDiv">
                 <h2 className="CheckoutSubtotalHeader">

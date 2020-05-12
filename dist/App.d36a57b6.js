@@ -37316,6 +37316,172 @@ var CART_SAVE_SHIPPING = 'CART_SAVE_SHIPPING';
 exports.CART_SAVE_SHIPPING = CART_SAVE_SHIPPING;
 var CART_SAVE_PAYMENT = 'CART_SAVE_PAYMENT';
 exports.CART_SAVE_PAYMENT = CART_SAVE_PAYMENT;
+},{}],"../node_modules/js-cookie/src/js.cookie.js":[function(require,module,exports) {
+var define;
+/*!
+ * JavaScript Cookie v2.2.1
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader;
+	if (typeof define === 'function' && define.amd) {
+		define(factory);
+		registeredInModuleLoader = true;
+	}
+	if (typeof exports === 'object') {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function decode (s) {
+		return s.replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
+	}
+
+	function init (converter) {
+		function api() {}
+
+		function set (key, value, attributes) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			attributes = extend({
+				path: '/'
+			}, api.defaults, attributes);
+
+			if (typeof attributes.expires === 'number') {
+				attributes.expires = new Date(new Date() * 1 + attributes.expires * 864e+5);
+			}
+
+			// We're using "expires" because "max-age" is not supported by IE
+			attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+			try {
+				var result = JSON.stringify(value);
+				if (/^[\{\[]/.test(result)) {
+					value = result;
+				}
+			} catch (e) {}
+
+			value = converter.write ?
+				converter.write(value, key) :
+				encodeURIComponent(String(value))
+					.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+
+			key = encodeURIComponent(String(key))
+				.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
+				.replace(/[\(\)]/g, escape);
+
+			var stringifiedAttributes = '';
+			for (var attributeName in attributes) {
+				if (!attributes[attributeName]) {
+					continue;
+				}
+				stringifiedAttributes += '; ' + attributeName;
+				if (attributes[attributeName] === true) {
+					continue;
+				}
+
+				// Considers RFC 6265 section 5.2:
+				// ...
+				// 3.  If the remaining unparsed-attributes contains a %x3B (";")
+				//     character:
+				// Consume the characters of the unparsed-attributes up to,
+				// not including, the first %x3B (";") character.
+				// ...
+				stringifiedAttributes += '=' + attributes[attributeName].split(';')[0];
+			}
+
+			return (document.cookie = key + '=' + value + stringifiedAttributes);
+		}
+
+		function get (key, json) {
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			var jar = {};
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all.
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = decode(parts[0]);
+					cookie = (converter.read || converter)(cookie, name) ||
+						decode(cookie);
+
+					if (json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					jar[name] = cookie;
+
+					if (key === name) {
+						break;
+					}
+				} catch (e) {}
+			}
+
+			return key ? jar[key] : jar;
+		}
+
+		api.set = set;
+		api.get = function (key) {
+			return get(key, false /* read as raw */);
+		};
+		api.getJSON = function (key) {
+			return get(key, true /* read as json */);
+		};
+		api.remove = function (key, attributes) {
+			set(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.defaults = {};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+
 },{}],"actions/cartActions.js":[function(require,module,exports) {
 "use strict";
 
@@ -37332,13 +37498,16 @@ var _axios = _interopRequireDefault(require("axios"));
 
 var _cartConstants = require("../constants/cartConstants");
 
+var _jsCookie = _interopRequireDefault(require("js-cookie"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // the action we want to dipatch
+// we are saving to cookies temporaryly but the goal is to save to local storage
 var addToCart = function addToCart(productId, quantity) {
   return /*#__PURE__*/function () {
-    var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(dispatch) {
-      var _yield$axios$get, data, productData;
+    var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(dispatch, getState) {
+      var _yield$axios$get, data, productData, _getState, cartItems;
 
       return _regenerator.default.wrap(function _callee$(_context) {
         while (1) {
@@ -37369,24 +37538,30 @@ var addToCart = function addToCart(productId, quantity) {
                   price: productData[0].price,
                   productSoldOut: productData[0].isSoldOut,
                   quantity: quantity
-                }
+                } // we will use getState to get access to the state and the Cookie.set and json.stringfy so that
+                // it will save in a json format
+
               });
-              _context.next = 13;
+              _getState = getState(), cartItems = _getState.cart.cartItems;
+
+              _jsCookie.default.set('cartItems', JSON.stringify(cartItems));
+
+              _context.next = 15;
               break;
 
-            case 11:
-              _context.prev = 11;
+            case 13:
+              _context.prev = 13;
               _context.t0 = _context["catch"](0);
 
-            case 13:
+            case 15:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 11]]);
+      }, _callee, null, [[0, 13]]);
     }));
 
-    return function (_x) {
+    return function (_x, _x2) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -37399,12 +37574,17 @@ var removeFromCart = function removeFromCart(productId) {
     dispatch({
       type: _cartConstants.CART_REMOVE_ITEM,
       payload: productId
-    });
+    }); // we will also do same for this one
+
+    var _getState2 = getState(),
+        cartItems = _getState2.cart.cartItems;
+
+    _jsCookie.default.set('cartItems', JSON.stringify(cartItems));
   };
 };
 
 exports.removeFromCart = removeFromCart;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","axios":"../node_modules/axios/index.js","../constants/cartConstants":"constants/cartConstants.js"}],"components/CartItems/CartItems.js":[function(require,module,exports) {
+},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","axios":"../node_modules/axios/index.js","../constants/cartConstants":"constants/cartConstants.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js"}],"components/CartItems/CartItems.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37472,6 +37652,8 @@ var CartItems = function CartItems(props) {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "CartItemsHeader"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "My Cart")), cartItems.length === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Cart is empty")) : /*#__PURE__*/_react.default.createElement("div", {
+    className: "CartDivCheckout"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "CartDiv"
   }, cartItems.map(function (product, index) {
     return /*#__PURE__*/_react.default.createElement("div", {
@@ -37519,7 +37701,7 @@ var CartItems = function CartItems(props) {
       },
       className: "removeButton"
     }, "Remove")))));
-  }), /*#__PURE__*/_react.default.createElement("div", {
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "CheckoutDiv"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "CheckoutSubtotalDiv"
@@ -38055,9 +38237,18 @@ var _productReducer = require("./reducers/productReducer");
 
 var _cartReducer = require("./reducers/cartReducer");
 
+var _jsCookie = _interopRequireDefault(require("js-cookie"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var initialState = {};
+// we want to set our initial state to be what we have in the Cookie and if the cookie is empty
+// we want to set it to an empty array
+var cartItems = _jsCookie.default.getJSON('cartItems') || [];
+var initialState = {
+  cart: {
+    cartItems: cartItems
+  }
+};
 var reducer = (0, _redux.combineReducers)({
   productList: _productReducer.productListReducer,
   cart: _cartReducer.cartReducer
@@ -38066,7 +38257,7 @@ var composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.comp
 var store = (0, _redux.createStore)(reducer, initialState, composeEnhancer((0, _redux.applyMiddleware)(_reduxThunk.default)));
 var _default = store;
 exports.default = _default;
-},{"redux":"../node_modules/redux/es/redux.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","./reducers/productReducer":"reducers/productReducer.js","./reducers/cartReducer":"reducers/cartReducer.js"}],"actions/productActions.js":[function(require,module,exports) {
+},{"redux":"../node_modules/redux/es/redux.js","redux-thunk":"../node_modules/redux-thunk/es/index.js","./reducers/productReducer":"reducers/productReducer.js","./reducers/cartReducer":"reducers/cartReducer.js","js-cookie":"../node_modules/js-cookie/src/js.cookie.js"}],"actions/productActions.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38292,7 +38483,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53787" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64138" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
