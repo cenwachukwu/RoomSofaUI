@@ -16,9 +16,9 @@ const addToCart = (productId, quantity) => async (dispatch) => {
         product: productData[0]._id,
         name: productData[0].name,
         brand: productData[0].brand,
-        image: productData[0].image,
+        image: productData[0].images,
         price: productData[0].price,
-        countInStock: productData[0].isSoldOut,
+        productSoldOut: productData[0].isSoldOut,
         quantity,
       },
     });

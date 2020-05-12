@@ -39,9 +39,110 @@ const CartItems = (props) => {
     }
   }, []);
 
+  const qty = [0, 1, 2, 3];
+
+  const checkoutHandler = () => {
+    alert('checkout');
+    // props.history.push("/signin?redirect=shipping");
+  };
+
+  const removeFromCartHandler = () => {
+    alert('removed');
+  };
+
   return (
     <div className="CartItems">
-      <div></div>
+      <div className="CartItemsContainer">
+        <div className="CartItemsHeader">
+          <h1>My Cart</h1>
+        </div>
+        {cartItems.length === 0 ? (
+          <div>
+            <p>Cart is empty</p>
+          </div>
+        ) : (
+          <div className="CartDiv">
+            {cartItems.map((product, index) => {
+              return (
+                <div key={index} className="prodInCart">
+                  <div className="productImage">
+                    <img src={product.image[0].image} />
+                  </div>
+                  <div className="productInfoDiv">
+                    <div className="productNameDiv">
+                      <div className="productInfoName">
+                        <p>{product.name}</p>
+                      </div>
+                      <div className="productInfoBrand">
+                        <p>
+                          by {product.brand[0].brandName} |{' '}
+                          {product.brand[0].productId}
+                        </p>
+                      </div>
+                      <div className="productFreeShipping">
+                        <p>Free shipping within the DMV</p>
+                      </div>
+                    </div>
+                    <div className="priceContainerDiv">
+                      <div className="productPrice">
+                        <p className="productPriceQty">
+                          ${(product.price * product.quantity) / 100}{' '}
+                        </p>
+                        <p className="productPriceItem">
+                          ${product.price / 100} per item
+                        </p>
+                      </div>
+                      <div className="productQtyPrice">
+                        <select
+                          value={product.quantity}
+                          onChange={(e) =>
+                            dispatch(addToCart(product.product, e.target.value))
+                          }
+                        >
+                          {qty.map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="removeButtonDiv">
+                        <button
+                          onClick={removeFromCartHandler}
+                          className="removeButton"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            <div className="CheckoutDiv">
+              <div className="CheckoutSubtotalDiv">
+                <h2 className="CheckoutSubtotalHeader">
+                  Item Subtotal : ${' '}
+                  {cartItems.reduce(
+                    (a, c) => a + (c.price * c.quantity) / 100,
+                    0
+                  )}
+                </h2>
+              </div>
+
+              <div className="checkoutButtonDiv">
+                <button
+                  onClick={checkoutHandler}
+                  className="checkoutButton"
+                  disabled={cartItems.length === 0}
+                >
+                  Proceed to Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

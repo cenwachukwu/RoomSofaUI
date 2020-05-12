@@ -37364,9 +37364,9 @@ var addToCart = function addToCart(productId, quantity) {
                   product: productData[0]._id,
                   name: productData[0].name,
                   brand: productData[0].brand,
-                  image: productData[0].image,
+                  image: productData[0].images,
                   price: productData[0].price,
-                  countInStock: productData[0].isSoldOut,
+                  productSoldOut: productData[0].isSoldOut,
                   quantity: quantity
                 }
               });
@@ -37443,9 +37443,83 @@ var CartItems = function CartItems(props) {
       dispatch((0, _cartActions.addToCart)(productId, quantity));
     }
   }, []);
+  var qty = [0, 1, 2, 3];
+
+  var checkoutHandler = function checkoutHandler() {
+    alert('checkout'); // props.history.push("/signin?redirect=shipping");
+  };
+
+  var removeFromCartHandler = function removeFromCartHandler() {
+    alert('removed');
+  };
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "CartItems"
-  }, /*#__PURE__*/_react.default.createElement("div", null));
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "CartItemsContainer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "CartItemsHeader"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "My Cart")), cartItems.length === 0 ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Cart is empty")) : /*#__PURE__*/_react.default.createElement("div", {
+    className: "CartDiv"
+  }, cartItems.map(function (product, index) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: index,
+      className: "prodInCart"
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "productImage"
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      src: product.image[0].image
+    })), /*#__PURE__*/_react.default.createElement("div", {
+      className: "productInfoDiv"
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "productNameDiv"
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "productInfoName"
+    }, /*#__PURE__*/_react.default.createElement("p", null, product.name)), /*#__PURE__*/_react.default.createElement("div", {
+      className: "productInfoBrand"
+    }, /*#__PURE__*/_react.default.createElement("p", null, "by ", product.brand[0].brandName, " |", ' ', product.brand[0].productId)), /*#__PURE__*/_react.default.createElement("div", {
+      className: "productFreeShipping"
+    }, /*#__PURE__*/_react.default.createElement("p", null, "Free shipping within the DMV"))), /*#__PURE__*/_react.default.createElement("div", {
+      className: "priceContainerDiv"
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "productPrice"
+    }, /*#__PURE__*/_react.default.createElement("p", {
+      className: "productPriceQty"
+    }, "$", product.price * product.quantity / 100, ' '), /*#__PURE__*/_react.default.createElement("p", {
+      className: "productPriceItem"
+    }, "$", product.price / 100, " per item")), /*#__PURE__*/_react.default.createElement("div", {
+      className: "productQtyPrice"
+    }, /*#__PURE__*/_react.default.createElement("select", {
+      value: product.quantity,
+      onChange: function onChange(e) {
+        return dispatch((0, _cartActions.addToCart)(product.product, e.target.value));
+      }
+    }, qty.map(function (x) {
+      return /*#__PURE__*/_react.default.createElement("option", {
+        key: x + 1,
+        value: x + 1
+      }, x + 1);
+    }))), /*#__PURE__*/_react.default.createElement("div", {
+      className: "removeButtonDiv"
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      onClick: removeFromCartHandler,
+      className: "removeButton"
+    }, "Remove")))));
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "CheckoutDiv"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "CheckoutSubtotalDiv"
+  }, /*#__PURE__*/_react.default.createElement("h2", {
+    className: "CheckoutSubtotalHeader"
+  }, "Item Subtotal : $", ' ', cartItems.reduce(function (a, c) {
+    return a + c.price * c.quantity / 100;
+  }, 0))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "checkoutButtonDiv"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: checkoutHandler,
+    className: "checkoutButton",
+    disabled: cartItems.length === 0
+  }, "Proceed to Checkout"))))));
 };
 
 var _default = CartItems;
